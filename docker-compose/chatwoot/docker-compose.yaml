@@ -1,0 +1,99 @@
+services:
+  waha:
+    restart: always
+    image: devlikeapro/waha-plus
+    ports:
+      - '127.0.0.1:3000:3000/tcp'
+    volumes:
+      - './sessions:/app/.sessions' # required for WAHA Core only
+      - './media:/app/.media'
+    env_file:
+      - .waha.env
+    depends_on:
+      - postgres
+      - redis
+      - chatwoot
+      - chatwoot-sidekiq
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '100m'
+        max-file: '10'
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+
+  base: &base
+    image: chatwoot/chatwoot:v4.7.0
+    env_file: .chatwoot.env ## Change this file for customized env variables
+    volumes:
+      - chatwoot_storage:/app/storage
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '100m'
+        max-file: '10'
+
+  chatwoot:
+    <<: *base
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - '127.0.0.1:3009:3009'
+    environment:
+      - NODE_ENV=production
+      - RAILS_ENV=production
+      - INSTALLATION_ENV=docker
+    entrypoint: docker/entrypoints/rails.sh
+    command: ['bundle', 'exec', 'rails', 's', '-p', '3009', '-b', '0.0.0.0']
+    restart: always
+
+  chatwoot-sidekiq:
+    <<: *base
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - NODE_ENV=production
+      - RAILS_ENV=production
+      - INSTALLATION_ENV=docker
+    command: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
+    restart: always
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: always
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - chatwoot_pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=chatwoot
+      - POSTGRES_USER=postgres
+      # Please provide your own password.
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  redis:
+    image: redis:alpine
+    restart: always
+    command:
+      - 'sh'
+      - '-c'
+      - >
+        redis-server --bind 0.0.0.0 --port 6379 --requirepass
+        ${REDIS_PASSWORD:-redis} --timeout 300 --tcp-keepalive 60 --save 900 1
+        --save 300 10 --save 60 10000 --appendonly yes --appendfsync everysec
+    env_file: .chatwoot.env
+    volumes:
+      - chatwoot_redis:/data
+    ports:
+      - '127.0.0.1:6379:6379'
+
+volumes:
+  chatwoot_pg_data: {}
+  chatwoot_redis: {}
+  chatwoot_storage: {}

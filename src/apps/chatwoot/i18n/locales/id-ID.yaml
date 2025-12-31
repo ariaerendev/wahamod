@@ -1,0 +1,677 @@
+# Indonesian translations for WhatsApp inbox integration
+locale.name: '🇮🇩 Bahasa Indonesia (Indonesian)'
+
+# Kode locale dasar - harus berupa locale BCP 47 yang valid
+# https://en.wikipedia.org/wiki/IETF_language_tag
+# WAHA menggunakannya untuk format angka, mata uang, dan tanggal/waktu
+locale.base: 'id-ID'
+
+app.inbox.contact.name: 'Integrasi WhatsApp'
+app.inbox.contact.avatar.url: 'https://raw.githubusercontent.com/devlikeapro/waha/core/logo.png'
+
+# "opsi" dari date.toLocaleString
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+datetime:
+  weekday: short
+  locales: id-ID
+  day: 2-digit
+  month: short
+  year: numeric
+  hour: 2-digit
+  minute: 2-digit
+  hour12: false
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timezonename
+  timeZoneName: short
+  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # timeZone: 'Asia/Jakarta'
+
+Today: 'Hari ini'
+Yesterday: 'Kemarin'
+
+job.report.error: |-
+  ⚠️ **{{{header}}}**
+  {{#attempts.nextDelay}}
+  🔄 Mencoba lagi dalam {{attempts.nextDelay}} detik...
+  {{/attempts.nextDelay}}
+  {{^attempts.nextDelay}}
+  ❌ Tidak ada percobaan lagi. Silakan coba lagi nanti.
+  {{/attempts.nextDelay}}
+  Percobaan: {{{attempts.current}}} / {{{attempts.max}}}
+  Detail: [{{{details.text}}}]({{{details.url}}})
+  {{#error}}
+  ```
+
+  {{{error}}}
+  ```
+  {{/error}}
+
+job.report.succeeded: |-
+  ✅ **Berhasil**
+  Percobaan: {{{attempts.current}}} / {{{attempts.max}}}
+  Detail: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.message.sending.error: Tidak dapat mengirim pesan di WhatsApp.
+whatsapp.message.receiving.error: Tidak dapat menerima pesan dari WhatsApp
+whatsapp.message.removing.error: Tidak dapat menghapus pesan dari WhatsApp
+job.scheduled.error.header: Tugas terjadwal gagal dijalankan
+
+message.from.whatsapp: |-
+  *📱 Dikirim dari WhatsApp*
+
+  {{{text}}}
+
+message.from.api: |-
+  *📱 Dikirim melalui API*
+
+  {{{text}}}
+
+message.removed.in.whatsapp: |-
+  ❌ *Pesan ini telah dihapus di WhatsApp*
+
+message.edited.in.whatsapp: |-
+  {{{text}}}
+
+  ✏️ *Diedit di WhatsApp*
+
+whatsapp.group.message: |-
+  👥 *{{{participant}}}*
+
+  {{{text}}}
+
+whatsapp.reaction.added: |-
+  *Bereaksi* {{{emoji}}}
+
+whatsapp.reaction.removed: |-
+  *Reaksi dihapus*
+
+whatsapp.contact.group.suffix: 'Grup'
+whatsapp.contact.channel.suffix: 'Saluran'
+whatsapp.contact.broadcast.suffix: 'Daftar Siaran'
+# Aka Stories
+whatsapp.contact.status.name: 'Status'
+
+app.connected.message: |-
+  🔗 **TERHUBUNG: Sesi WhatsApp ke kotak masuk**
+
+  ✅ Sesi WhatsApp **{{{name}}}** telah berhasil terhubung ke kotak masuk ini.
+
+  Kotak masuk ini sekarang terhubung ke **Akun WhatsApp** Anda. Anda dapat mengirim dan menerima pesan langsung dari sini — seperti menggunakan WhatsApp, tetapi di dalam ruang kerja Anda.
+
+  Anda juga dapat mengelola sesi WhatsApp yang terhubung ke kotak masuk ini. Untuk melihat tindakan yang tersedia, kirim **help** ke obrolan ini.
+
+  📋 Tindakan umum yang dapat Anda lakukan:
+  - Periksa apakah sesi WhatsApp aktif
+  - Mulai ulang atau Hentikan sesi WhatsApp
+  - Keluar dan hubungkan kembali dengan memindai kode QR baru
+
+  Jika semuanya berfungsi, Anda akan dapat mengobrol dengan bebas. Jika Anda melihat peringatan, Anda mungkin perlu menghubungkan kembali akun WhatsApp Anda.
+
+  Mari kita mulai! 🚀
+
+app.disconnected.message: |-
+  🔌 **TERPUTUS: Sesi WhatsApp dari kotak masuk**
+
+  ❌ Sesi WhatsApp **{{{name}}}** telah terputus dari kotak masuk ini.
+
+  Anda tidak akan dapat lagi mengirim atau menerima pesan dari WhatsApp.
+
+  Untuk menghubungkan kembali, silakan hubungi administrator Anda.
+
+app.updated.message: |-
+  🔄 **DIPERBARUI: Pengaturan Sesi WhatsApp**
+
+  ✅ Pengaturan untuk sesi WhatsApp **{{{name}}}** telah diperbarui.
+
+cli.usage.arguments: |-
+  [aksi]
+
+cli.usage.command: |-
+  [perintah]
+
+cli.usage.options: |-
+  [opsi]
+
+cli.cmd.disabled: ⛔ **Perintah `{{command}}` dinonaktifkan**.
+
+  Silakan hubungi administrator Anda.
+
+  Kirim **help** untuk mendapatkan daftar perintah yang tersedia.
+
+cli.cmd.root.description: |-
+  Kelola **Integrasi WhatsApp** Anda!
+
+cli.cmd.root.sub.session: |-
+  🖥️ **Sesi**:
+
+cli.cmd.root.sub.server: |-
+  🖥️ **Server**:
+
+cli.cmd.root.sub.sync: |-
+  🔄️ **Sinkronisasi**:
+
+cli.cmd.session.status.description: |-
+  Dapatkan status sesi saat ini.
+
+cli.cmd.session.restart.description: |-
+  Mulai ulang sesi.
+
+cli.cmd.session.start.description: |-
+  Mulai sesi.
+
+cli.cmd.session.stop.description: |-
+  Hentikan sesi.
+
+cli.cmd.session.logout.description: |-
+  Keluar dari sesi untuk memindai kode QR baru dan memulihkan koneksi.
+
+cli.cmd.session.qr.description: |-
+  Tampilkan kode QR sesi.
+
+cli.cmd.session.screenshot.description: |-
+  Ambil tangkapan layar sesi (hanya tersedia dengan mesin **WEBJS**).
+
+cli.cmd.contacts.summary: |-
+  Tarik kontak WhatsApp.
+
+cli.cmd.contacts.description: |-
+  👤 Jalankan `contacts pull` untuk memulai sinkronisasi atau `contacts status` untuk melihat progres.
+
+cli.cmd.contacts.action.description: |-
+  Gunakan `start` untuk mulai menarik kontak atau `status` untuk memeriksa pekerjaan aktif.
+
+cli.cmd.contacts.pull.description: |-
+  Mulai menarik kontak WhatsApp ke kotak masuk ini.
+
+cli.cmd.contacts.pull.option.batch: |-
+  Jumlah kontak yang ditarik di setiap batch.
+
+cli.cmd.contacts.pull.option.delay-contact: |-
+  Jeda antar tiap kontak untuk menghindari pembatasan saat mengambil avatar.
+
+cli.cmd.contacts.pull.option.delay-batch: |-
+  Jeda antar batch kontak.
+
+cli.cmd.contacts.pull.option.avatar: |-
+  Pilih cara mengambil avatar kontak: `skip`, `if-missing`, atau `update`.
+
+cli.cmd.contacts.pull.option.groups: |-
+  Sertakan kontak grup WhatsApp dalam sinkronisasi.
+
+cli.cmd.contacts.pull.option.no-attributes: |-
+  Jangan ambil atribut kontak jika kontak sudah ada (mempercepat proses).
+
+cli.cmd.contacts.pull.already-running: |-
+  ⏳ Pekerjaan **Pull Contacts** sudah berjalan. Tunggu hingga selesai atau hentikan sebelum memulai yang baru.
+
+  Kirim `contacts status` untuk detail.
+
+cli.cmd.options.job.attempts: |-
+  Jumlah percobaan ulang sebelum pekerjaan dianggap gagal.
+
+cli.cmd.options.job.timeout: |-
+  Durasi maksimum pekerjaan sebelum dicoba ulang (mendukung nilai seperti `30s`, `5m`, `1h`).
+
+cli.cmd.contacts.status.description: |-
+  Tampilkan status pekerjaan penarikan saat ini.
+
+cli.cmd.contacts.status.not-found: |-
+  ℹ️ Tidak ada pekerjaan **Pull Contacts** aktif. Mulai satu dengan `contacts pull`.
+
+cli.cmd.server.description: |-
+  Kelola server.
+
+cli.cmd.server.status.description: |-
+  Tampilkan versi dan status server.
+
+cli.cmd.server.reboot.description: |-
+  Mulai ulang server.
+
+cli.cmd.server.reboot.option.force: |-
+  Paksa reboot segera.
+
+cli.help.usage.title: |-
+  Penggunaan: kirim perintah ke percakapan dalam format berikut:
+
+cli.help.commands.defaultGroup: |-
+  **Perintah:**
+
+cli.help.arguments.title: |-
+  **Argumen:**
+
+cli.help.options.defaultGroup: |-
+  **Opsi:**
+
+cli.help.globalOptions.title: |-
+  **Opsi global:**
+
+task.contacts.status: |-
+  👤 Penarikan kontak: **{{state}}**
+  - ✅ Berhasil: {{{progress.ok}}} kontak
+  - ⚪ Dilewati: {{{progress.skipped}}} kontak
+  - ⚠️ Kesalahan: {{{progress.errors}}} kontak
+
+  {{#job}}
+  ⌛ Linimasa:
+  - Masuk antrean: {{{timestamp}}}
+  {{#processedOn}}
+  - Mulai: {{{processedOn}}}
+  {{/processedOn}}
+  {{#finishedOn}}
+  - Selesai: {{{finishedOn}}}
+  {{/finishedOn}}
+  {{/job}}
+
+  {{#error}}
+  Detail:
+  [{{{details.text}}}]({{{details.url}}})
+  {{/error}}
+
+task.contacts.started: |-
+  Menarik kontak...
+
+task.contacts.progress: |-
+  Penarikan kontak: ✅ {{progress.ok}}, ⚪ {{progress.skipped}}, ⚠️ {{progress.errors}}
+
+app.help.reminder: |-
+  Kirim **help** untuk mendapatkan daftar perintah yang tersedia.
+
+app.session.status.change: |-
+  {{{emoji}}} Sesi "{{{session}}}" beralih ke status {{{status}}}
+
+app.session.current.status: |-
+  {{{emoji}}} Status sesi **{{{session}}}** adalah **{{{status}}}**
+  **Akun WhatsApp:**
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.working: |-
+  ✅ Kotak masuk ini terhubung ke **Akun WhatsApp** Anda dan siap untuk mengirim dan menerima pesan!
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.error: |-
+  ⚠️ **Kotak masuk ini terhubung ke Akun WhatsApp tetapi TIDAK siap untuk mengirim dan menerima pesan!**
+
+  Silakan periksa status sesi dan coba mulai ulang atau keluar dan pindai kode QR lagi.
+
+app.session.scan.qr.code: |-
+  ⚠️ **Pindai kode QR di ponsel Anda untuk menghubungkan Akun WhatsApp dengan kotak masuk ini!**
+
+app.server.version.and.status: |-
+  **Versi:**
+  ```
+  {{{version}}}
+  ```
+
+  **Status:**
+  ```
+  {{{status}}}
+  ```
+
+app.server.reboot: |-
+  Server sedang dimulai ulang dengan anggun...
+
+app.server.reboot.force: |-
+  Server sedang dipaksa untuk dimulai ulang...
+
+app.logout.success: |-
+  ✅ Akun berhasil tidak diotorisasi!
+
+waha.new.version.available: |-
+  🔄 **Versi Baru Tersedia!**
+
+  Versi saat ini: **{{{currentVersion}}}**
+  Versi baru: **{{{newVersion}}}**
+
+  👉 Lihat apa yang baru di [**🆕 Changelog**]({{{changelogUrl}}})
+
+waha.core.version.used: |-
+  ❤️ **Dukung WAHA!**
+
+  Anda menggunakan versi **WAHA Core** gratis. Jika Anda merasa proyek ini bermanfaat, harap pertimbangkan untuk mendukung pengembangannya.
+
+  Dukungan Anda adalah satu-satunya cara kami dapat terus bekerja pada pembaruan, perbaikan, dan fitur baru.
+
+  [**🎁 Dukung Kami**]({{{supportUrl}}})
+
+chatwoot.to.whatsapp.message.text: |-
+  {{{ content }}}
+
+chatwoot.to.whatsapp.message.media.caption: |-
+  {{#singleAttachment}}
+  {{#content}}
+  {{{ content }}}
+  {{/content}}
+  {{/singleAttachment}}
+
+whatsapp.to.chatwoot.message: |-
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.message.contacts: |-
+  👤 **Kontak yang dibagikan**
+
+  {{#contacts}}
+  🪪 Nama: **{{fullName}}**
+  {{#phoneNumbers}}
+  - 📞 Telepon: **{{.}}**
+  {{/phoneNumbers}}
+
+  {{/contacts}}
+
+whatsapp.to.chatwoot.message.location: |-
+  {{#message}}
+  {{#locationMessage}}
+  📍 **Lokasi yang dibagikan**
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Alamat:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Situs web:** {{url}}
+  {{/url}}
+
+  🔗 **Lihat di peta:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/locationMessage}}
+
+  {{#liveLocationMessage}}
+  📍📡 **Berbagi Lokasi Langsung**
+  Buka **WhatsApp** untuk melihat pembaruan waktu nyata.
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Alamat:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Situs web:** {{url}}
+  {{/url}}
+
+  🔗 **Lihat di peta:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/liveLocationMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.poll: |-
+  {{#poll}}
+  📊 **Jajak Pendapat**
+
+  **{{name}}**
+  {{#options}}
+  - {{optionName}}
+  {{/options}}
+  {{/poll}}
+
+whatsapp.to.chatwoot.message.list: |-
+  {{#message.listMessage}}
+  {{#title}}
+  *{{{title}}}*
+  {{/title}}
+  {{#description}}
+  {{{description}}}
+  {{/description}}
+  {{#footerText}}
+  {{{footerText}}}
+  {{/footerText}}
+
+  {{#buttonText}}
+  {{{buttonText}}}
+  {{/buttonText}}
+  {{#sections}}
+  {{#title}}
+  {{{title}}}:
+  {{/title}}
+  {{#rows}}
+  {{#title}}
+  - {{{title}}}
+  {{/title}}
+  {{/rows}}
+
+  {{/sections}}
+  {{/message.listMessage}}
+
+whatsapp.to.chatwoot.message.event: |-
+  {{#message}}
+  {{#eventMessage}}
+  📅 **Acara**
+
+  **{{name}}**
+  {{#description}}
+  {{description}}
+  {{/description}}
+
+  {{#location.name}}
+  📍 **Lokasi:** {{location.name}}
+  {{/location.name}}
+  {{#startTime}}
+  🕐 **Mulai:** {{startTime}}
+  {{/startTime}}
+  {{#endTime}}
+  🕐 **Selesai:** {{endTime}}
+  {{/endTime}}
+  {{#joinLink}}
+  🔗 **Tautan bergabung:** [{{joinLink}}]({{joinLink}})
+  {{/joinLink}}
+  {{/eventMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.pix: |-
+  💳 **PIX - Salin dan Tempel**
+
+  {{#pixData}}
+  {{#merchantName}}
+  **{{merchantName}}**
+  {{/merchantName}}
+
+  {{#key}}
+  **Kunci PIX:** {{key}}
+  {{/key}}
+  {{#keyType}}
+  **Jenis:** {{keyType}}
+  {{/keyType}}
+  {{#totalAmount}}
+  **Jumlah:** {{totalAmountFormatted}}
+  {{/totalAmount}}
+  {{#referenceId}}
+  **Referensi:** {{referenceId}}
+  {{/referenceId}}
+
+  💳 **PIX Salin dan Tempel terkirim**
+  {{/pixData}}
+
+whatsapp.to.chatwoot.message.unsupported: |-
+  ⚠️ **Jenis pesan ini tidak didukung di kotak masuk ini.**
+  📱 Silakan buka **WhatsApp** untuk melihatnya.
+
+  Detail: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.to.chatwoot.message.album: |-
+  📷 **Pesan Album Diterima**
+
+  {{#totalCount}}
+  Menerima album dengan **{{totalCount}}** file media.
+  {{#expectedImageCount}}
+  📸 Gambar: **{{expectedImageCount}}**
+  {{/expectedImageCount}}
+  {{#expectedVideoCount}}
+  🎥 Video: **{{expectedVideoCount}}**
+  {{/expectedVideoCount}}
+
+  File media akan dikirimkan dalam pesan berikutnya.
+  {{/totalCount}}
+
+whatsapp.to.chatwoot.message.facebook.ad: |-
+  📢 **IKLAN FACEBOOK**
+
+  **Judul:** {{{adData.title}}}
+
+  **Deskripsi:**
+  {{{adData.body}}}
+
+  **Tautan Iklan:** [Lihat di Facebook]({{{adData.sourceUrl}}})
+  **ID Iklan:** {{{adData.sourceId}}}
+
+  ---
+  💬 **Pesan Pelanggan:**
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.call.received: |-
+  📞🔔 *Panggilan {{#call.isVideo}}Video{{/call.isVideo}}{{^call.isVideo}}Suara{{/call.isVideo}} Masuk*
+  📱 Silakan buka **WhatsApp** untuk menjawab.
+
+whatsapp.to.chatwoot.call.accepted: |-
+  📞✅ *Panggilan Dijawab*
+  📱 Panggilan dijawab di perangkat lainmu.
+
+whatsapp.to.chatwoot.call.rejected: |-
+  📞❌ *Panggilan Berakhir*
+
+whatsapp.history.message.wrapper: |-
+  {{{content}}}
+  `{{#history}}📥{{/history}}🗓️ {{{timestamp}}}`
+
+UNKNOWN: Tidak diketahui
+ERROR: Kesalahan
+PENDING: Mengirim
+SERVER: Server
+DEVICE: Perangkat
+READ: Dibaca
+PLAYED: Diputar
+whatsapp.to.chatwoot.message.has.media.no.media: |-
+  {{#content}}
+  {{{content}}}
+
+  {{/content}}
+  🖼️⚠️ **Pesan memiliki media, tetapi kami tidak dapat mengunduhnya**
+  📱 Buka **WhatsApp** untuk melihatnya.
+
+  {{^content}}
+  Detail: [{{{details.text}}}]({{{details.url}}})
+  {{/content}}
+cli.cmd.root.sub.queue: '🧩 **Antrian**:'
+cli.cmd.messages.summary: Tarik pesan WhatsApp.
+cli.cmd.messages.description:
+  💬 Jalankan `messages pull` untuk memulai sinkronisasi pesan atau `messages
+  status` untuk memantau progres.
+cli.cmd.messages.action.description:
+  '`pull` untuk memulai penarikan pesan atau `status` untuk memeriksa pekerjaan
+  yang berjalan.'
+cli.cmd.messages.pull.option.chat:
+  Batasi penarikan pada ID chat WhatsApp tertentu.
+cli.cmd.messages.pull.option.force:
+  Paksa kotak masuk membuat pesan meskipun pesan WhatsApp sudah ada di pemetaan
+  percakapan.
+cli.cmd.messages.pull.option.batch: Jumlah pesan yang ditarik di setiap batch.
+cli.cmd.messages.pull.option.progress:
+  Laporkan progres setiap N pesan. Setel ke 0 untuk menonaktifkan laporan.
+cli.cmd.messages.pull.option.no-dm: Lewati pesan langsung saat menarik riwayat.
+cli.cmd.messages.pull.option.groups:
+  Sertakan grup WhatsApp saat menarik riwayat.
+cli.cmd.messages.pull.option.channels:
+  Sertakan Channel WhatsApp saat menarik riwayat.
+cli.cmd.messages.pull.option.status:
+  Sertakan pembaruan status WhatsApp saat menarik riwayat.
+cli.cmd.messages.pull.option.broadcast:
+  Sertakan daftar siaran saat menarik riwayat.
+cli.cmd.messages.pull.option.media:
+  Unduh lampiran media (gambar, video, file) saat menarik riwayat.
+cli.cmd.messages.pull.option.pause:
+  Masukkan pekerjaan penarikan pesan ke antrian dalam keadaan jeda dan hentikan
+  pemrosesan pesan WhatsApp baru sampai selesai.
+cli.cmd.messages.pull.option.resolve-conversations:
+  Menandai percakapan sebagai selesai setelah semua pesan riwayat diproses.
+cli.cmd.messages.pull.error.pause-no-queue:
+  ⛔ Tidak dapat menggunakan `--pause` karena perintah **queue** dinonaktifkan
+  pada konfigurasi ini.
+cli.cmd.queue.description: Kelola antrian.
+cli.cmd.queue.summary: Jalankan tindakan pada antrian.
+cli.cmd.queue.action.description: Pilih sebuah tindakan.
+cli.cmd.queue.status.description: Tampilkan status sebuah antrian.
+cli.cmd.queue.argument.name: 'Nama antrian: `inbox` atau `whatsapp` (opsional).'
+cli.cmd.queue.start.description: Mulai antrian berdasarkan nama.
+cli.cmd.queue.stop.description: Hentikan antrian berdasarkan nama.
+cli.cmd.queue.paused:
+  ⚪🧩 Antrian dijeda. Kirim `queue status` untuk memeriksa status.
+cli.cmd.queue.resumed:
+  🟢🧩 Antrian dilanjutkan. Kirim `queue status` untuk memeriksa status.
+cli.cmd.queue.status.result: >-
+  📊 Status antrian:
+
+  {{#queues}}
+
+  - **{{name}}**: {{#locked}}🔒{{/locked}}{{#paused}}⚪
+  Dijeda{{/paused}}{{^paused}}🟢 Berjalan{{/paused}}
+
+  {{/queues}}
+cli.cmd.messages.pull.option.timeout-media:
+  Tetapkan berapa lama mencoba mengunduh media untuk setiap pesan.
+cli.cmd.messages.pull.argument.end:
+  Tetapkan titik akhir jendela penarikan; misalnya `2d` berhenti dua hari yang
+  lalu.
+cli.cmd.messages.pull.argument.start:
+  Tetapkan titik awal jendela penarikan; misalnya `1d` dimulai satu hari yang
+  lalu (default `0d`, yaitu sekarang).
+cli.cmd.messages.pull.already-running: >-
+  ⏳ Pekerjaan **Pull Messages** sudah berjalan untuk **{{{chat}}}**. Tunggu
+  hingga selesai atau hentikan sebelum memulai yang baru.
+
+
+  Kirim `messages status` untuk detail.
+cli.cmd.messages.status.not-found:
+  ℹ️ Tidak ada pekerjaan **Pull Messages** aktif yang ditemukan. Mulai dengan
+  `messages pull`.
+cli.cmd.messages.pull.no-chats-found:
+  Tidak ada chat WhatsApp yang ditemukan untuk periode tersebut.
+cli.cmd.contacts.pull.option.progress:
+  Laporkan progres setiap N kontak. Setel ke 0 untuk menonaktifkan laporan.
+cli.cmd.contacts.pull.option.lids:
+  Sertakan kontak WhatsApp LID (kontak anonim) dalam sinkronisasi.
+task.contacts.completed:
+  👤✅ Kontak selesai → 🆕 {{progress.created}}, 🔄 {{progress.updated}}, ⚪
+  {{progress.skipped}}, 🔴 {{progress.errors}}, 🖼️ {{progress.avatar.updated}}
+task.messages.started: ⏳ Menarik pesan 💬 {{{chat}}} ⏱️ {{{period}}}...
+task.messages.details:
+  Kirim "{{{prefix}}}messages status" untuk melihat rincian.
+task.messages.progress:
+  '⏳ Pesan {{{chat}}}: 🆕 {{progress.ok}}, 🟢 {{progress.exists}}, ⚪
+  {{progress.ignored}}, 🔴 {{progress.errors}}{{#messages.last}} | 📅
+  {{{messages.last}}}{{/messages.last}}'
+task.messages.completed:
+  ✅ Pesan {{{chat}}} selama {{{period}}} → 🆕 {{progress.ok}}, 🟢
+  {{progress.exists}}, ⚪ {{progress.ignored}}, 🔴 {{progress.errors}}
+task.messages.status: |-
+  Pesan **{{{chat}}}** dalam periode ⏱️ **{{{period}}}**. ⚙️ Status pekerjaan: **{{state}}**.
+
+  🗨️ Pesan:
+  - 🆕 Dibuat: **{{{progress.ok}}}**
+  - 🟢 Sudah ada: {{{progress.exists}}}
+  - ⚪ Diabaikan: {{{progress.ignored}}}
+  - 🔴 Kesalahan: {{{progress.errors}}}
+  {{#messages.first}}
+  - 🗓️ Paling awal: **{{{messages.first}}}**
+  {{/messages.first}}
+  {{#messages.last}}
+  - 🗓️ Terbaru: **{{{messages.last}}}**
+  {{/messages.last}}
+
+  💬 Chat WhatsApp:
+  - 🆕 Pesan baru di **{{{chats}}}** chat
+  {{#options.resolveConversations}}
+
+  🗣️ Percakapan:
+  - 🟢 Selesai: **{{{progress.conversationResolve.success}}}**
+  {{#progress.conversationResolve.error}}
+  - 🔴 Kesalahan: **{{{progress.conversationResolve.error}}}**
+  {{/progress.conversationResolve.error}}
+  {{/options.resolveConversations}}
+
+  Detail:
+  [{{{details.text}}}]({{{details.url}}})

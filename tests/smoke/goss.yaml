@@ -1,0 +1,9 @@
+http:
+  http://localhost:3000/api/server/version/:
+    status: 200
+    allow-insecure: true
+    no-follow-redirects: true
+    timeout: 5000
+    request-headers:
+      - "X-Api-Key: test"
+    body: ['version']

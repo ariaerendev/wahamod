@@ -1,0 +1,664 @@
+# Hebrew translations for WhatsApp inbox integration
+locale.name: '🇮🇱 עברית (Hebrew)'
+
+# קוד הלוקאל הבסיסי - חייב להיות לוקאל תקין לפי BCP 47
+# https://en.wikipedia.org/wiki/IETF_language_tag
+# WAHA משתמש בכך להצגת מספרים, מטבע ותאריך/שעה
+locale.base: 'he-IL'
+
+app.inbox.contact.name: 'אינטגרציית וואטסאפ'
+app.inbox.contact.avatar.url: 'https://raw.githubusercontent.com/devlikeapro/waha/core/logo.png'
+
+# "אפשרויות" של date.toLocaleString
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+datetime:
+  weekday: short
+  locales: he-IL
+  day: 2-digit
+  month: short
+  year: numeric
+  hour: 2-digit
+  minute: 2-digit
+  hour12: false
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timezonename
+  timeZoneName: short
+  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # timeZone: 'Asia/Jerusalem'
+
+Today: 'היום'
+Yesterday: 'אתמול'
+
+job.report.error: |-
+  ⚠️ **{{{header}}}**
+  {{#attempts.nextDelay}}
+  🔄 מנסה שוב בעוד {{attempts.nextDelay}} שניות...
+  {{/attempts.nextDelay}}
+  {{^attempts.nextDelay}}
+  ❌ לא נותרו ניסיונות נוספים. אנא נסה שוב מאוחר יותר.
+  {{/attempts.nextDelay}}
+  ניסיון: {{{attempts.current}}} / {{{attempts.max}}}
+  פרטים: [{{{details.text}}}]({{{details.url}}})
+  {{#error}}
+  ```
+
+  {{{error}}}
+  ```
+  {{/error}}
+
+job.report.succeeded: |-
+  ✅ **הצליח**
+  ניסיון: {{{attempts.current}}} / {{{attempts.max}}}
+  פרטים: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.message.sending.error: לא ניתן לשלוח הודעה בוואטסאפ.
+whatsapp.message.receiving.error: לא ניתן לקבל הודעה מוואטסאפ
+whatsapp.message.removing.error: לא ניתן להסיר הודעה מוואטסאפ
+job.scheduled.error.header: המשימה המתוזמנת נכשלה בביצוע
+
+message.from.whatsapp: |-
+  *📱 נשלח מוואטסאפ*
+
+  {{{text}}}
+
+message.from.api: |-
+  *📱 נשלח דרך API*
+
+  {{{text}}}
+
+message.removed.in.whatsapp: |-
+  ❌ *הודעה זו נמחקה בוואטסאפ*
+
+message.edited.in.whatsapp: |-
+  {{{text}}}
+
+  ✏️ *נערך בוואטסאפ*
+
+whatsapp.group.message: |-
+  👥 *{{{participant}}}*
+
+  {{{text}}}
+
+whatsapp.reaction.added: |-
+  *הגיב* {{{emoji}}}
+
+whatsapp.reaction.removed: |-
+  *התגובה הוסרה*
+
+whatsapp.contact.group.suffix: 'קבוצה'
+whatsapp.contact.channel.suffix: 'ערוץ'
+whatsapp.contact.broadcast.suffix: 'רשימת שידור'
+# Aka Stories
+whatsapp.contact.status.name: 'סטטוס'
+
+app.connected.message: |-
+  🔗 **מחובר: הפעלת וואטסאפ לתיבת הדואר הנכנס**
+
+  ✅ הפעלת וואטסאפ **{{{name}}}** חוברה בהצלחה לתיבת דואר נכנס זו.
+
+  תיבת דואר נכנס זו מקושרת כעת ל**חשבון הוואטסאפ** שלך. אתה יכול לשלוח ולקבל הודעות ישירות מכאן — בדיוק כמו שימוש בוואטסאפ, אבל בתוך מרחב העבודה שלך.
+
+  אתה יכול גם לנהל את הפעלת הוואטסאפ המקושרת לתיבת דואר נכנס זו. כדי לראות פעולות זמינות, שלח **help** לצ'אט זה.
+
+  📋 פעולות נפוצות שאתה יכול לעשות:
+  - בדוק אם הפעלת הוואטסאפ פעילה
+  - הפעל מחדש או עצור את הפעלת הוואטסאפ
+  - התנתק והתחבר מחדש על ידי סריקת קוד QR חדש
+
+  אם הכל עובד, תוכל לשוחח בחופשיות. אם אתה רואה אזהרות, ייתכן שתצטרך לחבר מחדש את חשבון הוואטסאפ שלך.
+
+  בוא נתחיל! 🚀
+
+app.disconnected.message: |-
+  🔌 **מנותק: הפעלת וואטסאפ מתיבת הדואר הנכנס**
+
+  ❌ הפעלת וואטסאפ **{{{name}}}** נותקה מתיבת דואר נכנס זו.
+
+  לא תוכל יותר לשלוח או לקבל הודעות מוואטסאפ.
+
+  כדי להתחבר מחדש, אנא פנה למנהל המערכת שלך.
+
+app.updated.message: |-
+  🔄 **עודכן: הגדרות הפעלת וואטסאפ**
+
+  ✅ ההגדרות עבור הפעלת וואטסאפ **{{{name}}}** עודכנו.
+
+cli.usage.arguments: |-
+  [פעולה]
+
+cli.usage.command: |-
+  [פקודה]
+
+cli.usage.options: |-
+  [אפשרויות]
+
+cli.cmd.disabled: ⛔ **הפקודה `{{command}}` מושבתת**.
+
+  אנא פנה למנהל המערכת שלך.
+
+  שלח **help** כדי לקבל את רשימת הפקודות הזמינות.
+
+cli.cmd.root.description: |-
+  נהל את **האינטגרציה של וואטסאפ** שלך!
+
+cli.cmd.root.sub.session: |-
+  🖥️ **הפעלה**:
+
+cli.cmd.root.sub.server: |-
+  🖥️ **שרת**:
+
+cli.cmd.root.sub.sync: |-
+  🔄️ **סנכרון**:
+
+cli.cmd.session.status.description: |-
+  קבל את סטטוס ההפעלה הנוכחי.
+
+cli.cmd.session.restart.description: |-
+  אתחל את ההפעלה מחדש.
+
+cli.cmd.session.start.description: |-
+  התחל את ההפעלה.
+
+cli.cmd.session.stop.description: |-
+  עצור את ההפעלה.
+
+cli.cmd.session.logout.description: |-
+  התנתק מההפעלה כדי לסרוק קוד QR חדש ולהחזיר את החיבור.
+
+cli.cmd.session.qr.description: |-
+  הצג את קוד ה-QR של ההפעלה.
+
+cli.cmd.session.screenshot.description: |-
+  צלם צילום מסך של ההפעלה (זמין רק עם מנוע **WEBJS**).
+
+cli.cmd.contacts.summary: |-
+  משיכת אנשי קשר של וואטסאפ.
+
+cli.cmd.contacts.description: |-
+  👤 הרץ `contacts pull` כדי להתחיל סנכרון או `contacts status` כדי לבדוק את ההתקדמות.
+
+cli.cmd.contacts.action.description: |-
+  השתמש ב-`start` כדי להתחיל למשוך אנשי קשר או ב-`status` כדי לבדוק את המשימה הפעילה.
+
+cli.cmd.contacts.pull.description: |-
+  התחל למשוך אנשי קשר של וואטסאפ אל תיבת הדואר הנכנס.
+
+cli.cmd.contacts.pull.option.batch: |-
+  מספר אנשי הקשר שנמשכים בכל אצווה.
+
+cli.cmd.contacts.pull.option.delay-contact: |-
+  השהיה בין כל איש קשר כדי להימנע ממגבלות בעת משיכת תמונות הפרופיל.
+
+cli.cmd.contacts.pull.option.delay-batch: |-
+  השהיה בין אצוות של אנשי קשר.
+
+cli.cmd.contacts.pull.option.avatar: |-
+  בחר כיצד למשוך תמונות פרופיל: `skip`, `if-missing` או `update`.
+
+cli.cmd.contacts.pull.option.groups: |-
+  כלול בסנכרון אנשי קשר של קבוצות WhatsApp.
+
+cli.cmd.contacts.pull.option.no-attributes: |-
+  אל תמשוך מאפייני איש קשר אם הוא כבר קיים (מאיץ את התהליך).
+
+cli.cmd.contacts.pull.already-running: |-
+  ⏳ המשימה **Pull Contacts** כבר פועלת. המתן שתסתיים או עצור אותה לפני שמתחילים חדשה.
+
+  שלח `contacts status` לקבלת פרטים.
+
+cli.cmd.options.job.attempts: |-
+  מספר ניסיונות החזרה לפני שסימנים את המשימה ככושלת.
+
+cli.cmd.options.job.timeout: |-
+  משך הזמן המרבי שבו המשימה יכולה לפעול לפני ניסיון נוסף (תומך בערכים כגון `30s`, `5m`, `1h`).
+
+cli.cmd.contacts.status.description: |-
+  הצגת הסטטוס של משימת המשיכה הנוכחית.
+
+cli.cmd.contacts.status.not-found: |-
+  ℹ️ לא נמצאה משימת **Pull Contacts** פעילה. התחל אחת עם `contacts pull`.
+
+cli.cmd.server.description: |-
+  נהל את השרת.
+
+cli.cmd.server.status.description: |-
+  הצג את גרסת השרת והסטטוס.
+
+cli.cmd.server.reboot.description: |-
+  אתחל את השרת מחדש.
+
+cli.cmd.server.reboot.option.force: |-
+  כפה אתחול מיידי.
+
+cli.help.usage.title: |-
+  שימוש: שלח פקודה לשיחה בפורמט הבא:
+
+cli.help.commands.defaultGroup: |-
+  **פקודות:**
+
+cli.help.arguments.title: |-
+  **ארגומנטים:**
+
+cli.help.options.defaultGroup: |-
+  **אפשרויות:**
+
+cli.help.globalOptions.title: |-
+  **אפשרויות גלובליות:**
+
+task.contacts.status: |-
+  👤 משיכת אנשי קשר: **{{state}}**
+  - ✅ הצלחות: {{{progress.ok}}} אנשי קשר
+  - ⚪ שדלגו עליהם: {{{progress.skipped}}} אנשי קשר
+  - ⚠️ שגיאות: {{{progress.errors}}} אנשי קשר
+
+  {{#job}}
+  ⌛ ציר זמן:
+  - נכנסה לתור: {{{timestamp}}}
+  {{#processedOn}}
+  - התחלה: {{{processedOn}}}
+  {{/processedOn}}
+  {{#finishedOn}}
+  - סיום: {{{finishedOn}}}
+  {{/finishedOn}}
+  {{/job}}
+
+  {{#error}}
+  פרטים:
+  [{{{details.text}}}]({{{details.url}}})
+  {{/error}}
+
+task.contacts.started: |-
+  אנשי קשר נמשכים...
+
+task.contacts.progress: |-
+  משיכת אנשי קשר: ✅ {{progress.ok}}, ⚪ {{progress.skipped}}, ⚠️ {{progress.errors}}
+
+app.help.reminder: |-
+  שלח **help** כדי לקבל את רשימת הפקודות הזמינות.
+
+app.session.status.change: |-
+  {{{emoji}}} הפעלה "{{{session}}}" עברה לסטטוס {{{status}}}
+
+app.session.current.status: |-
+  {{{emoji}}} סטטוס ההפעלה **{{{session}}}** הוא **{{{status}}}**
+  **חשבון וואטסאפ:**
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.working: |-
+  ✅ תיבת דואר נכנס זו מקושרת ל**חשבון וואטסאפ** שלך ומוכנה לשלוח ולקבל הודעות!
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.error: |-
+  ⚠️ **תיבת דואר נכנס זו מקושרת לחשבון וואטסאפ אך אינה מוכנה לשלוח ולקבל הודעות!**
+
+  אנא בדוק את סטטוס ההפעלה ונסה להפעיל אותה מחדש או התנתק וסרוק את קוד ה-QR שוב.
+
+app.session.scan.qr.code: |-
+  ⚠️ **סרוק את קוד ה-QR בטלפון שלך כדי לקשר את חשבון הוואטסאפ לתיבת דואר נכנס זו!**
+
+app.server.version.and.status: |-
+  **גרסה:**
+  ```
+  {{{version}}}
+  ```
+
+  **סטטוס:**
+  ```
+  {{{status}}}
+  ```
+
+app.server.reboot: |-
+  השרת מופעל מחדש בצורה חלקה...
+
+app.server.reboot.force: |-
+  השרת מופעל מחדש בכוח...
+
+app.logout.success: |-
+  ✅ החשבון בוטל בהצלחה!
+
+waha.new.version.available: |-
+  🔄 **גרסה חדשה זמינה!**
+
+  גרסה נוכחית: **{{{currentVersion}}}**
+  גרסה חדשה: **{{{newVersion}}}**
+
+  👉 בדוק מה חדש ב[**🆕 יומן שינויים**]({{{changelogUrl}}})
+
+waha.core.version.used: |-
+  ❤️ **תמוך ב-WAHA!**
+
+  אתה משתמש בגרסת **WAHA Core** החינמית. אם אתה מוצא פרויקט זה שימושי, אנא שקול לתמוך בפיתוח שלו.
+
+  התמיכה שלך היא הדרך היחידה שבה אנחנו יכולים להמשיך לעבוד על עדכונים, תיקונים ותכונות חדשות.
+
+  [**🎁 תמוך בנו**]({{{supportUrl}}})
+
+chatwoot.to.whatsapp.message.text: |-
+  {{{ content }}}
+
+chatwoot.to.whatsapp.message.media.caption: |-
+  {{#singleAttachment}}
+  {{#content}}
+  {{{ content }}}
+  {{/content}}
+  {{/singleAttachment}}
+
+whatsapp.to.chatwoot.message: |-
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.message.contacts: |-
+  👤 **אנשי קשר משותפים**
+
+  {{#contacts}}
+  🪪 שם: **{{fullName}}**
+  {{#phoneNumbers}}
+  - 📞 טלפון: **{{.}}**
+  {{/phoneNumbers}}
+
+  {{/contacts}}
+
+whatsapp.to.chatwoot.message.location: |-
+  {{#message}}
+  {{#locationMessage}}
+  📍 **מיקום משותף**
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **כתובת:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **אתר אינטרנט:** {{url}}
+  {{/url}}
+
+  🔗 **הצג במפה:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/locationMessage}}
+
+  {{#liveLocationMessage}}
+  📍📡 **משתף מיקום חי**
+  פתח/י את **WhatsApp** כדי לראות עדכונים בזמן אמת.
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **כתובת:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **אתר אינטרנט:** {{url}}
+  {{/url}}
+
+  🔗 **הצג במפה:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/liveLocationMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.poll: |-
+  {{#poll}}
+  📊 **סקר**
+
+  **{{name}}**
+  {{#options}}
+  - {{optionName}}
+  {{/options}}
+  {{/poll}}
+
+whatsapp.to.chatwoot.message.list: |-
+  {{#message.listMessage}}
+  {{#title}}
+  *{{{title}}}*
+  {{/title}}
+  {{#description}}
+  {{{description}}}
+  {{/description}}
+  {{#footerText}}
+  {{{footerText}}}
+  {{/footerText}}
+
+  {{#buttonText}}
+  {{{buttonText}}}
+  {{/buttonText}}
+  {{#sections}}
+  {{#title}}
+  {{{title}}}:
+  {{/title}}
+  {{#rows}}
+  {{#title}}
+  - {{{title}}}
+  {{/title}}
+  {{/rows}}
+
+  {{/sections}}
+  {{/message.listMessage}}
+
+whatsapp.to.chatwoot.message.event: |-
+  {{#message}}
+  {{#eventMessage}}
+  📅 **אירוע**
+
+  **{{name}}**
+  {{#description}}
+  {{description}}
+  {{/description}}
+
+  {{#location.name}}
+  📍 **מיקום:** {{location.name}}
+  {{/location.name}}
+  {{#startTime}}
+  🕐 **התחלה:** {{startTime}}
+  {{/startTime}}
+  {{#endTime}}
+  🕐 **סיום:** {{endTime}}
+  {{/endTime}}
+  {{#joinLink}}
+  🔗 **קישור הצטרפות:** [{{joinLink}}]({{joinLink}})
+  {{/joinLink}}
+  {{/eventMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.pix: |-
+  💳 **PIX - העתק והדבק**
+
+  {{#pixData}}
+  {{#merchantName}}
+  **{{merchantName}}**
+  {{/merchantName}}
+
+  {{#key}}
+  **מפתח PIX:** {{key}}
+  {{/key}}
+  {{#keyType}}
+  **סוג:** {{keyType}}
+  {{/keyType}}
+  {{#totalAmount}}
+  **סכום:** {{totalAmountFormatted}}
+  {{/totalAmount}}
+  {{#referenceId}}
+  **אסמכתא:** {{referenceId}}
+  {{/referenceId}}
+
+  💳 **PIX העתק והדבק נשלח**
+  {{/pixData}}
+
+whatsapp.to.chatwoot.message.unsupported: |-
+  ⚠️ **סוג הודעה זה אינו נתמך בתיבה זו.**
+  📱 אנא פתח/י את **WhatsApp** כדי לצפות בזה.
+
+  פרטים: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.to.chatwoot.message.album: |-
+  📷 **הודעת אלבום התקבלה**
+
+  {{#totalCount}}
+  התקבל אלבום עם **{{totalCount}}** קובץ/קבצי מדיה.
+  {{#expectedImageCount}}
+  📸 תמונות: **{{expectedImageCount}}**
+  {{/expectedImageCount}}
+  {{#expectedVideoCount}}
+  🎥 סרטונים: **{{expectedVideoCount}}**
+  {{/expectedVideoCount}}
+
+  קבצי המדיה יועברו בהודעות הבאות.
+  {{/totalCount}}
+
+whatsapp.to.chatwoot.message.facebook.ad: |-
+  📢 **מודעת פייסבוק**
+
+  **כותרת:** {{{adData.title}}}
+
+  **תיאור:**
+  {{{adData.body}}}
+
+  **קישור למודעה:** [לצפייה בפייסבוק]({{{adData.sourceUrl}}})
+  **מזהה המודעה:** {{{adData.sourceId}}}
+
+  ---
+  💬 **הודעת הלקוח:**
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.call.received: |-
+  📞🔔 *שיחת {{#call.isVideo}}וידאו{{/call.isVideo}}{{^call.isVideo}}קול{{/call.isVideo}} נכנסת*
+  📱 פתח/י את **WhatsApp** כדי לענות.
+
+whatsapp.to.chatwoot.call.accepted: |-
+  📞✅ *השיחה נענתה*
+  📱 השיחה נענתה במכשיר אחר שלך.
+
+whatsapp.to.chatwoot.call.rejected: |-
+  📞❌ *השיחה הסתיימה*
+
+whatsapp.history.message.wrapper: |-
+  {{{content}}}
+  `{{#history}}📥{{/history}}🗓️ {{{timestamp}}}`
+
+UNKNOWN: לא ידוע
+ERROR: שגיאה
+PENDING: נשלח
+SERVER: שרת
+DEVICE: מכשיר
+READ: נקרא
+PLAYED: הושמע
+whatsapp.to.chatwoot.message.has.media.no.media: |-
+  {{#content}}
+  {{{content}}}
+
+  {{/content}}
+  🖼️⚠️ **להודעה יש מדיה אך לא הצלחנו להוריד אותה**
+  📱 פתחו את **WhatsApp** כדי לצפות.
+
+  {{^content}}
+  פרטים: [{{{details.text}}}]({{{details.url}}})
+  {{/content}}
+cli.cmd.root.sub.queue: '🧩 **תור**:'
+cli.cmd.messages.summary: משיכת הודעות WhatsApp.
+cli.cmd.messages.description:
+  💬 הפעילו `messages pull` כדי להתחיל סנכרון הודעות או `messages status` למעקב
+  אחר ההתקדמות.
+cli.cmd.messages.action.description:
+  '`pull` להתחיל משיכה או `status` לבדיקת המשימה הפעילה.'
+cli.cmd.messages.pull.option.chat: הגבלת המשיכה למזהה שיחה מסוים ב-WhatsApp.
+cli.cmd.messages.pull.option.force:
+  אילוץ תיבת הדואר הנכנס ליצור הודעות גם אם ההודעה כבר קיימת במיפוי השיחה.
+cli.cmd.messages.pull.option.batch: כמות ההודעות הנמשכות בכל אצווה.
+cli.cmd.messages.pull.option.progress:
+  דיווח על ההתקדמות כל N הודעות. ערך 0 מבטל את הדוחות.
+cli.cmd.messages.pull.option.no-dm: דילוג על הודעות פרטיות בעת משיכת ההיסטוריה.
+cli.cmd.messages.pull.option.groups: הכללת קבוצות WhatsApp בעת משיכת ההיסטוריה.
+cli.cmd.messages.pull.option.channels: הכללת ערוצי WhatsApp בעת משיכת ההיסטוריה.
+cli.cmd.messages.pull.option.status:
+  הכללת סטטוסים של WhatsApp בעת משיכת ההיסטוריה.
+cli.cmd.messages.pull.option.broadcast: הכללת רשימות שידור בעת משיכת ההיסטוריה.
+cli.cmd.messages.pull.option.media:
+  הורדת קבצי מדיה (תמונות, סרטונים, קבצים) בעת משיכת ההיסטוריה.
+cli.cmd.messages.pull.option.pause:
+  הכנסת משימת המשיכה לתור במצב מושהה ועצירת עיבוד הודעות WhatsApp חדשות עד
+  לסיום.
+cli.cmd.messages.pull.option.resolve-conversations:
+  מסמן את השיחות כפתורות לאחר שכל הודעות ההיסטוריה עובדו.
+cli.cmd.messages.pull.error.pause-no-queue:
+  ⛔ לא ניתן להשתמש ב-`--pause` כי הפקודה **queue** מושבתת בתצורה זו.
+cli.cmd.queue.description: ניהול תורים.
+cli.cmd.queue.summary: ביצוע פעולות על תורים.
+cli.cmd.queue.action.description: בחרו פעולה.
+cli.cmd.queue.status.description: הצגת מצב התור.
+cli.cmd.queue.argument.name: 'שם התור: `inbox` או `whatsapp` (רשות).'
+cli.cmd.queue.start.description: הפעלת תור לפי שם.
+cli.cmd.queue.stop.description: עצירת תור לפי שם.
+cli.cmd.queue.paused: ⚪🧩 התורים הושהו. שלחו `queue status` כדי לבדוק את המצב.
+cli.cmd.queue.resumed: 🟢🧩 התורים חודשו. שלחו `queue status` כדי לבדוק את המצב.
+cli.cmd.queue.status.result: >-
+  📊 מצב התור:
+
+  {{#queues}}
+
+  - **{{name}}**: {{#locked}}🔒{{/locked}}{{#paused}}⚪
+  מושהה{{/paused}}{{^paused}}🟢 פעיל{{/paused}}
+
+  {{/queues}}
+cli.cmd.messages.pull.option.timeout-media:
+  הגדרת משך הניסיון להוריד מדיה לכל הודעה.
+cli.cmd.messages.pull.argument.end:
+  הגדרת נקודת הסיום של חלון המשיכה; למשל `2d` נעצר יומיים אחורה.
+cli.cmd.messages.pull.argument.start:
+  הגדרת נקודת ההתחלה של החלון; למשל `1d` מתחיל יום אחורה (ברירת המחדל `0d`,
+  כלומר עכשיו).
+cli.cmd.messages.pull.already-running: >-
+  ⏳ המשימה **Pull Messages** כבר פועלת עבור **{{{chat}}}**. המתינו לסיום או
+  עצרו לפני התחלת משימה חדשה.
+
+
+  שלחו `messages status` לפרטים.
+cli.cmd.messages.status.not-found:
+  ℹ️ לא נמצאה משימת **Pull Messages** פעילה. התחילו אחת עם `messages pull`.
+cli.cmd.messages.pull.no-chats-found: לא נמצאו שיחות WhatsApp למשיכה בתקופה זו.
+cli.cmd.contacts.pull.option.progress:
+  דיווח על התקדמות כל N אנשי קשר. ערך 0 מבטל את הדוחות.
+cli.cmd.contacts.pull.option.lids:
+  הכללת אנשי קשר אנונימיים של WhatsApp (LID) בסנכרון.
+task.contacts.completed:
+  👤✅ השלמת אנשי קשר → 🆕 {{progress.created}}, 🔄 {{progress.updated}}, ⚪
+  {{progress.skipped}}, 🔴 {{progress.errors}}, 🖼️ {{progress.avatar.updated}}
+task.messages.started: ⏳ מושכים הודעות 💬 {{{chat}}} ⏱️ {{{period}}}...
+task.messages.details: שלחו "{{{prefix}}}messages status" לעוד פרטים.
+task.messages.progress:
+  '⏳ הודעות {{{chat}}}: 🆕 {{progress.ok}}, 🟢 {{progress.exists}}, ⚪
+  {{progress.ignored}}, 🔴 {{progress.errors}}{{#messages.last}} | 📅
+  {{{messages.last}}}{{/messages.last}}'
+task.messages.completed:
+  ✅ הודעות {{{chat}}} במהלך {{{period}}} → 🆕 {{progress.ok}}, 🟢
+  {{progress.exists}}, ⚪ {{progress.ignored}}, 🔴 {{progress.errors}}
+task.messages.status: |-
+  הודעות **{{{chat}}}** בתקופה ⏱️ **{{{period}}}**. ⚙️ מצב המשימה: **{{state}}**.
+
+  🗨️ הודעות:
+  - 🆕 נוצרו: **{{{progress.ok}}}**
+  - 🟢 קיימות כבר: {{{progress.exists}}}
+  - ⚪ הוזנחו: {{{progress.ignored}}}
+  - 🔴 שגיאות: {{{progress.errors}}}
+  {{#messages.first}}
+  - 🗓️ ישן ביותר: **{{{messages.first}}}**
+  {{/messages.first}}
+  {{#messages.last}}
+  - 🗓️ חדש ביותר: **{{{messages.last}}}**
+  {{/messages.last}}
+
+  💬 שיחות WhatsApp:
+  - 🆕 הודעות חדשות ב-**{{{chats}}}** שיחות
+  {{#options.resolveConversations}}
+
+  🗣️ שיחות:
+  - 🟢 נפתרו: **{{{progress.conversationResolve.success}}}**
+  {{#progress.conversationResolve.error}}
+  - 🔴 שגיאות: **{{{progress.conversationResolve.error}}}**
+  {{/progress.conversationResolve.error}}
+  {{/options.resolveConversations}}
+
+  פרטים:
+  [{{{details.text}}}]({{{details.url}}})

@@ -1,0 +1,671 @@
+# Arabic translations for WhatsApp inbox integration
+locale.name: '🇦🇪 العربية (Arabic)'
+
+# رمز اللغة الأساسي - يجب أن يكون محليًا صالحًا وفق BCP 47
+# https://en.wikipedia.org/wiki/IETF_language_tag
+# تستخدمه WAHA لعرض الأرقام والعملات والتاريخ/الوقت
+locale.base: 'ar-AE'
+
+app.inbox.contact.name: 'تكامل واتساب'
+app.inbox.contact.avatar.url: 'https://raw.githubusercontent.com/devlikeapro/waha/core/logo.png'
+
+# "options" من date.toLocaleString
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+datetime:
+  weekday: short
+  locales: ar-AE
+  day: 2-digit
+  month: short
+  year: numeric
+  hour: 2-digit
+  minute: 2-digit
+  hour12: true
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timezonename
+  timeZoneName: short
+  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # timeZone: 'Asia/Dubai'
+
+Today: 'اليوم'
+Yesterday: 'أمس'
+
+job.report.error: |-
+  ⚠️ **{{{header}}}**
+  {{#attempts.nextDelay}}
+  🔄 إعادة المحاولة في {{attempts.nextDelay}} ثانية...
+  {{/attempts.nextDelay}}
+  {{^attempts.nextDelay}}
+  ❌ لم تبق محاولات أخرى. يرجى المحاولة لاحقًا.
+  {{/attempts.nextDelay}}
+  المحاولة: {{{attempts.current}}} / {{{attempts.max}}}
+  التفاصيل: [{{{details.text}}}]({{{details.url}}})
+  {{#error}}
+  ```
+
+  {{{error}}}
+  ```
+  {{/error}}
+
+job.report.succeeded: |-
+  ✅ **نجاح**
+  المحاولة: {{{attempts.current}}} / {{{attempts.max}}}
+  التفاصيل: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.message.sending.error: تعذر إرسال رسالة على واتساب.
+whatsapp.message.receiving.error: تعذر استلام رسالة من واتساب
+whatsapp.message.removing.error: تعذر إزالة رسالة من واتساب
+job.scheduled.error.header: فشل تنفيذ المهمة المجدولة
+
+message.from.whatsapp: |-
+  *📱 أرسلت من واتساب*
+
+  {{{text}}}
+
+message.from.api: |-
+  *📱 أرسلت عبر API*
+
+  {{{text}}}
+
+message.removed.in.whatsapp: |-
+  ❌ *تم حذف هذه الرسالة في واتساب*
+
+message.edited.in.whatsapp: |-
+  {{{text}}}
+
+  ✏️ *تم تعديلها في واتساب*
+
+whatsapp.group.message: |-
+  👥 *{{{participant}}}*
+
+  {{{text}}}
+
+whatsapp.reaction.added: |-
+  *تفاعل* {{{emoji}}}
+
+whatsapp.reaction.removed: |-
+  *تمت إزالة التفاعل*
+
+whatsapp.contact.group.suffix: 'مجموعة'
+whatsapp.contact.channel.suffix: 'قناة'
+whatsapp.contact.broadcast.suffix: 'قائمة البث'
+# Aka Stories
+whatsapp.contact.status.name: 'الحالة'
+
+app.connected.message: |-
+  🔗 **متصل: جلسة واتساب إلى صندوق الوارد**
+
+  ✅ تم توصيل جلسة واتساب **{{{name}}}** بنجاح بهذا الصندوق الوارد.
+
+  صندوق الوارد هذا مرتبط الآن بـ **حساب واتساب** الخاص بك. يمكنك إرسال واستقبال الرسائل مباشرة من هنا — تمامًا مثل استخدام واتساب، ولكن داخل مساحة العمل.
+
+  يمكنك أيضًا إدارة جلسة واتساب المرتبطة بصندوق الوارد هذا. لعرض الإجراءات المتاحة، أرسل **help** إلى هذه المحادثة.
+
+  📋 الإجراءات الشائعة التي يمكنك القيام بها:
+  - التحقق مما إذا كانت جلسة واتساب نشطة
+  - إعادة تشغيل أو إيقاف جلسة واتساب
+  - تسجيل الخروج وإعادة الاتصال عن طريق مسح رمز QR جديد
+
+  إذا كان كل شيء يعمل، ستتمكن من الدردشة بحرية. إذا رأيت تحذيرات، فقد تحتاج إلى إعادة توصيل حساب واتساب الخاص بك.
+
+  لنبدأ! 🚀
+
+app.disconnected.message: |-
+  🔌 **غير متصل: جلسة واتساب من صندوق الوارد**
+
+  ❌ تم قطع اتصال جلسة واتساب **{{{name}}}** من هذا الصندوق الوارد.
+
+  لن تتمكن بعد الآن من إرسال أو استقبال رسائل من واتساب.
+
+  لإعادة الاتصال، يرجى الاتصال بالمسؤول الخاص بك.
+
+app.updated.message: |-
+  🔄 **تم التحديث: إعدادات جلسة واتساب**
+
+  ✅ تم تحديث إعدادات جلسة واتساب **{{{name}}}**.
+
+cli.usage.arguments: |-
+  [الإجراء]
+
+cli.usage.command: |-
+  [الأمر]
+
+cli.usage.options: |-
+  [الخيارات]
+
+cli.cmd.disabled: ⛔ **تم تعطيل الأمر `{{command}}`**.
+
+  يرجى الاتصال بالمسؤول الخاص بك.
+
+  أرسل **help** للحصول على قائمة الأوامر المتاحة.
+
+cli.cmd.root.description: |-
+  أدِر **تكامل واتساب** الخاص بك!
+
+cli.cmd.root.sub.session: |-
+  🖥️ **الجلسة**:
+
+cli.cmd.root.sub.server: |-
+  🖥️ **الخادم**:
+
+cli.cmd.root.sub.sync: |-
+  🔄️ **المزامنة**:
+
+cli.cmd.session.status.description: |-
+  اطّلع على حالة الجلسة الحالية.
+
+cli.cmd.session.restart.description: |-
+  أعد تشغيل الجلسة.
+
+cli.cmd.session.start.description: |-
+  ابدأ الجلسة.
+
+cli.cmd.session.stop.description: |-
+  أوقف الجلسة.
+
+cli.cmd.session.logout.description: |-
+  سجّل الخروج من الجلسة لمسح رمز QR جديد واستعادة الاتصال.
+
+cli.cmd.session.qr.description: |-
+  اعرض رمز QR الخاص بالجلسة.
+
+cli.cmd.session.screenshot.description: |-
+  التقط لقطة شاشة للجلسة (متاح فقط مع محرك **WEBJS**).
+
+cli.cmd.contacts.summary: |-
+  اسحب جهات اتصال واتساب.
+
+cli.cmd.contacts.description: |-
+  👤 شغِّل `contacts pull` لبدء المزامنة أو `contacts status` لمتابعة التقدم.
+
+cli.cmd.contacts.action.description: |-
+  استخدم `start` لبدء سحب جهات الاتصال أو `status` لمراجعة المهمة النشطة.
+
+cli.cmd.contacts.pull.description: |-
+  ابدأ بسحب جهات اتصال واتساب إلى الصندوق الوارد.
+
+cli.cmd.contacts.pull.option.batch: |-
+  عدد جهات الاتصال التي يتم سحبها في كل دفعة.
+
+cli.cmd.contacts.pull.option.delay-contact: |-
+  التأخير بين مزامنة كل جهة اتصال لتجنّب حدود معدل سحب الصور.
+
+cli.cmd.contacts.pull.option.delay-batch: |-
+  التأخير بين دفعات جهات الاتصال.
+
+cli.cmd.contacts.pull.option.avatar: |-
+  اختر كيفية سحب الصور الرمزية: `skip` أو `if-missing` أو `update`.
+
+cli.cmd.contacts.pull.option.groups: |-
+  قم بتضمين جهات اتصال مجموعات واتساب في المزامنة.
+
+cli.cmd.contacts.pull.option.no-attributes: |-
+  لا تسحب سمات جهة الاتصال إذا كانت موجودة بالفعل (هذا يسرّع العملية).
+
+cli.cmd.contacts.pull.already-running: |-
+  ⏳ مهمة **سحب جهات الاتصال** تعمل بالفعل. انتظر حتى تنتهي أو أوقفها قبل بدء واحدة جديدة.
+
+  أرسل `contacts status` للاطلاع على التفاصيل.
+
+cli.cmd.options.job.attempts: |-
+  عدد مرات إعادة محاولة المهمة قبل اعتبارها فاشلة.
+
+cli.cmd.options.job.timeout: |-
+  الحد الأقصى لمدة تشغيل المهمة قبل إعادة المحاولة (يدعم قيمًا مثل `30s` أو `5m` أو `1h`).
+
+cli.cmd.contacts.status.description: |-
+  اعرض حالة مهمة السحب الحالية.
+
+cli.cmd.contacts.status.not-found: |-
+  ℹ️ لم يتم العثور على مهمة **سحب جهات الاتصال** نشطة. ابدأ واحدة باستخدام `contacts pull`.
+
+cli.cmd.server.description: |-
+  أدِر الخادم.
+
+cli.cmd.server.status.description: |-
+  اعرض إصدار الخادم وحالته.
+
+cli.cmd.server.reboot.description: |-
+  أعد تشغيل الخادم.
+
+cli.cmd.server.reboot.option.force: |-
+  فرض إعادة تشغيل فورية.
+
+cli.help.usage.title: |-
+  طريقة الاستخدام: أرسل أمراً إلى المحادثة بالشكل التالي:
+
+cli.help.commands.defaultGroup: |-
+  **الأوامر:**
+
+cli.help.arguments.title: |-
+  **المعاملات:**
+
+cli.help.options.defaultGroup: |-
+  **الخيارات:**
+
+cli.help.globalOptions.title: |-
+  **الخيارات العامة:**
+
+task.contacts.status: |-
+  👤 سحب جهات الاتصال: **{{state}}**
+  - ✅ الناجحة: {{{progress.ok}}} جهة اتصال
+  - ⚪ تم تخطيها: {{{progress.skipped}}} جهة اتصال
+  - ⚠️ الأخطاء: {{{progress.errors}}} جهة اتصال
+
+  {{#job}}
+  ⌛ الجدول الزمني:
+  - في قائمة الانتظار: {{{timestamp}}}
+  {{#processedOn}}
+  - وقت البدء: {{{processedOn}}}
+  {{/processedOn}}
+  {{#finishedOn}}
+  - وقت الانتهاء: {{{finishedOn}}}
+  {{/finishedOn}}
+  {{/job}}
+
+  {{#error}}
+  التفاصيل:
+  [{{{details.text}}}]({{{details.url}}})
+  {{/error}}
+
+task.contacts.started: |-
+  جارٍ سحب جهات الاتصال...
+
+task.contacts.progress: |-
+  سحب جهات الاتصال: ✅ {{progress.ok}}، ⚪ {{progress.skipped}}، ⚠️ {{progress.errors}}
+
+app.help.reminder: |-
+  أرسل **help** للحصول على قائمة الأوامر المتاحة.
+
+app.session.status.change: |-
+  {{{emoji}}} تم تغيير حالة جلسة "{{{session}}}" إلى {{{status}}}
+
+app.session.current.status: |-
+  {{{emoji}}} حالة جلسة **{{{session}}}** هي **{{{status}}}**
+  **حساب واتساب:**
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.working: |-
+  ✅ هذا الصندوق الوارد مرتبط بـ **حساب واتساب** وجاهز لإرسال واستقبال الرسائل!
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.error: |-
+  ⚠️ **هذا الصندوق الوارد مرتبط بحساب واتساب ولكنه غير جاهز لإرسال واستقبال الرسائل!**
+
+  يرجى التحقق من حالة الجلسة ومحاولة إعادة تشغيلها أو تسجيل الخروج ومسح رمز QR مرة أخرى.
+
+app.session.scan.qr.code: |-
+  ⚠️ **امسح رمز QR على هاتفك لربط حساب واتساب بهذا الصندوق الوارد!**
+
+app.server.version.and.status: |-
+  **الإصدار:**
+  ```
+  {{{version}}}
+  ```
+
+  **الحالة:**
+  ```
+  {{{status}}}
+  ```
+
+app.server.reboot: |-
+  يتم إعادة تشغيل الخادم بسلاسة...
+
+app.server.reboot.force: |-
+  يتم إعادة تشغيل الخادم بالقوة...
+
+app.logout.success: |-
+  ✅ تم إلغاء تفويض الحساب بنجاح!
+
+waha.new.version.available: |-
+  🔄 **إصدار جديد متاح!**
+
+  الإصدار الحالي: **{{{currentVersion}}}**
+  الإصدار الجديد: **{{{newVersion}}}**
+
+  👉 تحقق مما هو جديد في [**🆕 سجل التغييرات**]({{{changelogUrl}}})
+
+waha.core.version.used: |-
+  ❤️ **ادعم WAHA!**
+
+  أنت تستخدم إصدار **WAHA Core** المجاني. إذا وجدت هذا المشروع مفيدًا، فيرجى التفكير في دعم تطويره.
+
+  دعمك هو الطريقة الوحيدة التي يمكننا من خلالها الاستمرار في العمل على التحديثات والإصلاحات والميزات الجديدة.
+
+  [**🎁 ادعمنا**]({{{supportUrl}}})
+
+chatwoot.to.whatsapp.message.text: |-
+  {{{ content }}}
+
+chatwoot.to.whatsapp.message.media.caption: |-
+  {{#singleAttachment}}
+  {{#content}}
+  {{{ content }}}
+  {{/content}}
+  {{/singleAttachment}}
+
+whatsapp.to.chatwoot.message: |-
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.message.contacts: |-
+  👤 **جهات الاتصال المشتركة**
+
+  {{#contacts}}
+  🪪 الاسم: **{{fullName}}**
+  {{#phoneNumbers}}
+  - 📞 الهاتف: **{{.}}**
+  {{/phoneNumbers}}
+
+  {{/contacts}}
+
+whatsapp.to.chatwoot.message.location: |-
+  {{#message}}
+  {{#locationMessage}}
+  📍 **الموقع المشترك**
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **العنوان:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **الموقع الإلكتروني:** {{url}}
+  {{/url}}
+
+  🔗 **عرض على الخريطة:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/locationMessage}}
+
+  {{#liveLocationMessage}}
+  📍📡 **مشاركة الموقع المباشر**
+  افتح **WhatsApp** لعرض التحديثات اللحظية.
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **العنوان:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **الموقع الإلكتروني:** {{url}}
+  {{/url}}
+
+  🔗 **عرض على الخريطة:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/liveLocationMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.poll: |-
+  {{#poll}}
+  📊 **استطلاع**
+
+  **{{name}}**
+  {{#options}}
+  - {{optionName}}
+  {{/options}}
+  {{/poll}}
+
+whatsapp.to.chatwoot.message.list: |-
+  {{#message.listMessage}}
+  {{#title}}
+  *{{{title}}}*
+  {{/title}}
+  {{#description}}
+  {{{description}}}
+  {{/description}}
+  {{#footerText}}
+  {{{footerText}}}
+  {{/footerText}}
+
+  {{#buttonText}}
+  {{{buttonText}}}
+  {{/buttonText}}
+  {{#sections}}
+  {{#title}}
+  {{{title}}}:
+  {{/title}}
+  {{#rows}}
+  {{#title}}
+  - {{{title}}}
+  {{/title}}
+  {{/rows}}
+
+  {{/sections}}
+  {{/message.listMessage}}
+
+whatsapp.to.chatwoot.message.event: |-
+  {{#message}}
+  {{#eventMessage}}
+  📅 **حدث**
+
+  **{{name}}**
+  {{#description}}
+  {{description}}
+  {{/description}}
+
+  {{#location.name}}
+  📍 **الموقع:** {{location.name}}
+  {{/location.name}}
+  {{#startTime}}
+  🕐 **البدء:** {{startTime}}
+  {{/startTime}}
+  {{#endTime}}
+  🕐 **الانتهاء:** {{endTime}}
+  {{/endTime}}
+  {{#joinLink}}
+  🔗 **رابط الانضمام:** [{{joinLink}}]({{joinLink}})
+  {{/joinLink}}
+  {{/eventMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.pix: |-
+  💳 **PIX - نسخ ولصق**
+
+  {{#pixData}}
+  {{#merchantName}}
+  **{{merchantName}}**
+  {{/merchantName}}
+
+  {{#key}}
+  **مفتاح PIX:** {{key}}
+  {{/key}}
+  {{#keyType}}
+  **النوع:** {{keyType}}
+  {{/keyType}}
+  {{#totalAmount}}
+  **المبلغ:** {{totalAmountFormatted}}
+  {{/totalAmount}}
+  {{#referenceId}}
+  **المرجع:** {{referenceId}}
+  {{/referenceId}}
+
+  💳 **تم إرسال PIX نسخ ولصق**
+  {{/pixData}}
+
+whatsapp.to.chatwoot.message.unsupported: |-
+  ⚠️ **هذا النوع من الرسائل غير مدعوم في هذا الصندوق الوارد.**
+  📱 يرجى فتح **WhatsApp** لعرضه.
+
+  التفاصيل: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.to.chatwoot.message.album: |-
+  📷 **تم استلام رسالة ألبوم**
+
+  {{#totalCount}}
+  تم استلام ألبوم يحتوي على **{{totalCount}}** ملف وسائط.
+  {{#expectedImageCount}}
+  📸 صور: **{{expectedImageCount}}**
+  {{/expectedImageCount}}
+  {{#expectedVideoCount}}
+  🎥 فيديوهات: **{{expectedVideoCount}}**
+  {{/expectedVideoCount}}
+
+  سيتم تسليم ملفات الوسائط في الرسائل التالية.
+  {{/totalCount}}
+
+whatsapp.to.chatwoot.message.facebook.ad: |-
+  📢 **إعلان فيسبوك**
+
+  **العنوان:** {{{adData.title}}}
+
+  **الوصف:**
+  {{{adData.body}}}
+
+  **رابط الإعلان:** [عرض على فيسبوك]({{{adData.sourceUrl}}})
+  **معرّف الإعلان:** {{{adData.sourceId}}}
+
+  ---
+  💬 **رسالة العميل:**
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.call.received: |-
+  📞🔔 *مكالمة {{#call.isVideo}}فيديو{{/call.isVideo}}{{^call.isVideo}}صوتية{{/call.isVideo}} واردة*
+  📱 يرجى فتح **واتساب** للرد.
+
+whatsapp.to.chatwoot.call.accepted: |-
+  📞✅ *تم الرد على المكالمة*
+  📱 تم الرد على المكالمة من جهازك الآخر.
+
+whatsapp.to.chatwoot.call.rejected: |-
+  📞❌ *تم إنهاء المكالمة*
+
+whatsapp.history.message.wrapper: |-
+  {{{content}}}
+  `{{#history}}📥{{/history}}🗓️ {{{timestamp}}}`
+
+UNKNOWN: غير معروف
+ERROR: خطأ
+PENDING: جارٍ الإرسال
+SERVER: الخادم
+DEVICE: الجهاز
+READ: مقروء
+PLAYED: مُشغَّل
+whatsapp.to.chatwoot.message.has.media.no.media: |-
+  {{#content}}
+  {{{content}}}
+
+  {{/content}}
+  🖼️⚠️ **تحتوي الرسالة على وسائط ولكن تعذّر تنزيلها**
+  📱 يرجى فتح **واتساب** للاطلاع عليها.
+
+  {{^content}}
+  التفاصيل: [{{{details.text}}}]({{{details.url}}})
+  {{/content}}
+cli.cmd.root.sub.queue: '🧩 **قائمة الانتظار**:'
+cli.cmd.messages.summary: سحب رسائل واتساب.
+cli.cmd.messages.description:
+  💬 نفّذ `messages pull` لبدء مزامنة الرسائل أو `messages status` لمتابعة
+  التقدم.
+cli.cmd.messages.action.description:
+  '`pull` لبدء سحب الرسائل أو `status` لمراجعة المهمة النشطة.'
+cli.cmd.messages.pull.option.chat: حصر السحب على معرّف دردشة واتساب محدد.
+cli.cmd.messages.pull.option.force:
+  إجبار صندوق الوارد على إنشاء الرسائل حتى لو كانت رسالة واتساب موجودة بالفعل في
+  مخطط المحادثة.
+cli.cmd.messages.pull.option.batch: عدد الرسائل التي يتم سحبها في كل دفعة.
+cli.cmd.messages.pull.option.progress:
+  الإبلاغ عن التقدم كل عدد N من الرسائل. القيمة 0 لتعطيل التقارير.
+cli.cmd.messages.pull.option.no-dm: تخطي الرسائل الخاصة أثناء سحب السجل.
+cli.cmd.messages.pull.option.groups: تضمين مجموعات واتساب أثناء سحب السجل.
+cli.cmd.messages.pull.option.channels: تضمين قنوات واتساب أثناء سحب السجل.
+cli.cmd.messages.pull.option.status: تضمين حالات واتساب أثناء سحب السجل.
+cli.cmd.messages.pull.option.broadcast: تضمين قوائم البث أثناء سحب السجل.
+cli.cmd.messages.pull.option.media:
+  تنزيل المرفقات (صور، فيديوهات، ملفات) أثناء سحب السجل.
+cli.cmd.messages.pull.option.pause:
+  وضع مهمة سحب الرسائل في قائمة الانتظار وهي متوقفة مؤقتًا وإيقاف معالجة رسائل
+  واتساب الجديدة حتى تكتمل.
+cli.cmd.messages.pull.option.resolve-conversations:
+  وضع علامة على المحادثات كمحلولة بعد معالجة كل رسائل السجل.
+cli.cmd.messages.pull.error.pause-no-queue:
+  ⛔ لا يمكن استخدام `--pause` لأن أمر **queue** معطَّل في هذا التكوين.
+cli.cmd.queue.description: إدارة قوائم الانتظار.
+cli.cmd.queue.summary: تنفيذ إجراءات على قوائم الانتظار.
+cli.cmd.queue.action.description: اختر إجراءً.
+cli.cmd.queue.status.description: عرض حالة قائمة الانتظار.
+cli.cmd.queue.argument.name:
+  'اسم قائمة الانتظار: `inbox` أو `whatsapp` (اختياري).'
+cli.cmd.queue.start.description: بدء قائمة الانتظار بالاسم.
+cli.cmd.queue.stop.description: إيقاف قائمة الانتظار بالاسم.
+cli.cmd.queue.paused:
+  ⚪🧩 تم إيقاف قوائم الانتظار مؤقتًا. أرسل `queue status` للتحقق من الحالة.
+cli.cmd.queue.resumed:
+  🟢🧩 تم استئناف قوائم الانتظار. أرسل `queue status` للتحقق من الحالة.
+cli.cmd.queue.status.result: >-
+  📊 حالة قائمة الانتظار:
+
+  {{#queues}}
+
+  - **{{name}}**: {{#locked}}🔒{{/locked}}{{#paused}}⚪ متوقفة
+  مؤقتًا{{/paused}}{{^paused}}🟢 تعمل{{/paused}}
+
+  {{/queues}}
+cli.cmd.messages.pull.option.timeout-media:
+  تحديد مدة محاولة تنزيل الوسائط لكل رسالة.
+cli.cmd.messages.pull.argument.end:
+  تحديد نقطة نهاية نافذة السحب؛ على سبيل المثال، `2d` يعني التوقف قبل يومين.
+cli.cmd.messages.pull.argument.start:
+  تحديد نقطة بداية نافذة السحب؛ على سبيل المثال، `1d` يبدأ قبل يوم واحد (القيمة
+  الافتراضية `0d` أي الآن).
+cli.cmd.messages.pull.already-running: >-
+  ⏳ مهمة **Pull Messages** تعمل بالفعل لـ **{{{chat}}}**. انتظر حتى تنتهي أو
+  أوقفها قبل بدء مهمة جديدة.
+
+
+  أرسل `messages status` للحصول على التفاصيل.
+cli.cmd.messages.status.not-found:
+  ℹ️ لم يتم العثور على مهمة **Pull Messages** نشطة. ابدأ واحدة باستخدام
+  `messages pull`.
+cli.cmd.messages.pull.no-chats-found:
+  لم يتم العثور على دردشات واتساب للسحب خلال هذه الفترة.
+cli.cmd.contacts.pull.option.progress:
+  الإبلاغ عن التقدم كل عدد N من جهات الاتصال. القيمة 0 لتعطيل التقارير.
+cli.cmd.contacts.pull.option.lids:
+  تضمين جهات اتصال واتساب LID (مجهولة) في المزامنة.
+task.contacts.completed:
+  👤✅ تم إنهاء جهات الاتصال → 🆕 {{progress.created}}، 🔄 {{progress.updated}}،
+  ⚪ {{progress.skipped}}، 🔴 {{progress.errors}}، 🖼️
+  {{progress.avatar.updated}}
+task.messages.started: ⏳ جارٍ سحب الرسائل 💬 {{{chat}}} ⏱️ {{{period}}}...
+task.messages.details:
+  أرسل "{{{prefix}}}messages status" للاطلاع على المزيد من التفاصيل.
+task.messages.progress:
+  '⏳ رسائل {{{chat}}}: 🆕 {{progress.ok}}، 🟢 {{progress.exists}}، ⚪
+  {{progress.ignored}}، 🔴 {{progress.errors}}{{#messages.last}} | 📅
+  {{{messages.last}}}{{/messages.last}}'
+task.messages.completed:
+  ✅ رسائل {{{chat}}} خلال {{{period}}} → 🆕 {{progress.ok}}، 🟢
+  {{progress.exists}}، ⚪ {{progress.ignored}}، 🔴 {{progress.errors}}
+task.messages.status: |-
+  رسائل **{{{chat}}}** خلال الفترة ⏱️ **{{{period}}}**. ⚙️ حالة المهمة: **{{state}}**.
+
+  🗨️ الرسائل:
+  - 🆕 تم الإنشاء: **{{{progress.ok}}}**
+  - 🟢 موجودة مسبقًا: {{{progress.exists}}}
+  - ⚪ تم تجاهلها: {{{progress.ignored}}}
+  - 🔴 أخطاء: {{{progress.errors}}}
+  {{#messages.first}}
+  - 🗓️ الأقدم: **{{{messages.first}}}**
+  {{/messages.first}}
+  {{#messages.last}}
+  - 🗓️ الأحدث: **{{{messages.last}}}**
+  {{/messages.last}}
+
+  💬 دردشات واتساب:
+  - 🆕 رسائل جديدة في **{{{chats}}}** دردشات
+  {{#options.resolveConversations}}
+
+  🗣️ المحادثات:
+  - 🟢 تم حلها: **{{{progress.conversationResolve.success}}}**
+  {{#progress.conversationResolve.error}}
+  - 🔴 أخطاء: **{{{progress.conversationResolve.error}}}**
+  {{/progress.conversationResolve.error}}
+  {{/options.resolveConversations}}
+
+  التفاصيل: 
+  [{{{details.text}}}]({{{details.url}}})

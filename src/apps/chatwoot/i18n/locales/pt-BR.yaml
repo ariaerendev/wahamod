@@ -1,0 +1,688 @@
+# Portuguese translations for WhatsApp inbox integration
+locale.name: '🇧🇷🇵🇹 Português (Portuguese)'
+
+# Código de locale base - deve ser um locale BCP 47 válido
+# https://en.wikipedia.org/wiki/IETF_language_tag
+# A WAHA usa isso para formatar números, moeda e data/hora
+locale.base: 'pt-BR'
+
+app.inbox.contact.name: 'Integração WhatsApp'
+app.inbox.contact.avatar.url: 'https://raw.githubusercontent.com/devlikeapro/waha/core/logo.png'
+
+# "opções" de date.toLocaleString
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+datetime:
+  weekday: short
+  locales: pt-BR
+  day: 2-digit
+  month: short
+  year: numeric
+  hour: 2-digit
+  minute: 2-digit
+  hour12: false
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timezonename
+  timeZoneName: short
+
+Today: Hoje
+Yesterday: Ontem
+
+job.report.error: |-
+  ⚠️ **{{{header}}}**
+  {{#attempts.nextDelay}}
+  🔄 Tentando novamente em {{attempts.nextDelay}} segundos...
+  {{/attempts.nextDelay}}
+  {{^attempts.nextDelay}}
+  ❌ Não há mais tentativas restantes. Por favor, tente novamente mais tarde.
+  {{/attempts.nextDelay}}
+  Tentativa: {{{attempts.current}}} / {{{attempts.max}}}
+  Detalhes: [{{{details.text}}}]({{{details.url}}})
+  {{#error}}
+  ```
+
+  {{{error}}}
+  ```
+  {{/error}}
+
+job.report.succeeded: |-
+  ✅ **Sucesso**
+  Tentativa: {{{attempts.current}}} / {{{attempts.max}}}
+  Detalhes: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.message.sending.error:
+  Não foi possível enviar uma mensagem no WhatsApp.
+whatsapp.message.receiving.error:
+  Não foi possível receber uma mensagem do WhatsApp
+whatsapp.message.removing.error:
+  Não foi possível remover uma mensagem do WhatsApp
+job.scheduled.error.header: Falha ao executar tarefa agendada
+
+message.from.whatsapp: |-
+  *📱 Enviado do WhatsApp*
+
+  {{{text}}}
+
+message.from.api: |-
+  *📱 Enviado via API*
+
+  {{{text}}}
+
+message.removed.in.whatsapp: |-
+  ❌ *Esta mensagem foi excluída no WhatsApp*
+
+message.edited.in.whatsapp: |-
+  {{{text}}}
+
+  ✏️ *Editado no WhatsApp*
+
+whatsapp.group.message: |-
+  👥 *{{{participant}}}*
+
+  {{{text}}}
+
+whatsapp.reaction.added: |-
+  *Reagiu com* {{{emoji}}}
+
+whatsapp.reaction.removed: |-
+  *Reação removida*
+
+whatsapp.contact.group.suffix: 'Grupo'
+whatsapp.contact.channel.suffix: 'Canal'
+whatsapp.contact.broadcast.suffix: 'Lista de transmissão'
+# Aka Stories
+whatsapp.contact.status.name: 'Status'
+
+app.connected.message: |-
+  🔗 **CONECTADO: Sessão do WhatsApp para a caixa de entrada**
+
+  ✅ A sessão do WhatsApp **{{{name}}}** foi conectada com sucesso a esta caixa de entrada.
+
+  Esta caixa de entrada agora está vinculada à sua **Conta do WhatsApp**. Você pode enviar e receber mensagens diretamente daqui — assim como usar o WhatsApp, mas dentro do seu espaço de trabalho.
+
+  Você também pode gerenciar a sessão do WhatsApp vinculada a esta caixa de entrada. Para ver as ações disponíveis, envie **help** para este chat.
+
+  📋 Ações comuns que você pode fazer:
+  - Verificar se a sessão do WhatsApp está ativa
+  - Reiniciar ou Parar a sessão do WhatsApp
+  - Sair e reconectar escaneando um novo código QR
+
+  Se tudo estiver funcionando, você poderá conversar livremente. Se você vir avisos, pode precisar reconectar sua conta do WhatsApp.
+
+  Vamos começar! 🚀
+
+app.disconnected.message: |-
+  🔌 **DESCONECTADO: Sessão do WhatsApp da caixa de entrada**
+
+  ❌ A sessão do WhatsApp **{{{name}}}** foi desconectada desta caixa de entrada.
+
+  Você não poderá mais enviar ou receber mensagens do WhatsApp.
+
+  Para reconectar, entre em contato com seu administrador.
+
+app.updated.message: |-
+  🔄 **ATUALIZADO: Configurações da Sessão do WhatsApp**
+
+  ✅ As configurações para a sessão do WhatsApp **{{{name}}}** foram atualizadas.
+
+cli.usage.arguments: |-
+  [ação]
+
+cli.usage.command: |-
+  [comando]
+
+cli.usage.options: |-
+  [opções]
+
+cli.cmd.disabled: ⛔ **O comando `{{command}}` está desativado**.
+
+  Entre em contato com seu administrador.
+
+  Envie **help** para obter a lista de comandos disponíveis.
+
+cli.cmd.root.description: |-
+  Gerencie sua **Integração com WhatsApp**!
+
+cli.cmd.root.sub.session: |-
+  🖥️ **Sessão**:
+
+cli.cmd.root.sub.server: |-
+  🖥️ **Servidor**:
+
+cli.cmd.root.sub.sync: |-
+  🔄️ **Sincronização**:
+
+cli.cmd.session.status.description: |-
+  Obtenha o status atual da sessão.
+
+cli.cmd.session.restart.description: |-
+  Reinicie a sessão.
+
+cli.cmd.session.start.description: |-
+  Inicie a sessão.
+
+cli.cmd.session.stop.description: |-
+  Pare a sessão.
+
+cli.cmd.session.logout.description: |-
+  Saia da sessão para escanear um novo código QR e restaurar a conexão.
+
+cli.cmd.session.qr.description: |-
+  Mostre o código QR da sessão.
+
+cli.cmd.session.screenshot.description: |-
+  Faça uma captura de tela da sessão (disponível apenas com o mecanismo **WEBJS**).
+
+cli.cmd.contacts.summary: |-
+  Buscar contatos do WhatsApp.
+
+cli.cmd.contacts.description: |-
+  👤 Execute `contacts pull` para iniciar uma sincronização ou `contacts status` para acompanhar o progresso.
+
+cli.cmd.contacts.action.description: |-
+  Use `start` para iniciar a busca de contatos ou `status` para conferir o trabalho ativo.
+
+cli.cmd.contacts.pull.description: |-
+  Comece a importar contatos do WhatsApp para esta caixa de entrada.
+
+cli.cmd.contacts.pull.option.batch: |-
+  Quantidade de contatos buscados em cada lote.
+
+cli.cmd.contacts.pull.option.delay-contact: |-
+  Atraso entre cada contato para evitar limites ao buscar avatares.
+
+cli.cmd.contacts.pull.option.delay-batch: |-
+  Atraso entre os lotes de contatos.
+
+cli.cmd.contacts.pull.option.avatar: |-
+  Escolha como buscar os avatares dos contatos: `skip`, `if-missing` ou `update`.
+
+cli.cmd.contacts.pull.option.groups: |-
+  Incluir contatos de grupo do WhatsApp na sincronização.
+
+cli.cmd.contacts.pull.option.no-attributes: |-
+  Não busque atributos do contato se ele já existir (acelera o processo).
+
+cli.cmd.contacts.pull.already-running: |-
+  ⏳ O trabalho **Pull Contacts** já está em execução. Aguarde terminar ou interrompa-o antes de iniciar um novo.
+
+  Envie `contacts status` para obter detalhes.
+
+cli.cmd.options.job.attempts: |-
+  Número de tentativas antes de marcar o trabalho como falho.
+
+cli.cmd.options.job.timeout: |-
+  Tempo máximo permitido antes de tentar novamente (aceita valores como `30s`, `5m`, `1h`).
+
+cli.cmd.contacts.status.description: |-
+  Mostrar o status do trabalho de busca atual.
+
+cli.cmd.contacts.status.not-found: |-
+  ℹ️ Nenhum trabalho ativo **Pull Contacts** encontrado. Inicie um com `contacts pull`.
+
+cli.cmd.server.description: |-
+  Gerencie o servidor.
+
+cli.cmd.server.status.description: |-
+  Mostre a versão e o status do servidor.
+
+cli.cmd.server.reboot.description: |-
+  Reinicie o servidor.
+
+cli.cmd.server.reboot.option.force: |-
+  Forçar uma reinicialização imediata.
+
+cli.help.usage.title: |-
+  Uso: envie um comando para a conversa no formato:
+
+cli.help.commands.defaultGroup: |-
+  **Comandos:**
+
+cli.help.arguments.title: |-
+  **Argumentos:**
+
+cli.help.options.defaultGroup: |-
+  **Opções:**
+
+cli.help.globalOptions.title: |-
+  **Opções globais:**
+
+task.contacts.status: |-
+  👤 Busca de contatos: **{{state}}**
+  - ✅ Sucesso: {{{progress.ok}}} contatos
+  - ⚪ Ignorados: {{{progress.skipped}}} contatos
+  - ⚠️ Erros: {{{progress.errors}}} contatos
+
+  {{#job}}
+  ⌛ Linha do tempo:
+  - Na fila: {{{timestamp}}}
+  {{#processedOn}}
+  - Início: {{{processedOn}}}
+  {{/processedOn}}
+  {{#finishedOn}}
+  - Fim: {{{finishedOn}}}
+  {{/finishedOn}}
+  {{/job}}
+
+  {{#error}}
+  Detalhes:
+  [{{{details.text}}}]({{{details.url}}})
+  {{/error}}
+
+task.contacts.started: |-
+  Buscando contatos...
+
+task.contacts.progress: |-
+  Busca de contatos: ✅ {{progress.ok}}, ⚪ {{progress.skipped}}, ⚠️ {{progress.errors}}
+
+app.help.reminder: |-
+  Envie **help** para obter a lista de comandos disponíveis.
+
+app.session.status.change: |-
+  {{{emoji}}} A sessão "{{{session}}}" mudou para o status {{{status}}}
+
+app.session.current.status: |-
+  {{{emoji}}} O status da sessão **{{{session}}}** é **{{{status}}}**
+  **Conta do WhatsApp:**
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.working: |-
+  ✅ Esta caixa de entrada está vinculada à sua **Conta do WhatsApp** e pronta para enviar e receber mensagens!
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.error: |-
+  ⚠️ **Esta caixa de entrada está vinculada à Conta do WhatsApp, mas NÃO está pronta para enviar e receber mensagens!**
+
+  Por favor, verifique o status da sessão e tente reiniciá-la ou saia e escaneie o código QR novamente.
+
+app.session.scan.qr.code: |-
+  ⚠️ **Escaneie o código QR no seu telefone para vincular a Conta do WhatsApp a esta caixa de entrada!**
+
+app.server.version.and.status: |-
+  **Versão:**
+  ```
+  {{{version}}}
+  ```
+
+  **Status:**
+  ```
+  {{{status}}}
+  ```
+
+app.server.reboot: |-
+  O servidor está reiniciando suavemente...
+
+app.server.reboot.force: |-
+  O servidor está reiniciando forçadamente...
+
+app.logout.success: |-
+  ✅ Conta desautorizada com sucesso!
+
+waha.new.version.available: |-
+  🔄 **Nova Versão Disponível!**
+
+  Versão atual: **{{{currentVersion}}}**
+  Nova versão: **{{{newVersion}}}**
+
+  👉 Confira o que há de novo no [**🆕 Registro de Alterações**]({{{changelogUrl}}})
+
+waha.core.version.used: |-
+  ❤️ **Apoie o WAHA!**
+
+  Você está usando a versão gratuita **WAHA Core**. Se você acha este projeto útil, considere apoiar seu desenvolvimento.
+
+  Seu apoio é a única maneira de continuarmos trabalhando em atualizações, correções e novos recursos.
+
+  [**🎁 Apoie-nos**]({{{supportUrl}}})
+
+chatwoot.to.whatsapp.message.text: |-
+  {{{ content }}}
+
+chatwoot.to.whatsapp.message.media.caption: |-
+  {{#singleAttachment}}
+  {{#content}}
+  {{{ content }}}
+  {{/content}}
+  {{/singleAttachment}}
+
+whatsapp.to.chatwoot.message: |-
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.message.contacts: |-
+  👤 **Contato(s) compartilhado(s)**
+
+  {{#contacts}}
+  🪪 Nome: **{{fullName}}**
+  {{#phoneNumbers}}
+  - 📞 Telefone: **{{.}}**
+  {{/phoneNumbers}}
+
+  {{/contacts}}
+
+whatsapp.to.chatwoot.message.location: |-
+  {{#message}}
+  {{#locationMessage}}
+  📍 **Localização compartilhada**
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Endereço:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Site:** {{url}}
+  {{/url}}
+
+  🔗 **Ver no mapa:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/locationMessage}}
+
+  {{#liveLocationMessage}}
+  📍📡 **Compartilhando localização ao vivo**
+  Abra o **WhatsApp** para ver as atualizações em tempo real.
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Endereço:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Site:** {{url}}
+  {{/url}}
+
+  🔗 **Ver no mapa:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/liveLocationMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.poll: |-
+  {{#poll}}
+  📊 **Enquete**
+
+  **{{name}}**
+  {{#options}}
+  - {{optionName}}
+  {{/options}}
+  {{/poll}}
+
+whatsapp.to.chatwoot.message.list: |-
+  {{#message.listMessage}}
+  {{#title}}
+  *{{{title}}}*
+  {{/title}}
+  {{#description}}
+  {{{description}}}
+  {{/description}}
+  {{#footerText}}
+  {{{footerText}}}
+  {{/footerText}}
+
+  {{#buttonText}}
+  {{{buttonText}}}
+  {{/buttonText}}
+  {{#sections}}
+  {{#title}}
+  {{{title}}}:
+  {{/title}}
+  {{#rows}}
+  {{#title}}
+  - {{{title}}}
+  {{/title}}
+  {{/rows}}
+
+  {{/sections}}
+  {{/message.listMessage}}
+
+whatsapp.to.chatwoot.message.event: |-
+  {{#message}}
+  {{#eventMessage}}
+  📅 **Evento**
+
+  **{{name}}**
+
+  {{#description}}
+  {{description}}
+  {{/description}}
+
+  {{#location.name}}
+  📍 **Local:** {{location.name}}
+  {{/location.name}}
+
+  {{#startTime}}
+  🕐 **Início:** {{startTime}}
+  {{/startTime}}
+
+  {{#endTime}}
+  🕐 **Fim:** {{endTime}}
+  {{/endTime}}
+
+  {{#joinLink}}
+  🔗 **Link de participação:** [{{joinLink}}]({{joinLink}})
+  {{/joinLink}}
+  {{/eventMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.pix: |-
+  💳 **PIX - Copia e Cola**
+
+  {{#pixData}}
+  {{#merchantName}}
+  **{{merchantName}}**
+  {{/merchantName}}
+
+  {{#key}}
+  **Chave PIX:** {{key}}
+  {{/key}}
+  {{#keyType}}
+  **Tipo:** {{keyType}}
+  {{/keyType}}
+  {{#totalAmount}}
+  **Valor:** {{totalAmountFormatted}}
+  {{/totalAmount}}
+  {{#referenceId}}
+  **Referência:** {{referenceId}}
+  {{/referenceId}}
+
+  💳 **PIX Copia e Cola enviado**
+  {{/pixData}}
+
+whatsapp.to.chatwoot.message.unsupported: |-
+  ⚠️ **Esse tipo de mensagem não é suportado nesta caixa de entrada.**
+  📱 Por favor, abra o **WhatsApp** para visualizá-la.
+
+  Detalhes: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.to.chatwoot.message.album: |-
+  📷 **Mensagem de Álbum Recebida**
+
+  {{#totalCount}}
+  Recebido um álbum com **{{totalCount}}** arquivo(s) de mídia.
+  {{#expectedImageCount}}
+  📸 Imagens: **{{expectedImageCount}}**
+  {{/expectedImageCount}}
+  {{#expectedVideoCount}}
+  🎥 Vídeos: **{{expectedVideoCount}}**
+  {{/expectedVideoCount}}
+
+  Os arquivos de mídia serão entregues nas mensagens seguintes.
+  {{/totalCount}}
+
+whatsapp.to.chatwoot.message.facebook.ad: |-
+  📢 **ANÚNCIO DO FACEBOOK**
+
+  **Título:** {{{adData.title}}}
+
+  **Descrição:**
+  {{{adData.body}}}
+
+  **Link do Anúncio:** [Ver no Facebook]({{{adData.sourceUrl}}})
+  **ID do Anúncio:** {{{adData.sourceId}}}
+
+  ---
+  💬 **MENSAGEM DO CLIENTE:**
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.call.received: |-
+  📞🔔 *Chamada {{#call.isVideo}}de vídeo{{/call.isVideo}}{{^call.isVideo}}de voz{{/call.isVideo}} recebida*
+  📱 Abra o **WhatsApp** para atender.
+
+whatsapp.to.chatwoot.call.accepted: |-
+  📞✅ *Chamada atendida*
+  📱 A chamada foi atendida no seu outro dispositivo.
+
+whatsapp.to.chatwoot.call.rejected: |-
+  📞❌ *Chamada encerrada*
+
+whatsapp.history.message.wrapper: |-
+  {{{content}}}
+  `{{#history}}📥{{/history}}🗓️ {{{timestamp}}}`
+
+UNKNOWN: Desconhecido
+ERROR: Erro
+PENDING: Enviando
+SERVER: Servidor
+DEVICE: Dispositivo
+READ: Lido
+PLAYED: Reproduzido
+whatsapp.to.chatwoot.message.has.media.no.media: |-
+  {{#content}}
+  {{{content}}}
+
+  {{/content}}
+  🖼️⚠️ **A mensagem tem mídia, mas não conseguimos fazer o download**
+  📱 Abra o **WhatsApp** para visualizá-la.
+
+  {{^content}}
+  Detalhes: [{{{details.text}}}]({{{details.url}}})
+  {{/content}}
+cli.cmd.root.sub.queue: '🧩 **Fila**:'
+cli.cmd.messages.summary: Buscar mensagens do WhatsApp.
+cli.cmd.messages.description:
+  💬 Execute `messages pull` para solicitar a sincronização de mensagens ou
+  `messages status` para acompanhar o progresso.
+cli.cmd.messages.action.description:
+  '`pull` para iniciar a busca de mensagens ou `status` para inspecionar o
+  trabalho em andamento.'
+cli.cmd.messages.pull.option.chat:
+  Limita a busca a um ID de conversa do WhatsApp específico.
+cli.cmd.messages.pull.option.force:
+  Força a caixa de entrada a criar mensagens mesmo quando a mensagem do WhatsApp
+  já existe no mapeamento da conversa.
+cli.cmd.messages.pull.option.batch:
+  Quantidade de mensagens buscadas em cada lote.
+cli.cmd.messages.pull.option.progress:
+  Relata o progresso a cada N mensagens. Defina 0 para desativar os relatórios
+  de progresso.
+cli.cmd.messages.pull.option.no-dm:
+  Ignora mensagens diretas ao buscar o histórico.
+cli.cmd.messages.pull.option.groups:
+  Inclui conversas em grupo do WhatsApp ao buscar o histórico.
+cli.cmd.messages.pull.option.channels:
+  Inclui canais do WhatsApp ao buscar o histórico.
+cli.cmd.messages.pull.option.status:
+  Inclui atualizações de status do WhatsApp ao buscar o histórico.
+cli.cmd.messages.pull.option.broadcast:
+  Inclui listas de transmissão ao buscar o histórico.
+cli.cmd.messages.pull.option.media:
+  Baixa anexos de mídia (imagens, vídeos, arquivos) ao buscar o histórico.
+cli.cmd.messages.pull.option.pause:
+  Enfileira o trabalho de busca de mensagens em estado pausado, interrompendo o
+  processamento de novos WhatsApp até finalizar.
+cli.cmd.messages.pull.option.resolve-conversations:
+  Marca as conversas como resolvidas depois que todas as mensagens do histórico
+  forem processadas.
+cli.cmd.messages.pull.error.pause-no-queue:
+  ⛔ Não é possível usar `--pause` porque o comando **queue** está desabilitado
+  nesta configuração.
+cli.cmd.queue.description: Gerencie filas.
+cli.cmd.queue.summary: Execute ações nas filas.
+cli.cmd.queue.action.description: Escolha uma ação.
+cli.cmd.queue.status.description: Mostra o status de uma fila.
+cli.cmd.queue.argument.name: 'Nome da fila: `inbox` ou `whatsapp` (opcional).'
+cli.cmd.queue.start.description: Inicia uma fila pelo nome.
+cli.cmd.queue.stop.description: Para uma fila pelo nome.
+cli.cmd.queue.paused:
+  ⚪🧩 As filas foram pausadas. Envie `queue status` para verificar o status.
+cli.cmd.queue.resumed:
+  🟢🧩 As filas foram retomadas. Envie `queue status` para verificar o status.
+cli.cmd.queue.status.result: >-
+  📊 Status da fila:
+
+  {{#queues}}
+
+  - **{{name}}**: {{#locked}}🔒{{/locked}}{{#paused}}⚪ Em
+  pausa{{/paused}}{{^paused}}🟢 Em execução{{/paused}}
+
+  {{/queues}}
+cli.cmd.messages.pull.option.timeout-media:
+  Define por quanto tempo tentar baixar a mídia de cada mensagem.
+cli.cmd.messages.pull.argument.end:
+  Define até onde a janela de busca termina; por exemplo, `2d` encerra há dois
+  dias.
+cli.cmd.messages.pull.argument.start:
+  Define onde a janela de busca começa; por exemplo, `1d` inicia há um dia
+  (padrão `0d`, ou seja, agora).
+cli.cmd.messages.pull.already-running: >-
+  ⏳ O trabalho **Pull Messages** já está em execução para **{{{chat}}}**.
+  Aguarde terminar ou pare antes de iniciar outro.
+
+
+  Envie `messages status` para mais detalhes.
+cli.cmd.messages.status.not-found:
+  ℹ️ Nenhum trabalho ativo de **Pull Messages** foi encontrado. Inicie um com
+  `messages pull`.
+cli.cmd.messages.pull.no-chats-found:
+  Nenhuma conversa do WhatsApp encontrada para buscar mensagens nesse período.
+cli.cmd.contacts.pull.option.progress:
+  Informa o progresso a cada N contatos. Defina 0 para desativar os relatórios
+  de progresso.
+cli.cmd.contacts.pull.option.lids:
+  Inclui contatos LID do WhatsApp (contatos anônimos) na sincronização.
+task.contacts.completed:
+  👤✅ Contatos concluídos → 🆕 {{progress.created}}, 🔄 {{progress.updated}},
+  ⚪ {{progress.skipped}}, 🔴 {{progress.errors}}, 🖼️
+  {{progress.avatar.updated}}
+task.messages.started: ⏳ Buscando mensagens 💬 {{{chat}}} ⏱️ {{{period}}}...
+task.messages.details:
+  Envie "{{{prefix}}}messages status" para ver mais detalhes.
+task.messages.progress:
+  '⏳ Mensagens {{{chat}}}: 🆕 {{progress.ok}}, 🟢 {{progress.exists}}, ⚪
+  {{progress.ignored}}, 🔴 {{progress.errors}}{{#messages.last}} | 📅
+  {{{messages.last}}}{{/messages.last}}'
+task.messages.completed:
+  ✅ Mensagens {{{chat}}} em {{{period}}} → 🆕 {{progress.ok}}, 🟢
+  {{progress.exists}}, ⚪ {{progress.ignored}}, 🔴 {{progress.errors}}
+task.messages.status: |-
+  Mensagens **{{{chat}}}** no período ⏱️ **{{{period}}}**. ⚙️ Estado do trabalho: **{{state}}**.
+
+  🗨️ Mensagens:
+  - 🆕 Criadas: **{{{progress.ok}}}**
+  - 🟢 Já existem: {{{progress.exists}}}
+  - ⚪ Ignoradas: {{{progress.ignored}}}
+  - 🔴 Erros: {{{progress.errors}}}
+  {{#messages.first}}
+  - 🗓️ Mais antiga: **{{{messages.first}}}**
+  {{/messages.first}}
+  {{#messages.last}}
+  - 🗓️ Mais recente: **{{{messages.last}}}**
+  {{/messages.last}}
+
+  💬 Conversas do WhatsApp:
+  - 🆕 Novas mensagens em **{{{chats}}}** conversas
+  {{#options.resolveConversations}}
+
+  🗣️ Conversas:
+  - 🟢 Resolvidas: **{{{progress.conversationResolve.success}}}**
+  {{#progress.conversationResolve.error}}
+  - 🔴 Erros: **{{{progress.conversationResolve.error}}}**
+  {{/progress.conversationResolve.error}}
+  {{/options.resolveConversations}}
+
+  Detalhes:
+  [{{{details.text}}}]({{{details.url}}})

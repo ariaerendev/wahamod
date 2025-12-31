@@ -1,0 +1,15 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "plugins": ["@nestjs/swagger"],
+    "assets": [
+      "dashboard/**",
+      "core/engines/webjs/*",
+      "plus/engines/webjs/*",
+      "apps/chatwoot/i18n/locales/*.yaml",
+      "apps/chatwoot/i18n/locales/*.yml"
+    ],
+    "watchAssets": true
+  }
+}

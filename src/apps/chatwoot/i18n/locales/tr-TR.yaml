@@ -1,0 +1,678 @@
+# Turkish translations for WhatsApp inbox integration
+locale.name: '🇹🇷 Türkçe (Turkish)'
+
+# Temel yerel kodu - geçerli bir BCP 47 yerel kodu olmalı
+# https://en.wikipedia.org/wiki/IETF_language_tag
+# WAHA bunu sayı, para birimi ve tarih/saat gösterimi için kullanır
+locale.base: 'tr-TR'
+
+app.inbox.contact.name: 'WhatsApp Entegrasyonu'
+app.inbox.contact.avatar.url: 'https://raw.githubusercontent.com/devlikeapro/waha/core/logo.png'
+
+# date.toLocaleString için "options"
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+datetime:
+  weekday: short
+  locales: tr-TR
+  day: 2-digit
+  month: short
+  year: numeric
+  hour: 2-digit
+  minute: 2-digit
+  hour12: false
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timezonename
+  timeZoneName: short
+  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # timeZone: 'Europe/Istanbul'
+
+Today: 'Bugün'
+Yesterday: 'Dün'
+
+job.report.error: |-
+  ⚠️ **{{{header}}}**
+  {{#attempts.nextDelay}}
+  🔄 {{attempts.nextDelay}} saniye içinde tekrar deneniyor...
+  {{/attempts.nextDelay}}
+  {{^attempts.nextDelay}}
+  ❌ Başka deneme hakkı kalmadı. Lütfen daha sonra tekrar deneyin.
+  {{/attempts.nextDelay}}
+  Deneme: {{{attempts.current}}} / {{{attempts.max}}}
+  Detaylar: [{{{details.text}}}]({{{details.url}}})
+  {{#error}}
+  ```
+
+  {{{error}}}
+  ```
+  {{/error}}
+
+job.report.succeeded: |-
+  ✅ **Başarılı**
+  Deneme: {{{attempts.current}}} / {{{attempts.max}}}
+  Detaylar: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.message.sending.error: WhatsApp'ta mesaj gönderilemedi.
+whatsapp.message.receiving.error: WhatsApp'tan mesaj alınamadı
+whatsapp.message.removing.error: WhatsApp'tan mesaj kaldırılamadı
+job.scheduled.error.header: Zamanlanmış görev yürütülemedi
+
+message.from.whatsapp: |-
+  *📱 WhatsApp'tan gönderildi*
+
+  {{{text}}}
+
+message.from.api: |-
+  *📱 API aracılığıyla gönderildi*
+
+  {{{text}}}
+
+message.removed.in.whatsapp: |-
+  ❌ *Bu mesaj WhatsApp'ta silindi*
+
+message.edited.in.whatsapp: |-
+  {{{text}}}
+
+  ✏️ *WhatsApp'ta düzenlendi*
+
+whatsapp.group.message: |-
+  👥 *{{{participant}}}*
+
+  {{{text}}}
+
+whatsapp.reaction.added: |-
+  *Tepki verdi* {{{emoji}}}
+
+whatsapp.reaction.removed: |-
+  *Tepki kaldırıldı*
+
+whatsapp.contact.group.suffix: 'Grup'
+whatsapp.contact.channel.suffix: 'Kanal'
+whatsapp.contact.broadcast.suffix: 'Yayın Listesi'
+# Aka Stories
+whatsapp.contact.status.name: 'Durum'
+
+app.connected.message: |-
+  🔗 **BAĞLANDI: WhatsApp Oturumu Gelen Kutusuna**
+
+  ✅ WhatsApp oturumu **{{{name}}}** bu gelen kutusuna başarıyla bağlandı.
+
+  Bu gelen kutusu artık **WhatsApp Hesabınıza** bağlı. Mesajları doğrudan buradan gönderip alabilirsiniz — tıpkı WhatsApp kullanır gibi, ancak çalışma alanınız içinde.
+
+  Ayrıca bu gelen kutusuna bağlı WhatsApp oturumunu da yönetebilirsiniz. Kullanılabilir eylemleri görmek için, bu sohbete **help** gönderin.
+
+  📋 Yapabileceğiniz yaygın eylemler:
+  - WhatsApp oturumunun aktif olup olmadığını kontrol etme
+  - WhatsApp oturumunu yeniden başlatma veya durdurma
+  - Çıkış yapma ve yeni bir QR kod tarayarak yeniden bağlanma
+
+  Her şey çalışıyorsa, özgürce sohbet edebileceksiniz. Uyarılar görürseniz, WhatsApp hesabınızı yeniden bağlamanız gerekebilir.
+
+  Hadi başlayalım! 🚀
+
+app.disconnected.message: |-
+  🔌 **BAĞLANTI KESİLDİ: WhatsApp Oturumu Gelen Kutusundan**
+
+  ❌ WhatsApp oturumu **{{{name}}}** bu gelen kutusundan bağlantısı kesildi.
+
+  Artık WhatsApp'tan mesaj gönderemez veya alamazsınız.
+
+  Yeniden bağlanmak için, lütfen yöneticinizle iletişime geçin.
+
+app.updated.message: |-
+  🔄 **GÜNCELLENDİ: WhatsApp Oturum Ayarları**
+
+  ✅ WhatsApp oturumu **{{{name}}}** için ayarlar güncellendi.
+
+cli.usage.arguments: |-
+  [eylem]
+
+cli.usage.command: |-
+  [komut]
+
+cli.usage.options: |-
+  [seçenekler]
+
+cli.cmd.disabled: ⛔ **`{{command}}` komutu devre dışı**.
+
+  Lütfen yöneticinizle iletişime geçin.
+
+  Kullanılabilir komutların listesini almak için **help** gönderin.
+
+cli.cmd.root.description: |-
+  **WhatsApp entegrasyonunuzu** yönetin!
+
+cli.cmd.root.sub.session: |-
+  🖥️ **Oturum**:
+
+cli.cmd.root.sub.server: |-
+  🖥️ **Sunucu**:
+
+cli.cmd.root.sub.sync: |-
+  🔄️ **Eşitleme**:
+
+cli.cmd.session.status.description: |-
+  Geçerli oturum durumunu alın.
+
+cli.cmd.session.restart.description: |-
+  Oturumu yeniden başlatın.
+
+cli.cmd.session.start.description: |-
+  Oturumu başlatın.
+
+cli.cmd.session.stop.description: |-
+  Oturumu durdurun.
+
+cli.cmd.session.logout.description: |-
+  Bağlantıyı yeniden kurmak için oturumdan çıkın ve yeni bir QR kodu tarayın.
+
+cli.cmd.session.qr.description: |-
+  Oturumun QR kodunu gösterin.
+
+cli.cmd.session.screenshot.description: |-
+  Oturumun ekran görüntüsünü alın (yalnızca **WEBJS** motoru ile kullanılabilir).
+
+cli.cmd.contacts.summary: |-
+  WhatsApp kişilerini içe aktarın.
+
+cli.cmd.contacts.description: |-
+  👤 `contacts pull` komutunu çalıştırarak bir eşitleme başlatın veya `contacts status` ile ilerlemeyi kontrol edin.
+
+cli.cmd.contacts.action.description: |-
+  `start` ile kişi çekmeyi başlatın veya `status` ile etkin görevi kontrol edin.
+
+cli.cmd.contacts.pull.description: |-
+  WhatsApp kişilerini bu gelen kutusuna çekmeye başlayın.
+
+cli.cmd.contacts.pull.option.batch: |-
+  Her partide çekilecek kişi sayısı.
+
+cli.cmd.contacts.pull.option.delay-contact: |-
+  Avatarları çekerken limitlere takılmamak için her kişi arasında bekleme süresi.
+
+cli.cmd.contacts.pull.option.delay-batch: |-
+  Kişi partileri arasındaki bekleme süresi.
+
+cli.cmd.contacts.pull.option.avatar: |-
+  Kişi avatarlarının nasıl çekileceğini seçin: `skip`, `if-missing` veya `update`.
+
+cli.cmd.contacts.pull.option.groups: |-
+  WhatsApp grup kişilerini senkronizasyona dahil et.
+
+cli.cmd.contacts.pull.option.no-attributes: |-
+  Kişi zaten varsa özelliklerini çekmeyin (süreci hızlandırır).
+
+cli.cmd.contacts.pull.already-running: |-
+  ⏳ **Pull Contacts** görevi zaten çalışıyor. Bitmesini bekleyin veya yenisini başlatmadan önce durdurun.
+
+  Ayrıntılar için `contacts status` gönderin.
+
+cli.cmd.options.job.attempts: |-
+  Görevi başarısız saymadan önce yapılacak yeniden deneme sayısı.
+
+cli.cmd.options.job.timeout: |-
+  Görev yeniden denenmeden önce çalışmasına izin verilen en uzun süre (`30s`, `5m`, `1h` gibi değerleri destekler).
+
+cli.cmd.contacts.status.description: |-
+  Devam eden kişi çekme görevinin durumunu gösterin.
+
+cli.cmd.contacts.status.not-found: |-
+  ℹ️ Aktif bir **Pull Contacts** görevi bulunamadı. `contacts pull` ile bir tane başlatın.
+
+cli.cmd.server.description: |-
+  Sunucuyu yönetin.
+
+cli.cmd.server.status.description: |-
+  Sunucunun sürümünü ve durumunu gösterin.
+
+cli.cmd.server.reboot.description: |-
+  Sunucuyu yeniden başlatın.
+
+cli.cmd.server.reboot.option.force: |-
+  Anında yeniden başlatmayı zorlayın.
+
+cli.help.usage.title: |-
+  Kullanım: Komutu aşağıdaki formatta sohbete gönderin:
+
+cli.help.commands.defaultGroup: |-
+  **Komutlar:**
+
+cli.help.arguments.title: |-
+  **Argümanlar:**
+
+cli.help.options.defaultGroup: |-
+  **Seçenekler:**
+
+cli.help.globalOptions.title: |-
+  **Genel seçenekler:**
+
+task.contacts.status: |-
+  👤 Kişi çekme: **{{state}}**
+  - ✅ Başarılı: {{{progress.ok}}} kişi
+  - ⚪ Atlanan: {{{progress.skipped}}} kişi
+  - ⚠️ Hatalar: {{{progress.errors}}} kişi
+
+  {{#job}}
+  ⌛ Zaman çizelgesi:
+  - Sıraya alındı: {{{timestamp}}}
+  {{#processedOn}}
+  - Başladı: {{{processedOn}}}
+  {{/processedOn}}
+  {{#finishedOn}}
+  - Bitti: {{{finishedOn}}}
+  {{/finishedOn}}
+  {{/job}}
+
+  {{#error}}
+  Ayrıntılar:
+  [{{{details.text}}}]({{{details.url}}})
+  {{/error}}
+
+task.contacts.started: |-
+  Kişiler çekiliyor...
+
+task.contacts.progress: |-
+  Kişi çekme: ✅ {{progress.ok}}, ⚪ {{progress.skipped}}, ⚠️ {{progress.errors}}
+
+app.help.reminder: |-
+  Kullanılabilir komutların listesini almak için **help** gönderin.
+
+app.session.status.change: |-
+  {{{emoji}}} "{{{session}}}" oturumu {{{status}}} durumuna geçti
+
+app.session.current.status: |-
+  {{{emoji}}} **{{{session}}}** oturum durumu **{{{status}}}** içinde
+  **WhatsApp Hesabı:**
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.working: |-
+  ✅ Bu gelen kutusu **WhatsApp Hesabınıza** bağlı ve mesaj gönderip almaya hazır!
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.error: |-
+  ⚠️ **Bu gelen kutusu WhatsApp Hesabına bağlı ancak mesaj gönderip almaya hazır DEĞİL!**
+
+  Lütfen oturum durumunu kontrol edin ve yeniden başlatmayı deneyin veya çıkış yapın ve QR kodu tekrar tarayın.
+
+app.session.scan.qr.code: |-
+  ⚠️ **WhatsApp Hesabını bu gelen kutusuna bağlamak için telefonunuzda QR kodu tarayın!**
+
+app.server.version.and.status: |-
+  **Sürüm:**
+  ```
+  {{{version}}}
+  ```
+
+  **Durum:**
+  ```
+  {{{status}}}
+  ```
+
+app.server.reboot: |-
+  Sunucu nazikçe yeniden başlatılıyor...
+
+app.server.reboot.force: |-
+  Sunucu zorla yeniden başlatılıyor...
+
+app.logout.success: |-
+  ✅ Hesap başarıyla yetkilendirilmedi!
+
+waha.new.version.available: |-
+  🔄 **Yeni Sürüm Mevcut!**
+
+  Mevcut sürüm: **{{{currentVersion}}}**
+  Yeni sürüm: **{{{newVersion}}}**
+
+  👉 [**🆕 Değişiklik Günlüğü**]({{{changelogUrl}}}) içinde yenilikleri kontrol edin
+
+waha.core.version.used: |-
+  ❤️ **WAHA'yı Destekleyin!**
+
+  Ücretsiz **WAHA Core** sürümünü kullanıyorsunuz. Bu projeyi faydalı buluyorsanız, lütfen geliştirilmesini desteklemeyi düşünün.
+
+  Desteğiniz, güncellemeler, düzeltmeler ve yeni özellikler üzerinde çalışmaya devam edebilmemizin tek yoludur.
+
+  [**🎁 Bizi Destekleyin**]({{{supportUrl}}})
+
+chatwoot.to.whatsapp.message.text: |-
+  {{{ content }}}
+
+chatwoot.to.whatsapp.message.media.caption: |-
+  {{#singleAttachment}}
+  {{#content}}
+  {{{ content }}}
+  {{/content}}
+  {{/singleAttachment}}
+
+whatsapp.to.chatwoot.message: |-
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.message.contacts: |-
+  👤 **Paylaşılan Kişi(ler)**
+
+  {{#contacts}}
+  🪪 İsim: **{{fullName}}**
+  {{#phoneNumbers}}
+  - 📞 Telefon: **{{.}}**
+  {{/phoneNumbers}}
+
+  {{/contacts}}
+
+whatsapp.to.chatwoot.message.location: |-
+  {{#message}}
+  {{#locationMessage}}
+  📍 **Paylaşılan Konum**
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Adres:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Web sitesi:** {{url}}
+  {{/url}}
+
+  🔗 **Haritada görüntüle:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/locationMessage}}
+
+  {{#liveLocationMessage}}
+  📍📡 **Canlı Konum Paylaşılıyor**
+  Gerçek zamanlı güncellemeleri görmek için **WhatsApp’ı** açın.
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Adres:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Web sitesi:** {{url}}
+  {{/url}}
+
+  🔗 **Haritada görüntüle:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/liveLocationMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.poll: |-
+  {{#poll}}
+  📊 **Anket**
+
+  **{{name}}**
+  {{#options}}
+  - {{optionName}}
+  {{/options}}
+  {{/poll}}
+
+whatsapp.to.chatwoot.message.list: |-
+  {{#message.listMessage}}
+  {{#title}}
+  *{{{title}}}*
+  {{/title}}
+  {{#description}}
+  {{{description}}}
+  {{/description}}
+  {{#footerText}}
+  {{{footerText}}}
+  {{/footerText}}
+
+  {{#buttonText}}
+  {{{buttonText}}}
+  {{/buttonText}}
+  {{#sections}}
+  {{#title}}
+  {{{title}}}:
+  {{/title}}
+  {{#rows}}
+  {{#title}}
+  - {{{title}}}
+  {{/title}}
+  {{/rows}}
+
+  {{/sections}}
+  {{/message.listMessage}}
+
+whatsapp.to.chatwoot.message.event: |-
+  {{#message}}
+  {{#eventMessage}}
+  📅 **Etkinlik**
+
+  **{{name}}**
+  {{#description}}
+  {{description}}
+  {{/description}}
+
+  {{#location.name}}
+  📍 **Konum:** {{location.name}}
+  {{/location.name}}
+  {{#startTime}}
+  🕐 **Başlangıç:** {{startTime}}
+  {{/startTime}}
+  {{#endTime}}
+  🕐 **Bitiş:** {{endTime}}
+  {{/endTime}}
+  {{#joinLink}}
+  🔗 **Katılma bağlantısı:** [{{joinLink}}]({{joinLink}})
+  {{/joinLink}}
+  {{/eventMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.pix: |-
+  💳 **PIX - Kopyala ve Yapıştır**
+
+  {{#pixData}}
+  {{#merchantName}}
+  **{{merchantName}}**
+  {{/merchantName}}
+
+  {{#key}}
+  **PIX Anahtarı:** {{key}}
+  {{/key}}
+  {{#keyType}}
+  **Tür:** {{keyType}}
+  {{/keyType}}
+  {{#totalAmount}}
+  **Tutar:** {{totalAmountFormatted}}
+  {{/totalAmount}}
+  {{#referenceId}}
+  **Referans:** {{referenceId}}
+  {{/referenceId}}
+
+  💳 **PIX Kopyala ve Yapıştır gönderildi**
+  {{/pixData}}
+
+whatsapp.to.chatwoot.message.unsupported: |-
+  ⚠️ **Bu mesaj türü bu gelen kutusunda desteklenmiyor.**
+  📱 Görüntülemek için lütfen **WhatsApp’ı** açın.
+
+  Ayrıntılar: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.to.chatwoot.message.album: |-
+  📷 **Albüm Mesajı Alındı**
+
+  {{#totalCount}}
+  **{{totalCount}}** medya dosyası içeren bir albüm alındı.
+  {{#expectedImageCount}}
+  📸 Resimler: **{{expectedImageCount}}**
+  {{/expectedImageCount}}
+  {{#expectedVideoCount}}
+  🎥 Videolar: **{{expectedVideoCount}}**
+  {{/expectedVideoCount}}
+
+  Medya dosyaları aşağıdaki mesajlarda teslim edilecek.
+  {{/totalCount}}
+
+whatsapp.to.chatwoot.message.facebook.ad: |-
+  📢 **FACEBOOK İLANI**
+
+  **Başlık:** {{{adData.title}}}
+
+  **Açıklama:**
+  {{{adData.body}}}
+
+  **İlan Bağlantısı:** [Facebook’ta Görüntüle]({{{adData.sourceUrl}}})
+  **İlan Kimliği:** {{{adData.sourceId}}}
+
+  ---
+  💬 **Müşteri Mesajı:**
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.call.received: |-
+  📞🔔 *Gelen {{#call.isVideo}}Görüntülü{{/call.isVideo}}{{^call.isVideo}}Sesli{{/call.isVideo}} Arama*
+  📱 Yanıtlamak için lütfen **WhatsApp**'ı açın.
+
+whatsapp.to.chatwoot.call.accepted: |-
+  📞✅ *Arama Yanıtlandı*
+  📱 Arama diğer cihazınızda açıldı.
+
+whatsapp.to.chatwoot.call.rejected: |-
+  📞❌ *Arama Sonlandı*
+
+whatsapp.history.message.wrapper: |-
+  {{{content}}}
+  `{{#history}}📥{{/history}}🗓️ {{{timestamp}}}`
+
+UNKNOWN: Bilinmiyor
+ERROR: Hata
+PENDING: Gönderiliyor
+SERVER: Sunucu
+DEVICE: Cihaz
+READ: Okundu
+PLAYED: Oynatıldı
+whatsapp.to.chatwoot.message.has.media.no.media: |-
+  {{#content}}
+  {{{content}}}
+
+  {{/content}}
+  🖼️⚠️ **Mesajda medya var ancak indirilemedi**
+  📱 Görüntülemek için lütfen **WhatsApp** uygulamasını açın.
+
+  {{^content}}
+  Detaylar: [{{{details.text}}}]({{{details.url}}})
+  {{/content}}
+cli.cmd.root.sub.queue: '🧩 **Kuyruk**:'
+cli.cmd.messages.summary: WhatsApp mesajlarını çek.
+cli.cmd.messages.description:
+  💬 Mesaj senkronizasyonu başlatmak için `messages pull`, ilerlemeyi görmek
+  için `messages status` komutunu çalıştırın.
+cli.cmd.messages.action.description:
+  '`pull` ile mesaj çekmeyi başlatın, `status` ile çalışan işi inceleyin.'
+cli.cmd.messages.pull.option.chat:
+  Çekimi belirli bir WhatsApp sohbet kimliğiyle sınırlandırır.
+cli.cmd.messages.pull.option.force:
+  WhatsApp mesajı konuşma eşlemesinde olsa bile gelen kutusunun mesaj
+  oluşturmasını zorlar.
+cli.cmd.messages.pull.option.batch: Her partide çekilecek mesaj sayısı.
+cli.cmd.messages.pull.option.progress:
+  Her N mesajda ilerlemeyi bildirir. 0 değeri raporları kapatır.
+cli.cmd.messages.pull.option.no-dm: Geçmişi çekerken direkt mesajları atlar.
+cli.cmd.messages.pull.option.groups:
+  Geçmişi çekerken WhatsApp grup sohbetlerini dahil eder.
+cli.cmd.messages.pull.option.channels:
+  Geçmişi çekerken WhatsApp Kanallarını dahil eder.
+cli.cmd.messages.pull.option.status:
+  Geçmişi çekerken WhatsApp durum güncellemelerini dahil eder.
+cli.cmd.messages.pull.option.broadcast:
+  Geçmişi çekerken yayın listelerini dahil eder.
+cli.cmd.messages.pull.option.media:
+  Geçmişi çekerken medya eklerini (görseller, videolar, dosyalar) indirir.
+cli.cmd.messages.pull.option.pause:
+  Mesaj çekme işini duraklatılmış olarak kuyruklar ve tamamlanana kadar yeni
+  WhatsApp mesajlarının işlenmesini durdurur.
+cli.cmd.messages.pull.option.resolve-conversations:
+  Tüm geçmiş mesajlar işlendiğinde konuşmaları çözüldü olarak işaretler.
+cli.cmd.messages.pull.error.pause-no-queue:
+  ⛔ `--pause` kullanılamaz çünkü **queue** komutu bu yapılandırmada devre dışı.
+cli.cmd.queue.description: Kuyrukları yönetin.
+cli.cmd.queue.summary: Kuyruklarda işlemler gerçekleştirin.
+cli.cmd.queue.action.description: Bir eylem seçin.
+cli.cmd.queue.status.description: Bir kuyruğun durumunu gösterir.
+cli.cmd.queue.argument.name:
+  'Kuyruk adı: `inbox` veya `whatsapp` (isteğe bağlı).'
+cli.cmd.queue.start.description: Adı verilen kuyruğu başlatın.
+cli.cmd.queue.stop.description: Adı verilen kuyruğu durdurun.
+cli.cmd.queue.paused:
+  ⚪🧩 Kuyruklar duraklatıldı. Durumu kontrol etmek için `queue status`
+  gönderin.
+cli.cmd.queue.resumed:
+  🟢🧩 Kuyruklar devam ettirildi. Durumu kontrol etmek için `queue status`
+  gönderin.
+cli.cmd.queue.status.result: >-
+  📊 Kuyruk durumu:
+
+  {{#queues}}
+
+  - **{{name}}**: {{#locked}}🔒{{/locked}}{{#paused}}⚪
+  Duraklatıldı{{/paused}}{{^paused}}🟢 Çalışıyor{{/paused}}
+
+  {{/queues}}
+cli.cmd.messages.pull.option.timeout-media:
+  Her mesaj için medya indirme süresini belirler.
+cli.cmd.messages.pull.argument.end:
+  Çekim penceresinin nerede biteceğini belirler; örneğin `2d` iki gün öncesinde
+  durur.
+cli.cmd.messages.pull.argument.start:
+  Çekim penceresinin nerede başlayacağını belirler; örneğin `1d` bir gün
+  öncesinden başlar (varsayılan `0d`, yani şimdi).
+cli.cmd.messages.pull.already-running: >-
+  ⏳ **Pull Messages** işi zaten **{{{chat}}}** için çalışıyor. Bitmesini
+  bekleyin veya yenisini başlatmadan önce durdurun.
+
+
+  Ayrıntılar için `messages status` gönderin.
+cli.cmd.messages.status.not-found:
+  ℹ️ Aktif **Pull Messages** işi bulunamadı. `messages pull` ile bir tane
+  başlatın.
+cli.cmd.messages.pull.no-chats-found:
+  Belirtilen dönemde çekilecek WhatsApp sohbeti bulunamadı.
+cli.cmd.contacts.pull.option.progress:
+  Her N kişide ilerlemeyi bildirir. 0 değeri raporları kapatır.
+cli.cmd.contacts.pull.option.lids:
+  Senkronizasyona WhatsApp LID (anonim) kişilerini dahil eder.
+task.contacts.completed:
+  👤✅ Kişiler tamamlandı → 🆕 {{progress.created}}, 🔄 {{progress.updated}}, ⚪
+  {{progress.skipped}}, 🔴 {{progress.errors}}, 🖼️ {{progress.avatar.updated}}
+task.messages.started: ⏳ Mesajlar çekiliyor 💬 {{{chat}}} ⏱️ {{{period}}}...
+task.messages.details:
+  Daha fazla ayrıntı için "{{{prefix}}}messages status" gönderin.
+task.messages.progress:
+  '⏳ Mesajlar {{{chat}}}: 🆕 {{progress.ok}}, 🟢 {{progress.exists}}, ⚪
+  {{progress.ignored}}, 🔴 {{progress.errors}}{{#messages.last}} | 📅
+  {{{messages.last}}}{{/messages.last}}'
+task.messages.completed:
+  ✅ Mesajlar {{{chat}}} {{{period}}} içinde → 🆕 {{progress.ok}}, 🟢
+  {{progress.exists}}, ⚪ {{progress.ignored}}, 🔴 {{progress.errors}}
+task.messages.status: |-
+  **{{{chat}}}** sohbetinin mesajları ⏱️ **{{{period}}}** döneminde. ⚙️ İş durumu: **{{state}}**.
+
+  🗨️ Mesajlar:
+  - 🆕 Oluşturulan: **{{{progress.ok}}}**
+  - 🟢 Zaten mevcut: {{{progress.exists}}}
+  - ⚪ Yok sayılan: {{{progress.ignored}}}
+  - 🔴 Hatalar: {{{progress.errors}}}
+  {{#messages.first}}
+  - 🗓️ En eski: **{{{messages.first}}}**
+  {{/messages.first}}
+  {{#messages.last}}
+  - 🗓️ En yeni: **{{{messages.last}}}**
+  {{/messages.last}}
+
+  💬 WhatsApp sohbetleri:
+  - 🆕 **{{{chats}}}** sohbette yeni mesajlar
+  {{#options.resolveConversations}}
+
+  🗣️ Konuşmalar:
+  - 🟢 Çözüldü: **{{{progress.conversationResolve.success}}}**
+  {{#progress.conversationResolve.error}}
+  - 🔴 Hatalar: **{{{progress.conversationResolve.error}}}**
+  {{/progress.conversationResolve.error}}
+  {{/options.resolveConversations}}
+
+  Detaylar:
+  [{{{details.text}}}]({{{details.url}}})

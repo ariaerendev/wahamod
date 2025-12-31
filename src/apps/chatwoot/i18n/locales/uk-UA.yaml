@@ -1,0 +1,678 @@
+# Ukrainian translations for WhatsApp inbox integration
+locale.name: '🇺🇦 Українська (Ukrainian)'
+
+# Базовий код локалі - має бути чинною локаллю BCP 47
+# https://en.wikipedia.org/wiki/IETF_language_tag
+# WAHA використовує його для форматування чисел, валют і дати/часу
+locale.base: 'uk-UA'
+
+app.inbox.contact.name: 'Інтеграція WhatsApp'
+app.inbox.contact.avatar.url: 'https://raw.githubusercontent.com/devlikeapro/waha/core/logo.png'
+
+# "параметри" з date.toLocaleString
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+datetime:
+  weekday: short
+  locales: uk-UA
+  day: 2-digit
+  month: short
+  year: numeric
+  hour: 2-digit
+  minute: 2-digit
+  hour12: false
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timezonename
+  timeZoneName: short
+  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # timeZone: 'Europe/Kyiv'
+
+Today: 'Сьогодні'
+Yesterday: 'Вчора'
+
+job.report.error: |-
+  ⚠️ **{{{header}}}**
+  {{#attempts.nextDelay}}
+  🔄 Повторна спроба через {{attempts.nextDelay}} секунд...
+  {{/attempts.nextDelay}}
+  {{^attempts.nextDelay}}
+  ❌ Більше спроб не залишилось. Будь ласка, спробуйте пізніше.
+  {{/attempts.nextDelay}}
+  Спроба: {{{attempts.current}}} / {{{attempts.max}}}
+  Деталі: [{{{details.text}}}]({{{details.url}}})
+  {{#error}}
+  ```
+
+  {{{error}}}
+  ```
+  {{/error}}
+
+job.report.succeeded: |-
+  ✅ **Успішно**
+  Спроба: {{{attempts.current}}} / {{{attempts.max}}}
+  Деталі: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.message.sending.error: Не вдалося надіслати повідомлення у WhatsApp.
+whatsapp.message.receiving.error: Не вдалося отримати повідомлення з WhatsApp
+whatsapp.message.removing.error: Не вдалося видалити повідомлення з WhatsApp
+job.scheduled.error.header: Заплановане завдання не вдалося виконати
+
+message.from.whatsapp: |-
+  *📱 Надіслано з WhatsApp*
+
+  {{{text}}}
+
+message.from.api: |-
+  *📱 Надіслано через API*
+
+  {{{text}}}
+
+message.removed.in.whatsapp: |-
+  ❌ *Це повідомлення було видалено у WhatsApp*
+
+message.edited.in.whatsapp: |-
+  {{{text}}}
+
+  ✏️ *Відредаговано у WhatsApp*
+
+whatsapp.group.message: |-
+  👥 *{{{participant}}}*
+
+  {{{text}}}
+
+whatsapp.reaction.added: |-
+  *Реакція* {{{emoji}}}
+
+whatsapp.reaction.removed: |-
+  *Реакцію видалено*
+
+whatsapp.contact.group.suffix: 'Група'
+whatsapp.contact.channel.suffix: 'Канал'
+whatsapp.contact.broadcast.suffix: 'Список розсилки'
+# Aka Stories
+whatsapp.contact.status.name: 'Статус'
+
+app.connected.message: |-
+  🔗 **ПІДКЛЮЧЕНО: Сесія WhatsApp до вхідних**
+
+  ✅ Сесія WhatsApp **{{{name}}}** була успішно підключена до цих вхідних.
+
+  Ці вхідні тепер пов'язані з вашим **Обліковим записом WhatsApp**. Ви можете надсилати та отримувати повідомлення безпосередньо звідси — так само, як використовуючи WhatsApp, але у своєму робочому просторі.
+
+  Ви також можете керувати сесією WhatsApp, пов'язаною з цими вхідними. Щоб переглянути доступні дії, надішліть **help** у цей чат.
+
+  📋 Загальні дії, які ви можете виконати:
+  - Перевірити, чи активна сесія WhatsApp
+  - Перезапустити або Зупинити сесію WhatsApp
+  - Вийти та повторно підключитися, відсканувавши новий QR-код
+
+  Якщо все працює, ви зможете вільно спілкуватися. Якщо ви бачите попередження, можливо, вам потрібно повторно підключити свій обліковий запис WhatsApp.
+
+  Давайте почнемо! 🚀
+
+app.disconnected.message: |-
+  🔌 **ВІДКЛЮЧЕНО: Сесія WhatsApp від вхідних**
+
+  ❌ Сесія WhatsApp **{{{name}}}** була відключена від цих вхідних.
+
+  Ви більше не зможете надсилати або отримувати повідомлення з WhatsApp.
+
+  Щоб повторно підключитися, зверніться до свого адміністратора.
+
+app.updated.message: |-
+  🔄 **ОНОВЛЕНО: Налаштування сесії WhatsApp**
+
+  ✅ Налаштування для сесії WhatsApp **{{{name}}}** були оновлені.
+
+cli.usage.arguments: |-
+  [дія]
+
+cli.usage.command: |-
+  [команда]
+
+cli.usage.options: |-
+  [опції]
+
+cli.cmd.disabled: ⛔ **Команду `{{command}}` вимкнено**.
+
+  Будь ласка, зверніться до свого адміністратора.
+
+  Надішліть **help**, щоб отримати список доступних команд.
+
+cli.cmd.root.description: |-
+  Керуйте своєю **інтеграцією WhatsApp**!
+
+cli.cmd.root.sub.session: |-
+  🖥️ **Сесія**:
+
+cli.cmd.root.sub.server: |-
+  🖥️ **Сервер**:
+
+cli.cmd.root.sub.sync: |-
+  🔄️ **Синхронізація**:
+
+cli.cmd.session.status.description: |-
+  Отримайте поточний статус сесії.
+
+cli.cmd.session.restart.description: |-
+  Перезапустіть сесію.
+
+cli.cmd.session.start.description: |-
+  Запустіть сесію.
+
+cli.cmd.session.stop.description: |-
+  Зупиніть сесію.
+
+cli.cmd.session.logout.description: |-
+  Вийдіть із сесії, щоб відсканувати новий QR-код і відновити з'єднання.
+
+cli.cmd.session.qr.description: |-
+  Показати QR-код сесії.
+
+cli.cmd.session.screenshot.description: |-
+  Зробіть знімок екрана сесії (доступно лише з рушієм **WEBJS**).
+
+cli.cmd.contacts.summary: |-
+  Отримати контакти WhatsApp.
+
+cli.cmd.contacts.description: |-
+  👤 Запустіть `contacts pull`, щоб почати синхронізацію, або `contacts status`, щоб відстежити прогрес.
+
+cli.cmd.contacts.action.description: |-
+  Використайте `start`, щоб почати отримання контактів, або `status`, щоб перевірити активне завдання.
+
+cli.cmd.contacts.pull.description: |-
+  Почніть імпортувати контакти WhatsApp у ці вхідні.
+
+cli.cmd.contacts.pull.option.batch: |-
+  Кількість контактів у кожній партії.
+
+cli.cmd.contacts.pull.option.delay-contact: |-
+  Затримка між кожним контактом, щоб уникнути обмежень під час завантаження аватарів.
+
+cli.cmd.contacts.pull.option.delay-batch: |-
+  Затримка між партіями контактів.
+
+cli.cmd.contacts.pull.option.avatar: |-
+  Виберіть, як завантажувати аватари контактів: `skip`, `if-missing` чи `update`.
+
+cli.cmd.contacts.pull.option.groups: |-
+  Додати контакти груп WhatsApp до синхронізації.
+
+cli.cmd.contacts.pull.option.no-attributes: |-
+  Не завантажуйте атрибути контакту, якщо він уже існує (це пришвидшує процес).
+
+cli.cmd.contacts.pull.already-running: |-
+  ⏳ Завдання **Pull Contacts** вже виконується. Дочекайтеся завершення або зупиніть його перед запуском нового.
+
+  Надішліть `contacts status`, щоб отримати деталі.
+
+cli.cmd.options.job.attempts: |-
+  Кількість повторних спроб перед позначенням завдання як невдалого.
+
+cli.cmd.options.job.timeout: |-
+  Максимальний час виконання перед повторною спробою (підтримуються значення `30s`, `5m`, `1h`).
+
+cli.cmd.contacts.status.description: |-
+  Показати статус поточного завдання отримання.
+
+cli.cmd.contacts.status.not-found: |-
+  ℹ️ Активне завдання **Pull Contacts** не знайдено. Запустіть його командою `contacts pull`.
+
+cli.cmd.server.description: |-
+  Керуйте сервером.
+
+cli.cmd.server.status.description: |-
+  Показати версію та статус сервера.
+
+cli.cmd.server.reboot.description: |-
+  Перезавантажте сервер.
+
+cli.cmd.server.reboot.option.force: |-
+  Примусово виконайте негайне перезавантаження.
+
+cli.help.usage.title: |-
+  Використання: надішліть у розмову команду у такому форматі:
+
+cli.help.commands.defaultGroup: |-
+  **Команди:**
+
+cli.help.arguments.title: |-
+  **Аргументи:**
+
+cli.help.options.defaultGroup: |-
+  **Опції:**
+
+cli.help.globalOptions.title: |-
+  **Глобальні опції:**
+
+task.contacts.status: |-
+  👤 Отримання контактів: **{{state}}**
+  - ✅ Успішно: {{{progress.ok}}} контактів
+  - ⚪ Пропущено: {{{progress.skipped}}} контактів
+  - ⚠️ Помилки: {{{progress.errors}}} контактів
+
+  {{#job}}
+  ⌛ Хронологія:
+  - У черзі: {{{timestamp}}}
+  {{#processedOn}}
+  - Початок: {{{processedOn}}}
+  {{/processedOn}}
+  {{#finishedOn}}
+  - Завершення: {{{finishedOn}}}
+  {{/finishedOn}}
+  {{/job}}
+
+  {{#error}}
+  Деталі:
+  [{{{details.text}}}]({{{details.url}}})
+  {{/error}}
+
+task.contacts.started: |-
+  Отримання контактів...
+
+task.contacts.progress: |-
+  Отримання контактів: ✅ {{progress.ok}}, ⚪ {{progress.skipped}}, ⚠️ {{progress.errors}}
+
+app.help.reminder: |-
+  Надішліть **help**, щоб отримати список доступних команд.
+
+app.session.status.change: |-
+  {{{emoji}}} Сесія "{{{session}}}" перейшла у статус {{{status}}}
+
+app.session.current.status: |-
+  {{{emoji}}} Статус сесії **{{{session}}}** - **{{{status}}}**
+  **Обліковий запис WhatsApp:**
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.working: |-
+  ✅ Ці вхідні пов'язані з вашим **Обліковим записом WhatsApp** і готові надсилати та отримувати повідомлення!
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.error: |-
+  ⚠️ **Ці вхідні пов'язані з Обліковим записом WhatsApp, але НЕ готові надсилати та отримувати повідомлення!**
+
+  Будь ласка, перевірте статус сесії та спробуйте перезапустити її або вийдіть і відскануйте QR-код знову.
+
+app.session.scan.qr.code: |-
+  ⚠️ **Відскануйте QR-код на вашому телефоні, щоб пов'язати Обліковий запис WhatsApp з цими вхідними!**
+
+app.server.version.and.status: |-
+  **Версія:**
+  ```
+  {{{version}}}
+  ```
+
+  **Статус:**
+  ```
+  {{{status}}}
+  ```
+
+app.server.reboot: |-
+  Сервер плавно перезавантажується...
+
+app.server.reboot.force: |-
+  Сервер примусово перезавантажується...
+
+app.logout.success: |-
+  ✅ Обліковий запис успішно деавторизовано!
+
+waha.new.version.available: |-
+  🔄 **Доступна нова версія!**
+
+  Поточна версія: **{{{currentVersion}}}**
+  Нова версія: **{{{newVersion}}}**
+
+  👉 Перевірте, що нового у [**🆕 Журналі змін**]({{{changelogUrl}}})
+
+waha.core.version.used: |-
+  ❤️ **Підтримайте WAHA!**
+
+  Ви використовуєте безкоштовну версію **WAHA Core**. Якщо ви вважаєте цей проект корисним, будь ласка, розгляньте можливість підтримати його розробку.
+
+  Ваша підтримка - єдиний спосіб, яким ми можемо продовжувати працювати над оновленнями, виправленнями та новими функціями.
+
+  [**🎁 Підтримайте нас**]({{{supportUrl}}})
+
+chatwoot.to.whatsapp.message.text: |-
+  {{{ content }}}
+
+chatwoot.to.whatsapp.message.media.caption: |-
+  {{#singleAttachment}}
+  {{#content}}
+  {{{ content }}}
+  {{/content}}
+  {{/singleAttachment}}
+
+whatsapp.to.chatwoot.message: |-
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.message.contacts: |-
+  👤 **Надісланий контакт(и)**
+
+  {{#contacts}}
+  🪪 Ім’я: **{{fullName}}**
+  {{#phoneNumbers}}
+  - 📞 Телефон: **{{.}}**
+  {{/phoneNumbers}}
+
+  {{/contacts}}
+
+whatsapp.to.chatwoot.message.location: |-
+  {{#message}}
+  {{#locationMessage}}
+  📍 **Надіслана локація**
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Адреса:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Вебсайт:** {{url}}
+  {{/url}}
+
+  🔗 **Переглянути на карті:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/locationMessage}}
+
+  {{#liveLocationMessage}}
+  📍📡 **Надсилання геолокації в реальному часі**
+  Відкрийте **WhatsApp**, щоб побачити оновлення в реальному часі.
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **Адреса:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **Вебсайт:** {{url}}
+  {{/url}}
+
+  🔗 **Переглянути на карті:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/liveLocationMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.poll: |-
+  {{#poll}}
+  📊 **Опитування**
+
+  **{{name}}**
+  {{#options}}
+  - {{optionName}}
+  {{/options}}
+  {{/poll}}
+
+whatsapp.to.chatwoot.message.list: |-
+  {{#message.listMessage}}
+  {{#title}}
+  *{{{title}}}*
+  {{/title}}
+  {{#description}}
+  {{{description}}}
+  {{/description}}
+  {{#footerText}}
+  {{{footerText}}}
+  {{/footerText}}
+
+  {{#buttonText}}
+  {{{buttonText}}}
+  {{/buttonText}}
+  {{#sections}}
+  {{#title}}
+  {{{title}}}:
+  {{/title}}
+  {{#rows}}
+  {{#title}}
+  - {{{title}}}
+  {{/title}}
+  {{/rows}}
+
+  {{/sections}}
+  {{/message.listMessage}}
+
+whatsapp.to.chatwoot.message.event: |-
+  {{#message}}
+  {{#eventMessage}}
+  📅 **Подія**
+
+  **{{name}}**
+  {{#description}}
+  {{description}}
+  {{/description}}
+
+  {{#location.name}}
+  📍 **Місце:** {{location.name}}
+  {{/location.name}}
+  {{#startTime}}
+  🕐 **Початок:** {{startTime}}
+  {{/startTime}}
+  {{#endTime}}
+  🕐 **Завершення:** {{endTime}}
+  {{/endTime}}
+  {{#joinLink}}
+  🔗 **Посилання для приєднання:** [{{joinLink}}]({{joinLink}})
+  {{/joinLink}}
+  {{/eventMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.pix: |-
+  💳 **PIX - Копіювати та Вставити**
+
+  {{#pixData}}
+  {{#merchantName}}
+  **{{merchantName}}**
+  {{/merchantName}}
+
+  {{#key}}
+  **Ключ PIX:** {{key}}
+  {{/key}}
+  {{#keyType}}
+  **Тип:** {{keyType}}
+  {{/keyType}}
+  {{#totalAmount}}
+  **Сума:** {{totalAmountFormatted}}
+  {{/totalAmount}}
+  {{#referenceId}}
+  **Референс:** {{referenceId}}
+  {{/referenceId}}
+
+  💳 **PIX Копіювати та Вставити надіслано**
+  {{/pixData}}
+
+whatsapp.to.chatwoot.message.unsupported: |-
+  ⚠️ **Цей тип повідомлення не підтримується в цих вхідних.**
+  📱 Будь ласка, відкрийте **WhatsApp**, щоб переглянути.
+
+  Подробиці: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.to.chatwoot.message.album: |-
+  📷 **Отримано повідомлення з альбомом**
+
+  {{#totalCount}}
+  Отримано альбом з **{{totalCount}}** медіафайлом(ами).
+  {{#expectedImageCount}}
+  📸 Зображень: **{{expectedImageCount}}**
+  {{/expectedImageCount}}
+  {{#expectedVideoCount}}
+  🎥 Відео: **{{expectedVideoCount}}**
+  {{/expectedVideoCount}}
+
+  Медіафайли будуть доставлені в наступних повідомленнях.
+  {{/totalCount}}
+
+whatsapp.to.chatwoot.message.facebook.ad: |-
+  📢 **РЕКЛАМА FACEBOOK**
+
+  **Заголовок:** {{{adData.title}}}
+
+  **Опис:**
+  {{{adData.body}}}
+
+  **Посилання на рекламу:** [Переглянути у Facebook]({{{adData.sourceUrl}}})
+  **Ідентифікатор реклами:** {{{adData.sourceId}}}
+
+  ---
+  💬 **Повідомлення клієнта:**
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.call.received: |-
+  📞🔔 *Вхідний {{#call.isVideo}}відеодзвінок{{/call.isVideo}}{{^call.isVideo}}голосовий дзвінок{{/call.isVideo}}*
+  📱 Відкрийте **WhatsApp**, щоб відповісти.
+
+whatsapp.to.chatwoot.call.accepted: |-
+  📞✅ *Дзвінок прийнято*
+  📱 Дзвінок прийняли на вашому іншому пристрої.
+
+whatsapp.to.chatwoot.call.rejected: |-
+  📞❌ *Дзвінок завершено*
+
+whatsapp.history.message.wrapper: |-
+  {{{content}}}
+  `{{#history}}📥{{/history}}🗓️ {{{timestamp}}}`
+
+UNKNOWN: Невідомо
+ERROR: Помилка
+PENDING: Надсилається
+SERVER: Сервер
+DEVICE: Пристрій
+READ: Прочитано
+PLAYED: Прослухано
+whatsapp.to.chatwoot.message.has.media.no.media: |-
+  {{#content}}
+  {{{content}}}
+
+  {{/content}}
+  🖼️⚠️ **У повідомленні є медіа, але не вдалося його завантажити**
+  📱 Відкрийте **WhatsApp**, щоб переглянути.
+
+  {{^content}}
+  Деталі: [{{{details.text}}}]({{{details.url}}})
+  {{/content}}
+cli.cmd.root.sub.queue: '🧩 **Черга**:'
+cli.cmd.messages.summary: Отримати повідомлення WhatsApp.
+cli.cmd.messages.description:
+  💬 Виконайте `messages pull`, щоб запустити синхронізацію, або `messages
+  status`, щоб переглянути прогрес.
+cli.cmd.messages.action.description:
+  '`pull` — щоб почати отримання, `status` — щоб переглянути активне завдання.'
+cli.cmd.messages.pull.option.chat:
+  Обмежити отримання конкретним ідентифікатором чату WhatsApp.
+cli.cmd.messages.pull.option.force:
+  Примусити скриньку створювати повідомлення, навіть якщо повідомлення WhatsApp
+  уже є у відповідності розмови.
+cli.cmd.messages.pull.option.batch: Кількість повідомлень у кожній партії.
+cli.cmd.messages.pull.option.progress:
+  Повідомляти про прогрес кожні N повідомлень. Значення 0 вимикає звіти.
+cli.cmd.messages.pull.option.no-dm:
+  Пропускати приватні повідомлення під час отримання історії.
+cli.cmd.messages.pull.option.groups:
+  Включати групи WhatsApp під час отримання історії.
+cli.cmd.messages.pull.option.channels:
+  Включати канали WhatsApp під час отримання історії.
+cli.cmd.messages.pull.option.status:
+  Включати статуси WhatsApp під час отримання історії.
+cli.cmd.messages.pull.option.broadcast:
+  Включати списки розсилки під час отримання історії.
+cli.cmd.messages.pull.option.media:
+  Завантажувати медіафайли (зображення, відео, файли) під час отримання історії.
+cli.cmd.messages.pull.option.pause:
+  Поставити завдання отримання повідомлень у чергу на паузі й зупинити обробку
+  нових WhatsApp до завершення.
+cli.cmd.messages.pull.option.resolve-conversations:
+  Позначає розмови як завершені після обробки всієї історії повідомлень.
+cli.cmd.messages.pull.error.pause-no-queue:
+  ⛔ Неможливо використати `--pause`, оскільки команда **queue** вимкнена для
+  цієї конфігурації.
+cli.cmd.queue.description: Керування чергами.
+cli.cmd.queue.summary: Дії з чергами.
+cli.cmd.queue.action.description: Оберіть дію.
+cli.cmd.queue.status.description: Показати стан черги.
+cli.cmd.queue.argument.name:
+  'Назва черги: `inbox` або `whatsapp` (необов’язково).'
+cli.cmd.queue.start.description: Запустити чергу за назвою.
+cli.cmd.queue.stop.description: Зупинити чергу за назвою.
+cli.cmd.queue.paused:
+  ⚪🧩 Черги призупинені. Надішліть `queue status`, щоб перевірити стан.
+cli.cmd.queue.resumed:
+  🟢🧩 Черги поновлено. Надішліть `queue status`, щоб перевірити стан.
+cli.cmd.queue.status.result: >-
+  📊 Стан черг:
+
+  {{#queues}}
+
+  - **{{name}}**: {{#locked}}🔒{{/locked}}{{#paused}}⚪ На
+  паузі{{/paused}}{{^paused}}🟢 Активна{{/paused}}
+
+  {{/queues}}
+cli.cmd.messages.pull.option.timeout-media:
+  Визначає, як довго намагатися завантажувати медіа для кожного повідомлення.
+cli.cmd.messages.pull.argument.end:
+  Вказує, де закінчується вікно отримання; наприклад, `2d` — два дні тому.
+cli.cmd.messages.pull.argument.start:
+  Вказує, де починається вікно; наприклад, `1d` — один день тому (за
+  замовчуванням `0d`, тобто зараз).
+cli.cmd.messages.pull.already-running: >-
+  ⏳ Завдання **Pull Messages** уже виконується для **{{{chat}}}**. Дочекайтеся
+  завершення або зупиніть його перед запуском нового.
+
+
+  Надішліть `messages status`, щоб отримати деталі.
+cli.cmd.messages.status.not-found:
+  ℹ️ Активне завдання **Pull Messages** не знайдено. Запустіть його командою
+  `messages pull`.
+cli.cmd.messages.pull.no-chats-found:
+  Не знайдено чатів WhatsApp для вибраного періоду.
+cli.cmd.contacts.pull.option.progress:
+  Повідомляти про прогрес кожні N контактів. Значення 0 вимикає звіти.
+cli.cmd.contacts.pull.option.lids:
+  Включати анонімні контакти WhatsApp LID у синхронізацію.
+task.contacts.completed:
+  👤✅ Контакти завершено → 🆕 {{progress.created}}, 🔄 {{progress.updated}}, ⚪
+  {{progress.skipped}}, 🔴 {{progress.errors}}, 🖼️ {{progress.avatar.updated}}
+task.messages.started:
+  ⏳ Отримуємо повідомлення 💬 {{{chat}}} ⏱️ {{{period}}}...
+task.messages.details:
+  Надішліть "{{{prefix}}}messages status", щоб побачити деталі.
+task.messages.progress:
+  '⏳ Повідомлення {{{chat}}}: 🆕 {{progress.ok}}, 🟢 {{progress.exists}}, ⚪
+  {{progress.ignored}}, 🔴 {{progress.errors}}{{#messages.last}} | 📅
+  {{{messages.last}}}{{/messages.last}}'
+task.messages.completed:
+  ✅ Повідомлення {{{chat}}} за {{{period}}} → 🆕 {{progress.ok}}, 🟢
+  {{progress.exists}}, ⚪ {{progress.ignored}}, 🔴 {{progress.errors}}
+task.messages.status: |-
+  Повідомлення **{{{chat}}}** у період ⏱️ **{{{period}}}**. ⚙️ Стан завдання: **{{state}}**.
+
+  🗨️ Повідомлення:
+  - 🆕 Створено: **{{{progress.ok}}}**
+  - 🟢 Уже є: {{{progress.exists}}}
+  - ⚪ Пропущено: {{{progress.ignored}}}
+  - 🔴 Помилки: {{{progress.errors}}}
+  {{#messages.first}}
+  - 🗓️ Найраніше: **{{{messages.first}}}**
+  {{/messages.first}}
+  {{#messages.last}}
+  - 🗓️ Найпізніше: **{{{messages.last}}}**
+  {{/messages.last}}
+
+  💬 Чати WhatsApp:
+  - 🆕 Нові повідомлення в **{{{chats}}}** чатах
+  {{#options.resolveConversations}}
+
+  🗣️ Розмови:
+  - 🟢 Закрито: **{{{progress.conversationResolve.success}}}**
+  {{#progress.conversationResolve.error}}
+  - 🔴 Помилки: **{{{progress.conversationResolve.error}}}**
+  {{/progress.conversationResolve.error}}
+  {{/options.resolveConversations}}
+
+  Деталі:
+  [{{{details.text}}}]({{{details.url}}})

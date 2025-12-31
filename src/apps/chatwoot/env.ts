@@ -1,0 +1,10 @@
+export const CHATWOOT_COMMAND_PREFIX =
+  process.env.WAHA_CHATWOOT_COMMAND_PREFIX || 'wa/';
+
+export const CHATWOOT_MESSAGE_CALENDAR_THRESHOLD_SECONDS =
+  parseInt(process.env.WAHA_CHATWOOT_MESSAGE_CALENDAR_THRESHOLD_SECONDS) || 600;
+
+export const APPS_CHATWOOT_LANGUAGES_FOLDER =
+  process.env.WAHA_APPS_CHATWOOT_LANGUAGES_FOLDER?.trim();
+
+export const TZ = process.env.TZ;

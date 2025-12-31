@@ -1,0 +1,680 @@
+# Persian translations for WhatsApp inbox integration
+locale.name: '🇮🇷 فارسی (Persian)'
+
+# کد محلی پایه - باید یک محلی معتبر BCP 47 باشد
+# https://en.wikipedia.org/wiki/IETF_language_tag
+# WAHA از آن برای نمایش اعداد، ارز و تاریخ/زمان استفاده می‌کند
+locale.base: 'fa-IR'
+
+app.inbox.contact.name: 'ادغام واتساپ'
+app.inbox.contact.avatar.url: 'https://raw.githubusercontent.com/devlikeapro/waha/core/logo.png'
+
+# گزینه‌های "options" از date.toLocaleString
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+datetime:
+  weekday: short
+  locales: fa-IR
+  day: 2-digit
+  month: short
+  year: numeric
+  hour: 2-digit
+  minute: 2-digit
+  hour12: false
+  # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timezonename
+  timeZoneName: short
+  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # timeZone: 'Asia/Tehran'
+
+Today: 'امروز'
+Yesterday: 'دیروز'
+
+job.report.error: |-
+  ⚠️ **{{{header}}}**
+  {{#attempts.nextDelay}}
+  🔄 تلاش مجدد در {{attempts.nextDelay}} ثانیه...
+  {{/attempts.nextDelay}}
+  {{^attempts.nextDelay}}
+  ❌ تلاش دیگری باقی نمانده است. لطفاً بعداً دوباره امتحان کنید.
+  {{/attempts.nextDelay}}
+  تلاش: {{{attempts.current}}} / {{{attempts.max}}}
+  جزئیات: [{{{details.text}}}]({{{details.url}}})
+  {{#error}}
+  ```
+
+  {{{error}}}
+  ```
+  {{/error}}
+
+job.report.succeeded: |-
+  ✅ **موفقیت‌آمیز**
+  تلاش: {{{attempts.current}}} / {{{attempts.max}}}
+  جزئیات: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.message.sending.error: ارسال پیام در واتساپ امکان‌پذیر نبود.
+whatsapp.message.receiving.error: دریافت پیام از واتساپ امکان‌پذیر نبود
+whatsapp.message.removing.error: حذف پیام از واتساپ امکان‌پذیر نبود
+job.scheduled.error.header: اجرای کار زمان‌بندی شده ناموفق بود
+
+message.from.whatsapp: |-
+  *📱 ارسال شده از واتساپ*
+
+  {{{text}}}
+
+message.from.api: |-
+  *📱 ارسال شده از طریق API*
+
+  {{{text}}}
+
+message.removed.in.whatsapp: |-
+  ❌ *این پیام در واتساپ حذف شده است*
+
+message.edited.in.whatsapp: |-
+  {{{text}}}
+
+  ✏️ *ویرایش شده در واتساپ*
+
+whatsapp.group.message: |-
+  👥 *{{{participant}}}*
+
+  {{{text}}}
+
+whatsapp.reaction.added: |-
+  *واکنش* {{{emoji}}}
+
+whatsapp.reaction.removed: |-
+  *واکنش حذف شد*
+
+whatsapp.contact.group.suffix: 'گروه'
+whatsapp.contact.channel.suffix: 'کانال'
+whatsapp.contact.broadcast.suffix: 'فهرست انتشار'
+# Aka Stories
+whatsapp.contact.status.name: 'وضعیت'
+
+app.connected.message: |-
+  🔗 **متصل: جلسه واتساپ به صندوق ورودی**
+
+  ✅ جلسه واتساپ **{{{name}}}** با موفقیت به این صندوق ورودی متصل شده است.
+
+  این صندوق ورودی اکنون به **حساب واتساپ** شما متصل است. شما می‌توانید پیام‌ها را مستقیماً از اینجا ارسال و دریافت کنید — درست مانند استفاده از واتساپ، اما در فضای کاری شما.
+
+  همچنین می‌توانید جلسه واتساپ متصل به این صندوق ورودی را مدیریت کنید. برای مشاهده اقدامات موجود، **help** را به این گفتگو ارسال کنید.
+
+  📋 اقدامات رایجی که می‌توانید انجام دهید:
+  - بررسی کنید که آیا جلسه واتساپ فعال است
+  - راه‌اندازی مجدد یا توقف جلسه واتساپ
+  - خروج و اتصال مجدد با اسکن کد QR جدید
+
+  اگر همه چیز کار می‌کند، می‌توانید آزادانه گفتگو کنید. اگر هشدارهایی می‌بینید، ممکن است نیاز به اتصال مجدد حساب واتساپ خود داشته باشید.
+
+  بیایید شروع کنیم! 🚀
+
+app.disconnected.message: |-
+  🔌 **قطع اتصال: جلسه واتساپ از صندوق ورودی**
+
+  ❌ جلسه واتساپ **{{{name}}}** از این صندوق ورودی قطع شده است.
+
+  شما دیگر قادر به ارسال یا دریافت پیام از واتساپ نخواهید بود.
+
+  برای اتصال مجدد، لطفاً با مدیر خود تماس بگیرید.
+
+app.updated.message: |-
+  🔄 **به‌روزرسانی: تنظیمات جلسه واتساپ**
+
+  ✅ تنظیمات جلسه واتساپ **{{{name}}}** به‌روزرسانی شده است.
+
+cli.usage.arguments: |-
+  [اقدام]
+
+cli.usage.command: |-
+  [دستور]
+
+cli.usage.options: |-
+  [گزینه‌ها]
+
+cli.cmd.disabled: ⛔ **دستور `{{command}}` غیرفعال شده است**.
+
+  لطفاً با مدیر خود تماس بگیرید.
+
+  برای دریافت فهرست دستورات موجود، **help** را ارسال کنید.
+
+cli.cmd.root.description: |-
+  یکپارچه‌سازی **واتساپ** خود را مدیریت کنید!
+
+cli.cmd.root.sub.session: |-
+  🖥️ **جلسه**:
+
+cli.cmd.root.sub.server: |-
+  🖥️ **سرور**:
+
+cli.cmd.root.sub.sync: |-
+  🔄️ **همگام‌سازی**:
+
+cli.cmd.session.status.description: |-
+  وضعیت فعلی جلسه را دریافت کنید.
+
+cli.cmd.session.restart.description: |-
+  جلسه را مجدداً راه‌اندازی کنید.
+
+cli.cmd.session.start.description: |-
+  جلسه را شروع کنید.
+
+cli.cmd.session.stop.description: |-
+  جلسه را متوقف کنید.
+
+cli.cmd.session.logout.description: |-
+  برای اسکن کد QR جدید و بازیابی اتصال از جلسه خارج شوید.
+
+cli.cmd.session.qr.description: |-
+  کد QR جلسه را نمایش دهید.
+
+cli.cmd.session.screenshot.description: |-
+  از جلسه اسکرین‌شات بگیرید (فقط با موتور **WEBJS** در دسترس است).
+
+cli.cmd.contacts.summary: |-
+  دریافت مخاطبان واتساپ.
+
+cli.cmd.contacts.description: |-
+  👤 `contacts pull` را اجرا کنید تا همگام‌سازی آغاز شود یا `contacts status` را برای بررسی پیشرفت اجرا کنید.
+
+cli.cmd.contacts.action.description: |-
+  از `start` برای آغاز دریافت مخاطبان یا از `status` برای بررسی کار فعال استفاده کنید.
+
+cli.cmd.contacts.pull.description: |-
+  دریافت مخاطبان واتساپ را به این صندوق ورودی آغاز کنید.
+
+cli.cmd.contacts.pull.option.batch: |-
+  تعداد مخاطبانی که در هر دسته دریافت می‌شوند.
+
+cli.cmd.contacts.pull.option.delay-contact: |-
+  تأخیر بین همگام‌سازی هر مخاطب برای جلوگیری از محدودیت نرخ هنگام دریافت آواتار.
+
+cli.cmd.contacts.pull.option.delay-batch: |-
+  تأخیر بین دسته‌های مخاطبان.
+
+cli.cmd.contacts.pull.option.avatar: |-
+  نحوه دریافت آواتار مخاطبان را انتخاب کنید: `skip`، `if-missing` یا `update`.
+
+cli.cmd.contacts.pull.option.groups: |-
+  مخاطبان گروه‌های واتساپ را در همگام‌سازی قرار دهید.
+
+cli.cmd.contacts.pull.option.no-attributes: |-
+  اگر مخاطب از قبل وجود دارد ویژگی‌های او را دریافت نکنید (فرآیند را سریع‌تر می‌کند).
+
+cli.cmd.contacts.pull.already-running: |-
+  ⏳ کار **Pull Contacts** هم‌اکنون در حال اجراست. صبر کنید تا تمام شود یا قبل از شروع کار جدید آن را متوقف کنید.
+
+  برای جزئیات `contacts status` را ارسال کنید.
+
+cli.cmd.options.job.attempts: |-
+  تعداد دفعات تلاش مجدد پیش از علامت‌گذاری کار به‌عنوان ناموفق.
+
+cli.cmd.options.job.timeout: |-
+  حداکثر مدت اجرای کار پیش از تلاش دوباره (از مقادیری مانند `30s`، `5m`، `1h` پشتیبانی می‌کند).
+
+cli.cmd.contacts.status.description: |-
+  وضعیت کار دریافت فعلی را نمایش دهید.
+
+cli.cmd.contacts.status.not-found: |-
+  ℹ️ هیچ کار فعال **Pull Contacts** یافت نشد. با `contacts pull` یکی آغاز کنید.
+
+cli.cmd.server.description: |-
+  سرور را مدیریت کنید.
+
+cli.cmd.server.status.description: |-
+  نسخه و وضعیت سرور را نمایش دهید.
+
+cli.cmd.server.reboot.description: |-
+  سرور را راه‌اندازی مجدد کنید.
+
+cli.cmd.server.reboot.option.force: |-
+  راه‌اندازی مجدد فوری را اجباری کنید.
+
+cli.help.usage.title: |-
+  نحوه استفاده: دستور را با قالب زیر به گفتگو ارسال کنید:
+
+cli.help.commands.defaultGroup: |-
+  **دستورات:**
+
+cli.help.arguments.title: |-
+  **آرگومان‌ها:**
+
+cli.help.options.defaultGroup: |-
+  **گزینه‌ها:**
+
+cli.help.globalOptions.title: |-
+  **گزینه‌های عمومی:**
+
+task.contacts.status: |-
+  👤 دریافت مخاطبان: **{{state}}**
+  - ✅ موفق: {{{progress.ok}}} مخاطب
+  - ⚪ نادیده‌گرفته‌شده: {{{progress.skipped}}} مخاطب
+  - ⚠️ خطا: {{{progress.errors}}} مخاطب
+
+  {{#job}}
+  ⌛ جدول زمانی:
+  - در صف: {{{timestamp}}}
+  {{#processedOn}}
+  - زمان شروع: {{{processedOn}}}
+  {{/processedOn}}
+  {{#finishedOn}}
+  - زمان پایان: {{{finishedOn}}}
+  {{/finishedOn}}
+  {{/job}}
+
+  {{#error}}
+  جزئیات:
+  [{{{details.text}}}]({{{details.url}}})
+  {{/error}}
+
+task.contacts.started: |-
+  در حال دریافت مخاطبان...
+
+task.contacts.progress: |-
+  دریافت مخاطبان: ✅ {{progress.ok}}، ⚪ {{progress.skipped}}، ⚠️ {{progress.errors}}
+
+app.help.reminder: |-
+  برای دریافت لیست دستورات موجود، **help** را ارسال کنید.
+
+app.session.status.change: |-
+  {{{emoji}}} جلسه "{{{session}}}" به وضعیت {{{status}}} تغییر کرد
+
+app.session.current.status: |-
+  {{{emoji}}} وضعیت جلسه **{{{session}}}** در **{{{status}}}** است
+  **حساب واتساپ:**
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.working: |-
+  ✅ این صندوق ورودی به **حساب واتساپ** شما متصل است و آماده ارسال و دریافت پیام است!
+
+  📱 **{{{name}}} ({{{id}}})**
+
+app.session.status.error: |-
+  ⚠️ **این صندوق ورودی به حساب واتساپ متصل است اما آماده ارسال و دریافت پیام نیست!**
+
+  لطفاً وضعیت جلسه را بررسی کنید و سعی کنید آن را مجدداً راه‌اندازی کنید یا خارج شوید و کد QR را دوباره اسکن کنید.
+
+app.session.scan.qr.code: |-
+  ⚠️ **کد QR را در تلفن خود اسکن کنید تا حساب واتساپ را با این صندوق ورودی پیوند دهید!**
+
+app.server.version.and.status: |-
+  **نسخه:**
+  ```
+  {{{version}}}
+  ```
+
+  **وضعیت:**
+  ```
+  {{{status}}}
+  ```
+
+app.server.reboot: |-
+  سرور در حال راه‌اندازی مجدد نرم است...
+
+app.server.reboot.force: |-
+  سرور در حال راه‌اندازی مجدد اجباری است...
+
+app.logout.success: |-
+  ✅ حساب با موفقیت غیرمجاز شد!
+
+waha.new.version.available: |-
+  🔄 **نسخه جدید در دسترس است!**
+
+  نسخه فعلی: **{{{currentVersion}}}**
+  نسخه جدید: **{{{newVersion}}}**
+
+  👉 موارد جدید را در [**🆕 تغییرات**]({{{changelogUrl}}}) مشاهده کنید
+
+waha.core.version.used: |-
+  ❤️ **از WAHA پشتیبانی کنید!**
+
+  شما از نسخه رایگان **WAHA Core** استفاده می‌کنید. اگر این پروژه را مفید می‌دانید، لطفاً حمایت از توسعه آن را در نظر بگیرید.
+
+  حمایت شما تنها راهی است که ما می‌توانیم به کار بر روی به‌روزرسانی‌ها، رفع اشکالات و ویژگی‌های جدید ادامه دهیم.
+
+  [**🎁 از ما حمایت کنید**]({{{supportUrl}}})
+
+chatwoot.to.whatsapp.message.text: |-
+  {{{ content }}}
+
+chatwoot.to.whatsapp.message.media.caption: |-
+  {{#singleAttachment}}
+  {{#content}}
+  {{{ content }}}
+  {{/content}}
+  {{/singleAttachment}}
+
+whatsapp.to.chatwoot.message: |-
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.message.contacts: |-
+  👤 **مخاطب(ها)ی به‌اشتراک‌گذاشته‌شده**
+
+  {{#contacts}}
+  🪪 نام: **{{fullName}}**
+  {{#phoneNumbers}}
+  - 📞 تلفن: **{{.}}**
+  {{/phoneNumbers}}
+
+  {{/contacts}}
+
+whatsapp.to.chatwoot.message.location: |-
+  {{#message}}
+  {{#locationMessage}}
+  📍 **موقعیت مکانی به‌اشتراک‌گذاشته‌شده**
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **آدرس:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **وب‌سایت:** {{url}}
+  {{/url}}
+
+  🔗 **مشاهده روی نقشه:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/locationMessage}}
+
+  {{#liveLocationMessage}}
+  📍📡 **اشتراک‌گذاری موقعیت مکانی زنده**
+  برای دیدن به‌روزرسانی‌های لحظه‌ای **WhatsApp** را باز کنید.
+
+  {{#name}}
+  **{{name}}**
+  {{/name}}
+
+  {{#address}}
+  📍 **آدرس:** {{address}}
+  {{/address}}
+
+  {{#url}}
+  🌐 **وب‌سایت:** {{url}}
+  {{/url}}
+
+  🔗 **مشاهده روی نقشه:** https://www.google.com/maps?q={{degreesLatitude}},{{degreesLongitude}}
+  {{#caption}}{{caption}}{{/caption}}
+  {{/liveLocationMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.poll: |-
+  {{#poll}}
+  📊 **نظرسنجی**
+
+  **{{name}}**
+  {{#options}}
+  - {{optionName}}
+  {{/options}}
+  {{/poll}}
+
+whatsapp.to.chatwoot.message.list: |-
+  {{#message.listMessage}}
+  {{#title}}
+  *{{{title}}}*
+  {{/title}}
+  {{#description}}
+  {{{description}}}
+  {{/description}}
+  {{#footerText}}
+  {{{footerText}}}
+  {{/footerText}}
+
+  {{#buttonText}}
+  {{{buttonText}}}
+  {{/buttonText}}
+  {{#sections}}
+  {{#title}}
+  {{{title}}}:
+  {{/title}}
+  {{#rows}}
+  {{#title}}
+  - {{{title}}}
+  {{/title}}
+  {{/rows}}
+
+  {{/sections}}
+  {{/message.listMessage}}
+
+whatsapp.to.chatwoot.message.event: |-
+  {{#message}}
+  {{#eventMessage}}
+  📅 **رویداد**
+
+  **{{name}}**
+  {{#description}}
+  {{description}}
+  {{/description}}
+
+  {{#location.name}}
+  📍 **مکان:** {{location.name}}
+  {{/location.name}}
+  {{#startTime}}
+  🕐 **شروع:** {{startTime}}
+  {{/startTime}}
+  {{#endTime}}
+  🕐 **پایان:** {{endTime}}
+  {{/endTime}}
+  {{#joinLink}}
+  🔗 **لینک پیوستن:** [{{joinLink}}]({{joinLink}})
+  {{/joinLink}}
+  {{/eventMessage}}
+  {{/message}}
+
+whatsapp.to.chatwoot.message.pix: |-
+  💳 **PIX - کپی و چسباندن**
+
+  {{#pixData}}
+  {{#merchantName}}
+  **{{merchantName}}**
+  {{/merchantName}}
+
+  {{#key}}
+  **کلید PIX:** {{key}}
+  {{/key}}
+  {{#keyType}}
+  **نوع:** {{keyType}}
+  {{/keyType}}
+  {{#totalAmount}}
+  **مبلغ:** {{totalAmountFormatted}}
+  {{/totalAmount}}
+  {{#referenceId}}
+  **شناسه مرجع:** {{referenceId}}
+  {{/referenceId}}
+
+  💳 **PIX کپی و چسباندن ارسال شد**
+  {{/pixData}}
+
+whatsapp.to.chatwoot.message.unsupported: |-
+  ⚠️ **این نوع پیام در این صندوق ورودی پشتیبانی نمی‌شود.**
+  📱 لطفاً برای مشاهده آن **WhatsApp** را باز کنید.
+
+  جزئیات: [{{{details.text}}}]({{{details.url}}})
+
+whatsapp.to.chatwoot.message.album: |-
+  📷 **پیام آلبوم دریافت شد**
+
+  {{#totalCount}}
+  یک آلبوم با **{{totalCount}}** فایل رسانه‌ای دریافت شد.
+  {{#expectedImageCount}}
+  📸 تصاویر: **{{expectedImageCount}}**
+  {{/expectedImageCount}}
+  {{#expectedVideoCount}}
+  🎥 ویدیوها: **{{expectedVideoCount}}**
+  {{/expectedVideoCount}}
+
+  فایل‌های رسانه‌ای در پیام‌های بعدی تحویل داده خواهند شد.
+  {{/totalCount}}
+
+whatsapp.to.chatwoot.message.facebook.ad: |-
+  📢 **آگهی فیس‌بوک**
+
+  **عنوان:** {{{adData.title}}}
+
+  **توضیحات:**
+  {{{adData.body}}}
+
+  **لینک آگهی:** [مشاهده در فیس‌بوک]({{{adData.sourceUrl}}})
+  **شناسه آگهی:** {{{adData.sourceId}}}
+
+  ---
+  💬 **پیام مشتری:**
+  {{{payload.body}}}
+
+whatsapp.to.chatwoot.call.received: |-
+  📞🔔 *تماس {{#call.isVideo}}تصویری{{/call.isVideo}}{{^call.isVideo}}صوتی{{/call.isVideo}} ورودی*
+  📱 برای پاسخ دادن لطفاً **واتساپ** را باز کنید.
+
+whatsapp.to.chatwoot.call.accepted: |-
+  📞✅ *تماس پاسخ داده شد*
+  📱 تماس روی دستگاه دیگر شما پاسخ داده شد.
+
+whatsapp.to.chatwoot.call.rejected: |-
+  📞❌ *تماس پایان یافت*
+
+whatsapp.history.message.wrapper: |-
+  {{{content}}}
+  `{{#history}}📥{{/history}}🗓️ {{{timestamp}}}`
+
+UNKNOWN: ناشناخته
+ERROR: خطا
+PENDING: در حال ارسال
+SERVER: سرور
+DEVICE: دستگاه
+READ: خوانده شد
+PLAYED: پخش شد
+whatsapp.to.chatwoot.message.has.media.no.media: |-
+  {{#content}}
+  {{{content}}}
+
+  {{/content}}
+  🖼️⚠️ **پیام حاوی رسانه است اما نتوانستیم آن را دانلود کنیم**
+  📱 لطفاً برای مشاهده، **واتساپ** را باز کنید.
+
+  {{^content}}
+  جزئیات: [{{{details.text}}}]({{{details.url}}})
+  {{/content}}
+cli.cmd.root.sub.queue: '🧩 **صف**:'
+cli.cmd.messages.summary: دریافت پیام‌های واتساپ.
+cli.cmd.messages.description:
+  💬 برای آغاز همگام‌سازی پیام‌ها `messages pull` را اجرا کنید یا برای مشاهده
+  پیشرفت `messages status` را اجرا کنید.
+cli.cmd.messages.action.description:
+  '`pull` برای شروع دریافت پیام یا `status` برای بررسی کار فعال.'
+cli.cmd.messages.pull.option.chat:
+  دریافت را به یک شناسه گفت‌وگوی مشخص واتساپ محدود می‌کند.
+cli.cmd.messages.pull.option.force:
+  صندوق ورودی را مجبور می‌کند پیام بسازد حتی اگر پیام واتساپ قبلاً در نگاشت
+  مکالمه وجود داشته باشد.
+cli.cmd.messages.pull.option.batch:
+  تعداد پیام‌هایی که در هر دسته دریافت می‌شوند.
+cli.cmd.messages.pull.option.progress:
+  پیشرفت را هر N پیام اعلام می‌کند. مقدار 0 گزارش‌ها را غیرفعال می‌کند.
+cli.cmd.messages.pull.option.no-dm:
+  هنگام دریافت تاریخچه، پیام‌های خصوصی را نادیده می‌گیرد.
+cli.cmd.messages.pull.option.groups:
+  گروه‌های واتساپ را هنگام دریافت تاریخچه وارد می‌کند.
+cli.cmd.messages.pull.option.channels:
+  کانال‌های واتساپ را هنگام دریافت تاریخچه وارد می‌کند.
+cli.cmd.messages.pull.option.status:
+  وضعیت‌های واتساپ را هنگام دریافت تاریخچه وارد می‌کند.
+cli.cmd.messages.pull.option.broadcast:
+  لیست‌های پخش را هنگام دریافت تاریخچه وارد می‌کند.
+cli.cmd.messages.pull.option.media:
+  هنگام دریافت تاریخچه، پیوست‌های رسانه‌ای (تصویر، ویدیو، فایل) را دانلود
+  می‌کند.
+cli.cmd.messages.pull.option.pause:
+  کار دریافت پیام‌ها را در حالت توقف در صف قرار می‌دهد و پردازش پیام‌های جدید
+  واتساپ را تا پایان متوقف می‌کند.
+cli.cmd.messages.pull.option.resolve-conversations:
+  پس از پردازش تمام پیام‌های تاریخچه، مکالمه‌ها را به‌عنوان حل‌شده علامت‌گذاری
+  می‌کند.
+cli.cmd.messages.pull.error.pause-no-queue:
+  ⛔ امکان استفاده از `--pause` نیست زیرا فرمان **queue** در این پیکربندی
+  غیرفعال است.
+cli.cmd.queue.description: مدیریت صف‌ها.
+cli.cmd.queue.summary: اعمال روی صف‌ها را انجام دهید.
+cli.cmd.queue.action.description: یک عمل را انتخاب کنید.
+cli.cmd.queue.status.description: وضعیت یک صف را نشان می‌دهد.
+cli.cmd.queue.argument.name: 'نام صف: `inbox` یا `whatsapp` (اختیاری).'
+cli.cmd.queue.start.description: صف را بر اساس نام شروع کنید.
+cli.cmd.queue.stop.description: صف را بر اساس نام متوقف کنید.
+cli.cmd.queue.paused:
+  ⚪🧩 صف‌ها متوقف شده‌اند. برای بررسی وضعیت `queue status` را ارسال کنید.
+cli.cmd.queue.resumed:
+  🟢🧩 صف‌ها از سر گرفته شدند. برای بررسی وضعیت `queue status` را ارسال کنید.
+cli.cmd.queue.status.result: >-
+  📊 وضعیت صف:
+
+  {{#queues}}
+
+  - **{{name}}**: {{#locked}}🔒{{/locked}}{{#paused}}⚪
+  متوقف{{/paused}}{{^paused}}🟢 فعال{{/paused}}
+
+  {{/queues}}
+cli.cmd.messages.pull.option.timeout-media:
+  مدت تلاش برای دانلود رسانه هر پیام را مشخص می‌کند.
+cli.cmd.messages.pull.argument.end:
+  پایان بازه دریافت را تعیین می‌کند؛ برای مثال `2d` یعنی دو روز پیش متوقف
+  می‌شود.
+cli.cmd.messages.pull.argument.start:
+  آغاز بازه دریافت را تعیین می‌کند؛ برای مثال `1d` یعنی یک روز پیش (پیش‌فرض `0d`
+  یعنی اکنون).
+cli.cmd.messages.pull.already-running: >-
+  ⏳ کار **Pull Messages** هم‌اکنون برای **{{{chat}}}** در حال اجراست. منتظر
+  بمانید تا تمام شود یا قبل از شروع کار جدید، آن را متوقف کنید.
+
+
+  برای جزئیات `messages status` را ارسال کنید.
+cli.cmd.messages.status.not-found:
+  ℹ️ هیچ کار فعال **Pull Messages** پیدا نشد. با `messages pull` یک کار را آغاز
+  کنید.
+cli.cmd.messages.pull.no-chats-found:
+  هیچ گفت‌وگوی واتساپی برای این بازه زمانی پیدا نشد.
+cli.cmd.contacts.pull.option.progress:
+  پیشرفت را هر N مخاطب اعلام می‌کند. مقدار 0 گزارش‌ها را غیرفعال می‌کند.
+cli.cmd.contacts.pull.option.lids:
+  مخاطبین ناشناس واتساپ (LID) را در همگام‌سازی وارد می‌کند.
+task.contacts.completed:
+  👤✅ مخاطبین تکمیل شدند → 🆕 {{progress.created}}، 🔄 {{progress.updated}}، ⚪
+  {{progress.skipped}}، 🔴 {{progress.errors}}، 🖼️ {{progress.avatar.updated}}
+task.messages.started: ⏳ در حال دریافت پیام‌ها 💬 {{{chat}}} ⏱️ {{{period}}}...
+task.messages.details:
+  برای جزئیات بیشتر "{{{prefix}}}messages status" را ارسال کنید.
+task.messages.progress:
+  '⏳ پیام‌های {{{chat}}}: 🆕 {{progress.ok}}، 🟢 {{progress.exists}}، ⚪
+  {{progress.ignored}}، 🔴 {{progress.errors}}{{#messages.last}} | 📅
+  {{{messages.last}}}{{/messages.last}}'
+task.messages.completed:
+  ✅ پیام‌های {{{chat}}} در {{{period}}} → 🆕 {{progress.ok}}، 🟢
+  {{progress.exists}}، ⚪ {{progress.ignored}}، 🔴 {{progress.errors}}
+task.messages.status: |-
+  پیام‌های **{{{chat}}}** در بازه ⏱️ **{{{period}}}**. ⚙️ وضعیت کار: **{{state}}**.
+
+  🗨️ پیام‌ها:
+  - 🆕 ایجاد شده: **{{{progress.ok}}}**
+  - 🟢 موجود: {{{progress.exists}}}
+  - ⚪ نادیده گرفته شده: {{{progress.ignored}}}
+  - 🔴 خطا: {{{progress.errors}}}
+  {{#messages.first}}
+  - 🗓️ قدیمی‌ترین: **{{{messages.first}}}**
+  {{/messages.first}}
+  {{#messages.last}}
+  - 🗓️ جدیدترین: **{{{messages.last}}}**
+  {{/messages.last}}
+
+  💬 گفت‌وگوهای واتساپ:
+  - 🆕 پیام‌های جدید در **{{{chats}}}** گفت‌وگو
+  {{#options.resolveConversations}}
+
+  🗣️ مکالمه‌ها:
+  - 🟢 حل شد: **{{{progress.conversationResolve.success}}}**
+  {{#progress.conversationResolve.error}}
+  - 🔴 خطا: **{{{progress.conversationResolve.error}}}**
+  {{/progress.conversationResolve.error}}
+  {{/options.resolveConversations}}
+
+  جزئیات:
+  [{{{details.text}}}]({{{details.url}}})
