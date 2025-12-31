@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   waha:
-    image: devlikeapro/waha-plus:latest
+    image: devlikeapro/waha:latest
     container_name: wahamod
     restart: unless-stopped
     ports:
