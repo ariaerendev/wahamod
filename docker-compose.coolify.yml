@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   waha:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: devlikeapro/waha-plus:latest
     container_name: wahamod
     restart: unless-stopped
     ports:
