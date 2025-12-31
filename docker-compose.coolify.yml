@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  waha:
+    image: devlikeapro/waha:latest
+    container_name: wahamod
+    restart: unless-stopped
+    ports:
+      - "${WAHA_PORT:-3000}:3000"
+    environment:
+      # API Security
+      - WAHA_API_KEY=${WAHA_API_KEY:-your-secret-api-key-here}
+      - WAHA_API_KEY_BUILTIN=false
+      
+      # Webhooks (optional)
+      - WHATSAPP_HOOK_URL=${WHATSAPP_HOOK_URL:-}
+      - WHATSAPP_HOOK_EVENTS=${WHATSAPP_HOOK_EVENTS:-message,message.any,state.change}
+      
+      # Session Configuration
+      - WAHA_PRINT_QR=${WAHA_PRINT_QR:-true}
+      - WHATSAPP_START_SESSION=${WHATSAPP_START_SESSION:-}
+      
+      # File Upload Limits
+      - WAHA_FILE_UPLOAD_LIMIT=${WAHA_FILE_UPLOAD_LIMIT:-50mb}
+      
+      # Logging
+      - DEBUG=${DEBUG:-}
+      - WAHA_LOG_LEVEL=${WAHA_LOG_LEVEL:-info}
+      
+      # Dashboard
+      - WAHA_DASHBOARD_ENABLED=${WAHA_DASHBOARD_ENABLED:-true}
+      - WAHA_DASHBOARD_USERNAME=${WAHA_DASHBOARD_USERNAME:-admin}
+      - WAHA_DASHBOARD_PASSWORD=${WAHA_DASHBOARD_PASSWORD:-admin}
+      
+      # Swagger
+      - WAHA_SWAGGER_ENABLED=${WAHA_SWAGGER_ENABLED:-true}
+      - WAHA_SWAGGER_USERNAME=${WAHA_SWAGGER_USERNAME:-admin}
+      - WAHA_SWAGGER_PASSWORD=${WAHA_SWAGGER_PASSWORD:-admin}
+      
+      # WhatsApp Engine (WEBJS, NOWEB, or GOWS)
+      - WHATSAPP_DEFAULT_ENGINE=${WHATSAPP_DEFAULT_ENGINE:-WEBJS}
+      
+      # Health check
+      - WAHA_HEALTH_MEDIA_FILES_THRESHOLD_MB=${WAHA_HEALTH_MEDIA_FILES_THRESHOLD_MB:-100}
+      
+    volumes:
+      # Session data persistence
+      - waha_sessions:/app/.sessions
+      # Media files storage
+      - waha_media:/app/.media
+      # Browser data for WEBJS engine
+      - waha_browser:/app/.wwebjs_auth
+      - waha_browser_cache:/app/.wwebjs_cache
+      
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    networks:
+      - waha_network
+    
+    labels:
+      - "coolify.managed=true"
+      - "coolify.type=application"
+      - "coolify.name=waha-mod"
+
+volumes:
+  waha_sessions:
+    driver: local
+  waha_media:
+    driver: local
+  waha_browser:
+    driver: local
+  waha_browser_cache:
+    driver: local
+
+networks:
+  waha_network:
+    driver: bridge
