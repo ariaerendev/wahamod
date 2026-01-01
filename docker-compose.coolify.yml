@@ -2,9 +2,8 @@ version: '3.8'
 
 services:
   waha:
-    # Fallback to official image while custom build is in progress
-    # Custom image: ghcr.io/ariaerendev/wahamod:latest (will be ready after GitHub Actions completes)
-    image: devlikeapro/waha:latest
+    # Use custom patched image with Plus features unlocked
+    image: ghcr.io/ariaerendev/wahamod:latest
     container_name: wahamod
     restart: unless-stopped
     ports:
