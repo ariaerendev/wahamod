@@ -44,8 +44,6 @@ RUN echo "📋 Verification:" && \
     grep -q "PATCHED: Multi-session" /app/dist/core/manager.core.js && echo "  ✓ Manager patch OK" || echo "  ✗ Manager patch FAILED" && \
     test -f /app/dist/plus/app.module.plus.js && echo "  ✓ Plus module OK" || echo "  ✗ Plus module FAILED"
 
-USER waha
-
 # Keep original WAHA configurations
 ENV PUPPETEER_SKIP_DOWNLOAD=True
 ENV CHOKIDAR_USEPOLLING=1
