@@ -18,16 +18,22 @@ RUN node -e "\
   fs.writeFileSync('/app/dist/version.js', code); \
   console.log('✅ Patched version.js to always return PLUS');"
 
-# Patch 2: Fix ghost sessions issue - only check running sessions, not storage
-# Change exists() to only return this.sessions.has(name), not check sessionConfigs
+# Patch 2: Fix ghost sessions + multi-session support
+# - Remove onlyDefault() calls
+# - Fix exists() to only check running sessions (not storage files)
 RUN node -e "\
   const fs = require('fs'); \
   let code = fs.readFileSync('/app/dist/core/manager.core.js', 'utf8'); \
+  \
+  // Remove onlyDefault restrictions\
   code = code.replace(/this\.onlyDefault\([^)]+\);/g, '// PATCHED: Multi-session enabled'); \
+  \
+  // Fix exists() - more flexible regex that matches compiled JS\
   code = code.replace(\
-    /async exists\\(name\\) \\{\\s*return this\\.sessions\\.has\\(name\\) \\|\\| this\\.sessionConfigs\\.has\\(name\\);/g, \
-    'async exists(name) { return this.sessions.has(name); // PATCHED: Only check running sessions, not stored configs'\
+    /return\s+this\.sessions\.has\(name\)\s*\|\|\s*this\.sessionConfigs\.has\(name\)/g, \
+    'return this.sessions.has(name) /* PATCHED: Ghost sessions fix */'\
   ); \
+  \
   fs.writeFileSync('/app/dist/core/manager.core.js', code); \
   console.log('✅ Patched manager.core.js: multi-session + ghost sessions fix');"
 
@@ -45,7 +51,8 @@ exports.AppModulePlus = app_module_core_1.AppModuleCore;\n';\
 # Verify patches applied
 RUN echo "📋 Verification:" && \
     grep -q "return WAHAVersion.PLUS" /app/dist/version.js && echo "  ✓ Version patch OK" || echo "  ✗ Version patch FAILED" && \
-    grep -q "PATCHED: Multi-session" /app/dist/core/manager.core.js && echo "  ✓ Manager patch OK" || echo "  ✗ Manager patch FAILED" && \
+    grep -q "PATCHED: Multi-session" /app/dist/core/manager.core.js && echo "  ✓ Multi-session patch OK" || echo "  ✗ Multi-session FAILED" && \
+    grep -q "Ghost sessions fix" /app/dist/core/manager.core.js && echo "  ✓ Ghost sessions fix OK" || echo "  ✗ Ghost sessions FAILED" && \
     test -f /app/dist/plus/app.module.plus.js && echo "  ✓ Plus module OK" || echo "  ✗ Plus module FAILED"
 
 # Keep original WAHA configurations
