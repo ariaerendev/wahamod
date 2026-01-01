@@ -6,12 +6,11 @@
 # Using Debian-based image instead of Alpine for better git compatibility
 FROM node:22-slim AS builder
 
-# Install required build tools (git for GitHub dependencies, python/make for native modules)
+# Install required build tools (git for GitHub dependencies, build-essential for native modules)
 RUN apt-get update && apt-get install -y \
     git \
     python3 \
-    make \
-    g++ \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure git for Docker environment
