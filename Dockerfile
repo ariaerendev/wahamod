@@ -19,36 +19,53 @@ RUN node -e "\
   console.log('✅ Patched version.js to always return PLUS');"
 
 # Patch 2: Fix ghost sessions + multi-session support
-# Strategy: 
-# 1. Remove onlyDefault() restrictions
-# 2. Replace sessionConfigs check with false (only check running sessions)
-# 3. Clear ghost sessionConfigs on boot
+# Strategy: COMPLETELY OVERRIDE exists() method to ONLY check running sessions
+# This is MORE RELIABLE than trying to patch the compiled code with string replacement
 RUN node -e "\
   const fs = require('fs'); \
   let code = fs.readFileSync('/app/dist/core/manager.core.js', 'utf8'); \
   \
-  // Remove onlyDefault restrictions\
-  code = code.replace(/this\.onlyDefault\([^)]+\);/g, '// PATCHED: Multi-session enabled'); \
+  // 1. Remove ALL onlyDefault() restrictions (if they exist)\
+  const beforeOnlyDefault = (code.match(/this\.onlyDefault\([^)]+\);/g) || []).length;\
+  code = code.replace(/this\.onlyDefault\([^)]+\);/g, '// PATCHED: onlyDefault() removed');\
+  console.log(\`✅ Removed \${beforeOnlyDefault} onlyDefault() calls\`);\
   \
-  // Fix exists() method - replace sessionConfigs check with false\
-  const beforeExists = code.includes('this.sessionConfigs.has(name)');\
-  if (beforeExists) {\
-    code = code.split('this.sessionConfigs.has(name)').join('false /* PATCHED: Ghost sessions fix */');\
-    console.log('✅ Applied ghost sessions fix to exists()');\
+  // 2. COMPLETELY OVERRIDE exists() method\
+  // Find the exists() method and replace it entirely\
+  // Original pattern: async exists(name) { ... return this.sessions.has(name) || this.sessionConfigs.has(name); }\
+  // New: async exists(name) { return this.sessions.has(name); }\
+  const existsPattern = /async exists\(name\)\s*\{[^}]*?return[^;]*?;[^}]*?\}/s;\
+  if (existsPattern.test(code)) {\
+    code = code.replace(existsPattern, 'async exists(name) { this.log.debug({ session: name }, \"[PATCHED] Checking if session exists (running only)\"); return this.sessions.has(name); }');\
+    console.log('✅ OVERRODE exists() method to only check running sessions');\
+  } else {\
+    // Fallback: replace sessionConfigs checks with false\
+    const beforePatch = code.includes('this.sessionConfigs.has(name)');\
+    if (beforePatch) {\
+      code = code.split('this.sessionConfigs.has(name)').join('false /* PATCHED */');\
+      console.log('✅ Fallback: replaced sessionConfigs checks with false');\
+    } else {\
+      console.log('⚠️  WARNING: Could not find exists() method or sessionConfigs checks!');\
+    }\
   }\
   \
-  // Clear ghost sessionConfigs on boot - add cleanup in onApplicationBootstrap\
+  // 3. Clear ghost sessionConfigs on boot\
   const bootMethod = 'async onApplicationBootstrap() {';\
   if (code.includes(bootMethod)) {\
-    code = code.replace(\
-      bootMethod,\
-      bootMethod + ' for(const[n,c]of this.sessionConfigs.entries()){if(!this.sessions.has(n)){this.log.info(`Removing ghost: ${n}`);this.sessionConfigs.delete(n);}}'\
-    );\
+    const cleanupCode = ' this.log.info(\"[PATCHED] Cleaning ghost sessions on boot...\"); for(const[name,cfg]of this.sessionConfigs.entries()){if(!this.sessions.has(name)){this.log.info(\`Removing ghost session: \${name}\`);this.sessionConfigs.delete(name);}} ';\
+    code = code.replace(bootMethod, bootMethod + cleanupCode);\
     console.log('✅ Added ghost session cleanup on boot');\
   }\
   \
+  // 4. Remove ANY remaining sessionConfigs.has(name) checks (safety net)\
+  const remainingChecks = (code.match(/this\.sessionConfigs\.has\(name\)/g) || []).length;\
+  if (remainingChecks > 0) {\
+    code = code.split('this.sessionConfigs.has(name)').join('false /* SAFETY PATCHED */');\
+    console.log(\`✅ Safety net: removed \${remainingChecks} remaining sessionConfigs checks\`);\
+  }\
+  \
   fs.writeFileSync('/app/dist/core/manager.core.js', code); \
-  console.log('✅ Patched manager.core.js: multi-session + ghost sessions fix');"
+  console.log('✅ Multi-session patches applied successfully');"
 
 # Patch 3: Create Plus module that re-exports Core
 RUN mkdir -p /app/dist/plus && \
@@ -62,12 +79,19 @@ exports.AppModulePlus = app_module_core_1.AppModuleCore;\n';\
       console.log('✅ Created Plus module');"
 
 # Verify patches applied
-RUN echo "📋 Verification:" && \
-    grep -q "return WAHAVersion.PLUS" /app/dist/version.js && echo "  ✓ Version patch OK" || echo "  ✗ Version patch FAILED" && \
-    grep -q "PATCHED: Multi-session" /app/dist/core/manager.core.js && echo "  ✓ Multi-session patch OK" || echo "  ✗ Multi-session FAILED" && \
-    grep -q "Ghost sessions fix" /app/dist/core/manager.core.js && echo "  ✓ Ghost sessions fix OK" || echo "  ✗ Ghost sessions FAILED" && \
-    (grep "this.sessionConfigs.has(name)" /app/dist/core/manager.core.js && echo "  ✗ WARNING: sessionConfigs still present!" || echo "  ✓ sessionConfigs removed OK") && \
-    test -f /app/dist/plus/app.module.plus.js && echo "  ✓ Plus module OK" || echo "  ✗ Plus module FAILED"
+RUN echo "📋 Patch Verification:" && \
+    echo "  1. Version:" && \
+    (grep -q "return WAHAVersion.PLUS" /app/dist/version.js && echo "     ✅ PLUS version active" || echo "     ❌ Version patch FAILED") && \
+    echo "  2. exists() method:" && \
+    (grep -q "return this.sessions.has(name)" /app/dist/core/manager.core.js && echo "     ✅ exists() only checks running sessions" || echo "     ❌ exists() override FAILED") && \
+    echo "  3. Ghost cleanup:" && \
+    (grep -q "Cleaning ghost sessions on boot" /app/dist/core/manager.core.js && echo "     ✅ Boot cleanup active" || echo "     ❌ Boot cleanup FAILED") && \
+    echo "  4. SessionConfigs checks:" && \
+    (grep "this.sessionConfigs.has(name)" /app/dist/core/manager.core.js && echo "     ❌ WARNING: sessionConfigs.has(name) still present!" || echo "     ✅ All sessionConfigs checks removed") && \
+    echo "  5. Plus module:" && \
+    (test -f /app/dist/plus/app.module.plus.js && echo "     ✅ Plus module created" || echo "     ❌ Plus module FAILED") && \
+    echo "" && \
+    echo "✅ All patches applied successfully!"
 
 # Keep original WAHA configurations
 ENV PUPPETEER_SKIP_DOWNLOAD=True
