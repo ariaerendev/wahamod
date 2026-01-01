@@ -18,14 +18,18 @@ RUN node -e "\
   fs.writeFileSync('/app/dist/version.js', code); \
   console.log('✅ Patched version.js to always return PLUS');"
 
-# Patch 2: Remove multi-session restriction in dist/core/manager.core.js
-# Comment out all onlyDefault() calls
+# Patch 2: Fix ghost sessions issue - only check running sessions, not storage
+# Change exists() to only return this.sessions.has(name), not check sessionConfigs
 RUN node -e "\
   const fs = require('fs'); \
   let code = fs.readFileSync('/app/dist/core/manager.core.js', 'utf8'); \
   code = code.replace(/this\.onlyDefault\([^)]+\);/g, '// PATCHED: Multi-session enabled'); \
+  code = code.replace(\
+    /async exists\\(name\\) \\{\\s*return this\\.sessions\\.has\\(name\\) \\|\\| this\\.sessionConfigs\\.has\\(name\\);/g, \
+    'async exists(name) { return this.sessions.has(name); // PATCHED: Only check running sessions, not stored configs'\
+  ); \
   fs.writeFileSync('/app/dist/core/manager.core.js', code); \
-  console.log('✅ Patched manager.core.js to allow multi-session');"
+  console.log('✅ Patched manager.core.js: multi-session + ghost sessions fix');"
 
 # Patch 3: Create Plus module that re-exports Core
 RUN mkdir -p /app/dist/plus && \

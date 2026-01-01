@@ -117,7 +117,9 @@ export class SessionManagerCore extends SessionManager implements OnModuleInit {
   // API Methods
   //
   async exists(name: string): Promise<boolean> {
-    return this.sessions.has(name) || this.sessionConfigs.has(name);
+    // Only check if session is currently running, not stored config
+    // This prevents "already exists" error for ghost sessions (stored but not running)
+    return this.sessions.has(name);
   }
 
   isRunning(name: string): boolean {
