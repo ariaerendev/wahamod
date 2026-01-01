@@ -4,9 +4,10 @@ services:
     restart: always
     # https://waha.devlike.pro/docs/how-to/engines/#docker-images
     # https://portal.devlike.pro/docker-image
-    image: devlikeapro/waha-plus
-    # WAHA Core
-    # image: devlikeapro/waha:latest
+    # WAHA Core (public image)
+    image: devlikeapro/waha:latest
+    # WAHA Plus (requires license, private)
+    # image: devlikeapro/waha-plus
 
     # Add "dns" if you have a problem with resolving "web.whatsapp.com"
     dns:
