@@ -7,13 +7,14 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Install dependencies first (for better caching)
-COPY package.json yarn.lock ./
-RUN corepack enable && corepack prepare yarn@3.6.4 --activate
-RUN yarn install --frozen-lockfile
-
-# Copy source code
+# Copy all files (except what's in .dockerignore)
 COPY . .
+
+# Enable corepack for Yarn modern
+RUN corepack enable
+
+# Install dependencies
+RUN yarn install
 
 # Build the application (TypeScript -> JavaScript)
 RUN yarn build
