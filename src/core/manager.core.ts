@@ -110,6 +110,16 @@ export class SessionManagerCore extends SessionManager implements OnModuleInit {
 
   async onApplicationBootstrap() {
     await this.engineBootstrap.bootstrap();
+    
+    // Clear ghost sessions: remove configs for sessions that aren't running
+    // This prevents "already exists" errors when recreating sessions
+    for (const [name, config] of this.sessionConfigs.entries()) {
+      if (!this.sessions.has(name)) {
+        this.log.info(`Removing ghost session config: ${name}`);
+        this.sessionConfigs.delete(name);
+      }
+    }
+    
     this.startPredefinedSessions();
   }
 

@@ -19,7 +19,10 @@ RUN node -e "\
   console.log('✅ Patched version.js to always return PLUS');"
 
 # Patch 2: Fix ghost sessions + multi-session support
-# Strategy: Find and replace the exact return statement in exists() method
+# Strategy: 
+# 1. Remove onlyDefault() restrictions
+# 2. Replace sessionConfigs check with false (only check running sessions)
+# 3. Clear ghost sessionConfigs on boot
 RUN node -e "\
   const fs = require('fs'); \
   let code = fs.readFileSync('/app/dist/core/manager.core.js', 'utf8'); \
@@ -27,14 +30,21 @@ RUN node -e "\
   // Remove onlyDefault restrictions\
   code = code.replace(/this\.onlyDefault\([^)]+\);/g, '// PATCHED: Multi-session enabled'); \
   \
-  // Fix exists() method - search for the exact pattern and replace\
-  // This fixes ghost sessions by only checking running sessions, not storage\
+  // Fix exists() method - replace sessionConfigs check with false\
   const beforeExists = code.includes('this.sessionConfigs.has(name)');\
   if (beforeExists) {\
-    code = code.split('this.sessionConfigs.has(name)').join('false /* PATCHED: Ghost sessions fix - ignore storage */');\
-    console.log('✅ Applied ghost sessions fix');\
-  } else {\
-    console.log('⚠️  Ghost sessions pattern not found, may already be patched');\
+    code = code.split('this.sessionConfigs.has(name)').join('false /* PATCHED: Ghost sessions fix */');\
+    console.log('✅ Applied ghost sessions fix to exists()');\
+  }\
+  \
+  // Clear ghost sessionConfigs on boot - add cleanup in onApplicationBootstrap\
+  const bootMethod = 'async onApplicationBootstrap() {';\
+  if (code.includes(bootMethod)) {\
+    code = code.replace(\
+      bootMethod,\
+      bootMethod + ' for(const[n,c]of this.sessionConfigs.entries()){if(!this.sessions.has(n)){this.log.info(`Removing ghost: ${n}`);this.sessionConfigs.delete(n);}}'\
+    );\
+    console.log('✅ Added ghost session cleanup on boot');\
   }\
   \
   fs.writeFileSync('/app/dist/core/manager.core.js', code); \
