@@ -41,8 +41,8 @@ RUN yarn install
 # Build our TypeScript (uses existing node_modules)
 RUN yarn build
 
-# Stage 2: Runtime
-FROM node:22-alpine
+# Stage 2: Runtime (fresh - v2)
+FROM node:22-alpine AS runtime-v2
 
 # Install required system packages
 RUN apk add --no-cache \
