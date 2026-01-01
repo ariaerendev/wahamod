@@ -5,8 +5,17 @@ services:
     # Use official WAHA image with runtime patching for multi-session
     image: devlikeapro/waha:latest
     
-    # Override entrypoint to apply patch before starting
-    entrypoint: ["/patch-multisession.sh"]
+    # Inline patch script for Coolify compatibility
+    command: >
+      sh -c '
+      if [ -f /app/dist/core/manager.core.js ]; then
+        echo "🔧 Patching WAHA for multi-session support...";
+        cp /app/dist/core/manager.core.js /app/dist/core/manager.core.js.backup;
+        sed -i "s/if (await this.exists(name))/if (false \&\& await this.exists(name))/g" /app/dist/core/manager.core.js;
+        echo "✅ Multi-session patch applied!";
+      fi;
+      exec /entrypoint.sh
+      '
 
     # Add "dns" if you have a problem with resolving "web.whatsapp.com"
     dns:
@@ -29,9 +38,6 @@ services:
       # Save media files
       # https://waha.devlike.pro/docs/how-to/storages/#save-media-files-between-the-container-restarts
       - './media:/app/.media'
-      
-      # Mount patch script for runtime modification
-      - './patch-multisession.sh:/patch-multisession.sh:ro'
 
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/ping"]
