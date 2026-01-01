@@ -49,8 +49,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # Use fresh cache tag to avoid corrupted cache from previous builds
-          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache-v2
-          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache-v2,mode=max
+          # NO CACHE - fresh build every time until we stabilize
+          no-cache: true
           build-args: |
             WHATSAPP_DEFAULT_ENGINE=WEBJS
