@@ -1,6 +1,6 @@
 # WAHA MOD - Patched Image
 # Extends official WAHA image with Plus features unlocked
-# Strategy: Patch compiled JS files directly (no compilation needed)
+# Strategy: Use Node.js to patch compiled JS files (more reliable than sed)
 # Build time: <10 seconds
 
 FROM devlikeapro/waha:latest
@@ -9,19 +9,40 @@ USER root
 WORKDIR /app
 
 # Patch 1: Force PLUS version in dist/version.js
-RUN sed -i 's/return hasPlusDirectory() ? WAHAVersion.PLUS : WAHAVersion.CORE;/return WAHAVersion.PLUS;/g' /app/dist/version.js
+# Replace entire getWAHAVersion function to always return PLUS
+RUN node -e "\
+  const fs = require('fs'); \
+  let code = fs.readFileSync('/app/dist/version.js', 'utf8'); \
+  code = code.replace(/function getWAHAVersion\(\) \{[\s\S]*?return hasPlusDirectory.*?\n\}/m, \
+    'function getWAHAVersion() { return WAHAVersion.PLUS; }'); \
+  fs.writeFileSync('/app/dist/version.js', code); \
+  console.log('✅ Patched version.js to always return PLUS');"
 
-# Patch 2: Remove OnlyDefaultSessionIsAllowed check in dist/core/manager.core.js  
-# Comment out the onlyDefault() call that blocks multi-session
-RUN sed -i 's/this\.onlyDefault(name);/\/\/ this.onlyDefault(name); \/\/ PATCHED: Allow multi-session/g' /app/dist/core/manager.core.js
+# Patch 2: Remove multi-session restriction in dist/core/manager.core.js
+# Comment out all onlyDefault() calls
+RUN node -e "\
+  const fs = require('fs'); \
+  let code = fs.readFileSync('/app/dist/core/manager.core.js', 'utf8'); \
+  code = code.replace(/this\.onlyDefault\([^)]+\);/g, '// PATCHED: Multi-session enabled'); \
+  fs.writeFileSync('/app/dist/core/manager.core.js', code); \
+  console.log('✅ Patched manager.core.js to allow multi-session');"
 
 # Patch 3: Create Plus module that re-exports Core
 RUN mkdir -p /app/dist/plus && \
-    echo '"use strict";' > /app/dist/plus/app.module.plus.js && \
-    echo 'Object.defineProperty(exports, "__esModule", { value: true });' >> /app/dist/plus/app.module.plus.js && \
-    echo 'exports.AppModulePlus = void 0;' >> /app/dist/plus/app.module.plus.js && \
-    echo 'const app_module_core_1 = require("../core/app.module.core");' >> /app/dist/plus/app.module.plus.js && \
-    echo 'exports.AppModulePlus = app_module_core_1.AppModuleCore;' >> /app/dist/plus/app.module.plus.js
+    node -e "\
+      const code = '\"use strict\";\n\
+Object.defineProperty(exports, \"__esModule\", { value: true });\n\
+exports.AppModulePlus = void 0;\n\
+const app_module_core_1 = require(\"../core/app.module.core\");\n\
+exports.AppModulePlus = app_module_core_1.AppModuleCore;\n';\
+      require('fs').writeFileSync('/app/dist/plus/app.module.plus.js', code); \
+      console.log('✅ Created Plus module');"
+
+# Verify patches applied
+RUN echo "📋 Verification:" && \
+    grep -q "return WAHAVersion.PLUS" /app/dist/version.js && echo "  ✓ Version patch OK" || echo "  ✗ Version patch FAILED" && \
+    grep -q "PATCHED: Multi-session" /app/dist/core/manager.core.js && echo "  ✓ Manager patch OK" || echo "  ✗ Manager patch FAILED" && \
+    test -f /app/dist/plus/app.module.plus.js && echo "  ✓ Plus module OK" || echo "  ✗ Plus module FAILED"
 
 USER waha
 
