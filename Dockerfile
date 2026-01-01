@@ -1,48 +1,36 @@
-# WAHA MOD - Optimized Dockerfile
+# WAHA MOD - Optimized Dockerfile  
 # Extends official WAHA image with Plus features unlocked
-# Build time: ~2-3 minutes (vs 15+ minutes for full build)
+# Strategy: Replace compiled JS files directly in dist/ (no rebuild needed)
+# Build time: <30 seconds
 
 FROM devlikeapro/waha:latest
 
-# Install build dependencies (minimal)
 USER root
-WORKDIR /tmp
-
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    python3 \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install corepack and yarn
-RUN npm install -g corepack && corepack enable
-
 WORKDIR /app
 
-# Copy package files
-COPY package.json yarn.lock ./
+# Install TypeScript compiler (lightweight, no full build deps needed)
+RUN npm install -g typescript@5.3.3
 
-# Enable yarn berry
-RUN yarn set version 4.9.2
-
-# Copy only modified source files (Plus features unlock)
+# Copy modified source files
 COPY src/version.ts ./src/version.ts
 COPY src/core/manager.core.ts ./src/core/manager.core.ts
 COPY src/plus/ ./src/plus/
 
-# Rebuild only affected modules (much faster than full build)
-ENV NODE_OPTIONS="--max-old-space-size=4096"
-RUN yarn build 2>&1 | tee /tmp/build.log && \
-    find ./dist -name "*.d.ts" -delete
+# Compile only modified files and replace in dist/
+# This preserves official image's dist/ while patching our changes
+RUN tsc --outDir ./dist \
+    --module commonjs \
+    --target es2021 \
+    --esModuleInterop \
+    --skipLibCheck \
+    --declaration false \
+    src/version.ts \
+    src/core/manager.core.ts \
+    src/plus/app.module.plus.ts
 
-# Cleanup build dependencies to reduce image size
-RUN apt-get purge -y build-essential python3 git && \
-    apt-get autoremove -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /root/.cache /root/.npm
-
-# Reset NODE_OPTIONS to original WAHA value
-ENV NODE_OPTIONS="--max-old-space-size=16384"
+# Cleanup TypeScript compiler
+RUN npm uninstall -g typescript && \
+    rm -rf /root/.npm /tmp/*
 
 # Keep original WAHA configurations
 ENV PUPPETEER_SKIP_DOWNLOAD=True
